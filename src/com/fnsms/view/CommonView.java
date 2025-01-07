@@ -3,35 +3,69 @@ package com.fnsms.view;
 import java.util.Calendar;
 
 public class CommonView {
+	
+	
+	// 글자 색상
+	public static final String tBLACK = "\033[30m"; // 검정
+	public static final String tRED = "\033[31m"; // 빨강
+	public static final String tGREEN = "\033[32m"; // 초록
+	public static final String tYELLOW = "\033[33m"; // 노랑
+	public static final String tBLUE = "\033[34m"; // 파랑
+	public static final String tMAGENTA = "\033[35m"; // 자주색
+	public static final String tCYAN = "\033[36m"; // 청록색
+	public static final String tWHITE = "\033[37m"; // 흰색
+	// 배경 색상
+	public static final String bRED = "\033[41m"; // 빨강 배경
+	public static final String bGREEN = "\033[42m"; // 초록 배경
+	public static final String bYELLOW = "\033[43m"; // 노란 배경
+	public static final String bBULE = "\033[44m"; // 파랑 배경
+	public static final String bMAGENTA = "\033[45m"; // 자주색 배경
+	public static final String bCAYN = "\033[46m"; // 청록색 배경
+	public static final String bWHITE = "\033[47m"; // 흰색 배경
+	// 특수효과
+	public static final String BOLD = "\033[1m"; // 굵게
+	public static final String UNDERLINE = "\033[4m"; // 밑줄
 
+	// 효과 초기화
+	public static final String RESET = "\033[0m";
+
+	
 	//로그인하기전 출력될 문구
 	public static void printLogin() {
 		Calendar now = Calendar.getInstance();
 		
-		System.out.println();
+	    System.out.println();
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-		System.out.println("┃\t\t쌍용헬스장1호점\t[\t영업시간:09:00~21:00\t]\t\t┃");                                
-		System.out.printf( "┃\t\t\t%2tY년\t%2tm월\t%2td일\t\t%2tH시%2tM분\t\t\t┃\r\n",now,now,now,now,now);
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t"+RESET+BOLD+UNDERLINE+"SSANGYONG FITNESS"+RESET+bWHITE+"\t\t\t\t\t"+RESET+"┃");                                
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t"+RESET+"[ 운영 시간 : 09:00 ~ 21:00 ]"+bWHITE+"\t\t"+RESET+"┃");                                
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+		System.out.printf( "┃"+bWHITE+tBLACK+"\t\t\t\t\t\t\t%2tY년  %2tm월  %2td일  %2tH시  %2tM분\t"+RESET+"┃\r\n",now,now,now,now,now);
 		System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
-		System.out.println("┃\t쌍용헬스장에\t오신것을\t\t환영합니다!\t\t\t\t┃");
-		System.out.println("┃\t이용할\t서비스를\t\t선택해\t주세요.\t\t\t\t\t┃");
-		System.out.println("┃	┌───────────────┐  	┌───────────────┐  	┌───────────────┐	┃");
-		System.out.println("┃	│\t\t│\t│\t\t│\t│\t\t│\t┃");
-		System.out.println("┃	│(1)회원\t\t│\t│(2)강사\t\t│\t│(3)관리자\t│\t┃");
-		System.out.println("┃	│\t\t│\t│\t\t│\t│\t\t│\t┃");
-		System.out.println("┃	└───────────────┘  	└───────────────┘  	└───────────────┘	┃");
-		System.out.println("┃                                                                    		┃");
-		System.out.println("┃                                                                    		┃");
-		System.out.println("┃                                                                    		┃");
-		System.out.println("┃                                                                    		┃");
-		System.out.println("┃                                                                    		┃");
-		System.out.println("┃                                                                    		┃");
-		System.out.println("┃                                                                    		┃");
-		System.out.println("┃\t\t\t\t\t\t\t\t\t\t┃");
-		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-		System.out.print(  " 선택 : ");
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+		System.out.println("┃"+bWHITE+tBLACK+"\t\t\t쌍용 헬스장에 오신것을 환영합니다!!!\t\t\t\t"+RESET+"┃");
+		System.out.println("┃"+bWHITE+tBLACK+"\t\t\t이용할 서비스를 선택해주세요.\t\t\t\t\t"+RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"┌───────────────┐"+RESET+bWHITE+"  \t"+RESET+bBULE+"┌───────────────┐"+RESET+bWHITE+"  \t"+RESET+bBULE+"┌───────────────┐"+RESET+bWHITE+ "\t\t" +RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+ "\t\t" +RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"│   (1)회원\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│   (2)강사\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│   (3)관리자\t│"+RESET+bWHITE+ "\t\t" +RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+ "\t\t" +RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"└───────────────┘"+RESET+bWHITE+"  \t"+RESET+bBULE+"└───────────────┘"+RESET+bWHITE+"  \t"+RESET+bBULE+"└───────────────┘"+RESET+bWHITE+ "\t\t" +RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//1
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//2
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//3
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//4
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//5
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//6
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//7
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//8
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//9
+		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"+RESET);
+		System.out.print(  bYELLOW+tBLACK+" "+UNDERLINE+"선택 : "+RESET);
 		System.out.println();
 		System.out.println();
+
 		
 	}
 	
@@ -40,47 +74,56 @@ public class CommonView {
 		
 		System.out.println();
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-		System.out.println("┃\t\t쌍용헬스장1호점\t[\t영업시간:09:00~21:00\t]\t\t┃");                                
-		System.out.printf( "┃\t\t\t%2tY년\t%2tm월\t%2td일\t\t%2tH시%2tM분\t\t\t┃\r\n",now,now,now,now,now);
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t"+RESET+BOLD+UNDERLINE+"SSANGYONG FITNESS"+RESET+bWHITE+"\t\t\t\t\t"+RESET+"┃");                                
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t"+RESET+"[ 운영 시간 : 09:00 ~ 21:00 ]"+bWHITE+"\t\t"+RESET+"┃");                                
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+		System.out.printf( "┃"+bWHITE+tBLACK+"\t\t\t\t\t\t\t%2tY년  %2tm월  %2td일  %2tH시  %2tM분\t"+RESET+"┃\r\n",now,now,now,now,now);
 		System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
-		System.out.println("┃\t쌍용헬스장에\t오신것을\t\t환영합니다!\t\t\t\t┃");
-		System.out.println("┃\t이용할\t서비스를\t\t선택해\t주세요.\t\t\t\t\t┃");
-		System.out.println("┃	┌───────────────┐  	┌───────────────┐  	┌───────────────┐	┃");
-		System.out.println("┃	│\t\t│\t│\t\t│\t│\t\t│\t┃");
-		System.out.println("┃	│(1)회원\t\t│\t│(2)강사\t\t│\t│(3)관리자\t│\t┃");
-		System.out.println("┃	│\t\t│\t│\t\t│\t│\t\t│\t┃");
-		System.out.println("┃	└───────────────┘  	└───────────────┘  	└───────────────┘	┃");
-		System.out.println("┃                                                                    		┃");
-		System.out.println("┃\t※아이디\t또는\t비밀번호가\t잘못되었습니다.\t\t\t\t┃");
-		System.out.println("┃\t※아이디와\t비밀번호를\t정확히\t입력해주세요.\t\t\t┃");
-		System.out.println("┃\t\t\t\t\t\t\t\t\t\t┃");
-		System.out.println("┃\tID\t:\t회원명\t\t\t\t\t\t\t┃");
-		System.out.println("┃\tPW\t:\t●\t+\t일련번호\t\t\t\t\t┃");
-		System.out.println("┃\t(●:회원은m,강사는i,관리자는a를입력해주세요.)\t\t\t\t┃");
-		System.out.println("┃\t\t\t\t\t\t\t\t\t\t┃");
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+		System.out.println("┃"+bWHITE+tBLACK+"\t\t\t쌍용 헬스장에 오신것을 환영합니다!!!\t\t\t\t"+RESET+"┃");
+		System.out.println("┃"+bWHITE+tBLACK+"\t\t\t이용할 서비스를 선택해주세요.\t\t\t\t\t"+RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"┌───────────────┐"+RESET+bWHITE+"  \t"+RESET+bBULE+"┌───────────────┐"+RESET+bWHITE+"  \t"+RESET+bBULE+"┌───────────────┐"+RESET+bWHITE+ "\t\t" +RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+ "\t\t" +RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"│   (1)회원\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│   (2)강사\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│   (3)관리자\t│"+RESET+bWHITE+ "\t\t" +RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+ "\t\t" +RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"└───────────────┘"+RESET+bWHITE+"  \t"+RESET+bBULE+"└───────────────┘"+RESET+bWHITE+"  \t"+RESET+bBULE+"└───────────────┘"+RESET+bWHITE+ "\t\t" +RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//1
+		System.out.println("┃"+bWHITE+tBLACK+"\t\t※아이디 또는 비밀번호가 잘못되었습니다.\t\t\t\t\t"+RESET+"┃");//2
+		System.out.println("┃"+bWHITE+tBLACK+"\t\t※아이디와 비밀번호를 정확히 입력해주세요.\t\t\t\t"+RESET+"┃");//3
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//4
+		System.out.println("┃"+bWHITE+tBLACK+"\t\tID\t:\t회원명\t\t\t\t\t\t\t"+RESET+"┃");//5
+		System.out.println("┃"+bWHITE+tBLACK+"\t\tPW\t:\t ●  +  일련번호(8자리)\t\t\t\t\t"+RESET+"┃");//6
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//7
+		System.out.println("┃"+bWHITE+tBLACK+"\t\t(●:회원은m,강사는i,관리자는a를입력해주세요.)\t\t\t\t"+RESET+"┃");//8
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//9
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-		System.out.print(  " 선택 : ");
+		System.out.print(bYELLOW+tBLACK+" "+UNDERLINE+"선택 : "+RESET);
 		System.out.println();
 		System.out.println();
 		
 	}
 	
 	public static void printLogout() {
+		
 		Calendar now = Calendar.getInstance();
+		
 		System.out.println();
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-		System.out.println("┃\t\t쌍용헬스장1호점\t[\t영업시간:09:00~21:00\t]\t\t┃");                                
-		System.out.printf( "┃\t\t\t%2tY년\t%2tm월\t%2td일\t\t%2tH시%2tM분\t\t\t┃\r\n",now,now,now,now,now);
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t"+RESET+BOLD+UNDERLINE+"SSANGYONG FITNESS"+RESET+bWHITE+"\t\t\t\t\t"+RESET+"┃");                                
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t"+RESET+"[ 운영 시간 : 09:00 ~ 21:00 ]"+bWHITE+"\t\t"+RESET+"┃");                                
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+		System.out.printf( "┃"+bWHITE+tBLACK+"\t\t\t\t\t\t\t%2tY년  %2tm월  %2td일  %2tH시  %2tM분\t"+RESET+"┃\r\n",now,now,now,now,now);
 		System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
-		System.out.println("┃\t홍길동님이\t로그아웃되었습니다.\t\t\t\t\t┃");
-		System.out.println("┃                                                                    		┃");
-		System.out.println("┃                                                                    		┃");
-		System.out.println("┃                                                                    		┃");
-		System.out.println("┃                                                                    		┃");
-		System.out.println("┃                                                                    		┃");
-		System.out.println("┃                                                                    		┃");
-		System.out.println("┃                                                                    		┃");
-		System.out.println("┃\t\t\t\t\t\t\t\t\t\t┃");
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+		System.out.println("┃"+bWHITE+tBLACK+"\t\t\t[홍길동님]이\t로그아웃되었습니다.\t\t\t\t"+RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 		System.out.print(  " 선택 : ");
 		System.out.println();
