@@ -3,8 +3,8 @@ package com.fnsms.emp;
 import com.fnsms.user.User;
 
 public class Emp extends User{
-	private String empNo;
-	private String role;
+	protected String empNo;
+	protected String role;
 
 	public Emp(String name, String tel, String birthDate, String empNo, String role) {
 		super(name, tel, birthDate);
