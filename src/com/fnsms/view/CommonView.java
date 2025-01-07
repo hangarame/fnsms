@@ -129,7 +129,10 @@ public class CommonView {
         if ((dayOfWeek + maxDays - 1) % 7 != 0) {
             System.out.println();
         }
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
 	}
 	
 }

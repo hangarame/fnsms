@@ -7,7 +7,12 @@ public class Main {
 //		CommonView.printLogin();
 //		CommonView.printLoginFailed();
 //		CommonView.printLogout();
+<<<<<<< Updated upstream
 		CommonView.printCalendar();
 		
+=======
+//		
+		CommonView.printCalendar();
+>>>>>>> Stashed changes
 	}
 }
