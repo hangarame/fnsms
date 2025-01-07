@@ -90,8 +90,46 @@ public class CommonView {
 	
 	//이번달 달력 출력
 	public static void printCalendar() {
-		Calendar now = Calendar.getInstance();
-		System.out.println();
+		// Calendar 인스턴스 생성
+        Calendar cal = Calendar.getInstance();
+        
+        // 현재 년도와 월 가져오기
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH) + 1; // 월은 0부터 시작하므로 1을 더함
+        
+        // 해당 월의 1일로 설정
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+        
+        // 해당 월의 최대 일수 구하기
+        int maxDays = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+        
+        // 1일의 요일 구하기 (1:일요일, 2:월요일, ..., 7:토요일)
+        int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+        
+        // 달력 헤더 출력
+        System.out.println("\n" + year + "년 " + month + "월");
+        System.out.println("일\t월\t화\t수\t목\t금\t토");
+        
+        // 1일의 요일만큼 탭으로 공백 추가
+        for (int i = 1; i < dayOfWeek; i++) {
+            System.out.print("\t");
+        }
+        
+        // 날짜 출력
+        for (int day = 1; day <= maxDays; day++) {
+            System.out.printf("%2d\t",day);
+            
+            // 토요일이면 줄바꿈
+            if ((dayOfWeek + day - 1) % 7 == 0) {
+                System.out.println();
+            }
+        }
+        
+        // 마지막 줄 처리
+        if ((dayOfWeek + maxDays - 1) % 7 != 0) {
+            System.out.println();
+        }
+    
 	}
 	
 }
