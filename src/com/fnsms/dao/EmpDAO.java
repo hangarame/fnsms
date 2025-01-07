@@ -32,8 +32,8 @@ public class EmpDAO {
 				String[] temp = line.split("◈");
 
 				if(temp[3].equals("강사") ) {
-					
-					instructorList.add(new Instructor(temp[1], temp[2], temp[4], temp[0], temp[3], Integer.parseInt(temp[6]), null));
+
+					instructorList.add(new Instructor(temp[1], temp[2], temp[4], temp[0], temp[3], Integer.parseInt(temp[5]), null));
 					ArrayList<Attendance> aList = new ArrayList<Attendance>();
 					
 				} else {
@@ -49,6 +49,13 @@ public class EmpDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		//testCode
+//		for(Instructor ins : instructorList) {
+//			System.out.println(ins.toString());
+//		}
+			
+		
 		
 		
 		//Attendance 배열 담는 과정 완성 필요.
@@ -60,6 +67,8 @@ public class EmpDAO {
 		
 		try {
 			FileWriter writer = new FileWriter(EMP_DATA_PATH);
+			//test.code
+//			FileWriter writer = new FileWriter(".\\data\\testsave.txt");
 			
 			for(Instructor ins : instructorList ) {
 				String line = ins.getEmpNo() + "◈" + ins.getName() + "◈" + ins.getTel() + "◈" + ins.getRole() + "◈" + ins.getIningCost() + "\r\n";
@@ -69,11 +78,13 @@ public class EmpDAO {
 			}
 			
 			for(Administrator adm : adminList ) {
-				String line = adm.getEmpNo() + "◈" + adm.getName() + "◈" + adm.getTel() + "◈" + adm.getRole() + "◈" + "\r\n";
+				String line = adm.getEmpNo() + "◈" + adm.getName() + "◈" + adm.getTel() + "◈" + adm.getRole() + "◈" + "0\r\n";
 				writer.write(line);
 			}
 			
 			writer.close();
+			
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
