@@ -1,9 +1,8 @@
-package com.fnsms;
+package com.fnsms.attendance;
 
 import java.util.Calendar;
 
 public class Attendance {
-
 	private int empNo;
 	private String workDate;
 	private Calendar startWorkTime;
@@ -75,7 +74,4 @@ public class Attendance {
 		this.endWorkTime = endWorkTime;
 		this.payment = payment;
 	}
-	
-	
-
 }
