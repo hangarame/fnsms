@@ -2,23 +2,17 @@ package com.fnsms.ticketregistration;
 
 import java.util.Calendar;
 
-import com.fnsms.instructor.Instructor;
-import com.fnsms.member.Member;
-import com.fnsms.ticket.Ticket;
-
 public class TicketRegistration {
 	private int ticketRegNo;
-	private Member member;
-	private Ticket ticket;
+	private String member;
+	private String ticket;
 	private Calendar purchaseDate;
-	private Instructor manager;
+	private String manager;
 	private Calendar startDate;
 	private Calendar endDate;
 	private int purchasePrice;
 	
-	
-	
-	public TicketRegistration(int ticketRegNo, Member member, Ticket ticket, Calendar purchaseDate, Instructor manager,
+	public TicketRegistration(int ticketRegNo, String member, String ticket, Calendar purchaseDate, String manager,
 			Calendar startDate, Calendar endDate, int purchasePrice) {
 		super();
 		this.ticketRegNo = ticketRegNo;
@@ -30,57 +24,70 @@ public class TicketRegistration {
 		this.endDate = endDate;
 		this.purchasePrice = purchasePrice;
 	}
-	
-	
+
 	public int getTicketRegNo() {
 		return ticketRegNo;
 	}
+
 	public void setTicketRegNo(int ticketRegNo) {
 		this.ticketRegNo = ticketRegNo;
 	}
-	public Member getMember() {
+
+	public String getMember() {
 		return member;
 	}
-	public void setMember(Member member) {
+
+	public void setMember(String member) {
 		this.member = member;
 	}
-	public Ticket getTicket() {
+
+	public String getTicket() {
 		return ticket;
 	}
-	public void setTicket(Ticket ticket) {
+
+	public void setTicket(String ticket) {
 		this.ticket = ticket;
 	}
+
 	public Calendar getPurchaseDate() {
 		return purchaseDate;
 	}
+
 	public void setPurchaseDate(Calendar purchaseDate) {
 		this.purchaseDate = purchaseDate;
 	}
-	public Instructor getManager() {
+
+	public String getManager() {
 		return manager;
 	}
-	public void setManager(Instructor manager) {
+
+	public void setManager(String manager) {
 		this.manager = manager;
 	}
+
 	public Calendar getStartDate() {
 		return startDate;
 	}
+
 	public void setStartDate(Calendar startDate) {
 		this.startDate = startDate;
 	}
+
 	public Calendar getEndDate() {
 		return endDate;
 	}
+
 	public void setEndDate(Calendar endDate) {
 		this.endDate = endDate;
 	}
+
 	public int getPurchasePrice() {
 		return purchasePrice;
 	}
+
 	public void setPurchasePrice(int purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
-
 
 	@Override
 	public String toString() {
@@ -104,6 +111,8 @@ public class TicketRegistration {
 		builder.append("]");
 		return builder.toString();
 	}
+	
+	
 	
 	
 	
