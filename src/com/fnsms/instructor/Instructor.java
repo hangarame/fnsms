@@ -10,13 +10,10 @@ import com.fnsms.emp.Emp;
 public class Instructor extends Emp {
 	
 	private int iningCost;
-	private ArrayList<Attendance> Attendance;
-	
-	public Instructor(String name, String tel, String birthDate, String empNo, String role, int iningCost,
-			ArrayList<com.fnsms.attendance.Attendance> attendance) {
+
+	public Instructor(String name, String tel, String birthDate, String empNo, String role, int iningCost) {
 		super(name, tel, birthDate, empNo, role);
 		this.iningCost = iningCost;
-		Attendance = attendance;
 	}
 
 	public int getIningCost() {
@@ -27,27 +24,23 @@ public class Instructor extends Emp {
 		this.iningCost = iningCost;
 	}
 
-	public ArrayList<Attendance> getAttendance() {
-		return Attendance;
-	}
-
-	public void setAttendance(ArrayList<Attendance> attendance) {
-		Attendance = attendance;
-	}
-
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Instructor [iningCost=");
 		builder.append(iningCost);
-		builder.append(", Attendance=");
-		builder.append(Attendance);
+		builder.append(", empNo=");
+		builder.append(empNo);
+		builder.append(", role=");
+		builder.append(role);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", tel=");
+		builder.append(tel);
+		builder.append(", birthDate=");
+		builder.append(birthDate);
 		builder.append("]");
 		return builder.toString();
 	}
 	
-	
-	
-	
-
 }

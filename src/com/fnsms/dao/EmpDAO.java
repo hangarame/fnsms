@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 
 import com.fnsms.administrator.Administrator;
-import com.fnsms.attendance.Attendance;
 import com.fnsms.instructor.Instructor;
 
 public class EmpDAO {
@@ -32,9 +31,7 @@ public class EmpDAO {
 				String[] temp = line.split("◈");
 
 				if(temp[3].equals("강사") ) {
-
-					instructorList.add(new Instructor(temp[1], temp[2], temp[4], temp[0], temp[3], Integer.parseInt(temp[5]), null));
-					ArrayList<Attendance> aList = new ArrayList<Attendance>();
+					instructorList.add(new Instructor(temp[1], temp[2], temp[4], temp[0], temp[3], Integer.parseInt(temp[5])));
 					
 				} else {
 					adminList.add(new Administrator(temp[1], temp[2], temp[4], temp[0], temp[3]));
@@ -57,8 +54,6 @@ public class EmpDAO {
 			
 		
 		
-		
-		//Attendance 배열 담는 과정 완성 필요.
 		//AttendanceDAO 작성하고 main에서 AttendanceDAO.load() 먼저
 		
 	}
@@ -91,6 +86,18 @@ public class EmpDAO {
 		}
 
 		
+	}
+	
+	public static ArrayList<Instructor> getInstructorList(String empNo){
+		ArrayList<Instructor> insList = new ArrayList<Instructor>();
+		
+		for(Instructor ins : instructorList) {
+			if(ins.getEmpNo().equals(empNo)) {
+				insList.add(ins);
+			}
+		}
+			
+		return insList;
 	}
 	
 		
