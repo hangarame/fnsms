@@ -38,13 +38,24 @@ public class Instructor extends Emp {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Instructor [iningCost=");
+		builder.append("Instructor [empNo=");
+		builder.append(empNo);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", tel=");
+		builder.append(tel);
+		builder.append(", role=");
+		builder.append(role);
+		builder.append(", birthDate=");
+		builder.append(birthDate);
+		builder.append(", iningCost=");
 		builder.append(iningCost);
 		builder.append(", Attendance=");
 		builder.append(Attendance);
 		builder.append("]");
 		return builder.toString();
 	}
+
 	
 	
 	
