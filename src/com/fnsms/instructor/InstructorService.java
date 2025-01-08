@@ -86,73 +86,15 @@ public class InstructorService extends MemberService {
 	
 	
 	
-/*
-1. data 폴더에 DummyMember.txt 파일로 데이터 존재
-m000000001◈20090122◈배예하◈010-3343-7519
-memberNo ◈ 생년월일 ◈ 이름 ◈ 전화번호
 
-2. com.fnsms.dao 패키지 안에 MemberDao.java 클래스에
- 
-    private final static String MEMBER_DATA_PATH;
-	public static ArrayList<Member> memberList;
- 	static {
-		MEMBER_DATA_PATH = ".\\data\\DummyMember.txt";
-		memberList = new ArrayList<Member>();
-	}
- 	해놓고, 
- 	
- 	public static void load() {try {
-			BufferedReader reader = new BufferedReader(new FileReader(MEMBER_DATA_PATH));
-			
-			String line = null; 
-
-			while((line = reader.readLine()) != null) {
-				String[] temp = line.split("◈");
-				memberList.add(new Member(temp[2], temp[3], temp[1], temp[0]));
-			}
-			reader.close();
-		} catch (Exception e) {e.printStackTrace();}
-		
-		
- 	public static void save() { try {
-			FileWriter writer = new FileWriter(MEMBER_DATA_PATH);
-			for(Member mem : memberList ) {
-				String line = mem.getMemberNo() + "◈" + mem.getBirthDate() + "◈" + mem.getName() + "◈" + mem.getTel() + "\r\n";
-				writer.write(line);
-			}
-			writer.close();
-		} catch (Exception e) {e.printStackTrace();}
-	}
-
- 	이렇게 load와 save를 만들어놓음
- 
- 3. Instructor라는 사용자가 수행할 기능은
-  	- member 신규 등록
-  	- member 목록 조회
-  		- 조회 후 특정 회원의 정보를 수정하기
-  	이렇게 있음
-이 기능들을 com.fnsms.instructor 패키지 속 InstructorService.java에서 구현할것임
-
-  효과적으로 구현할 수 있는 코드를 알려줘
   
-  	
-*/
-		
-//		- 이용권(
-//				data폴더에 DummyTicket.txt로 저장되어있음.
-//				상품번호,티켓이름,사용가능기간,티켓등록일,티켓판매종료일,사용가능횟수,티켓가격
-//				ex) 1◈헬스1개월◈30◈197001010000◈999912312359◈0◈150000
-//		추후에 ticketDAO.java를 만들어서 MemberDAO.java처럼 사용할 예정)
+
 		
 		
 		
+
 		
-		
-		
-//		return null;
-		
-		
-//	}
+
 
 	
 	
