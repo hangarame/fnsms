@@ -1,7 +1,6 @@
 package com.fnsms.main;
 
-import com.fnsms.view.CalendarView;
-import com.fnsms.view.CommonView;
+import com.fnsms.view.MemberView;
 
 public class Main {
 	public static void main(String[] args) {
@@ -9,7 +8,9 @@ public class Main {
 //		CommonView.printLoginFailed();
 //		CommonView.printLogout();
 //
-		new CalendarView().start();
+//		new CalendarView().start();
+		
+		MemberView.printMainmenu();
 		
 
 	}
