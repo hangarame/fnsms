@@ -49,7 +49,7 @@ public class UserService {
 				}
 				
 			} else if (sel.equals("2")) {//2번 강사
-				InstructorView.insPrintBanner();
+				InstructorView.PrintBanner();
 				listRoad(sel);
 				user = instructorIDFW();
 				

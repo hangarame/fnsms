@@ -20,7 +20,7 @@ public class InstructorView implements ConsoleColor{
 		
 
 		// 강사 로그인 베너 출력
-		public static void insPrintBanner() {
+		public static void PrintBanner() {
 
 			System.out.println();
 			System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
@@ -137,7 +137,8 @@ public class InstructorView implements ConsoleColor{
 
 		//퇴근 기록하기
 		public static void printAtendancePunchOut() {
-			
+			Header logo = new Header();
+			logo.Logo();
 			System.out.println("=================================================================================");
 			System.out.printf("\t%s %s %tF %tT 퇴근되었습니다.\r\n", instrutorName, position, now, now);
 			System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
