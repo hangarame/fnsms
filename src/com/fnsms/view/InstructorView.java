@@ -159,8 +159,8 @@ public class InstructorView implements ConsoleColor{
 			
 		}
 		
-		//퇴근 기록하기
-		public void printInquiryAtendancePunchOut() {
+		//근퇴기록 조회하기
+		public void printCheckAttendanceRecord() {
 			
 			System.out.println("=================================================================================");
 			System.out.printf("%s %s %tF %tT 퇴근되었습니다.\r\n", name, position, now, now);
