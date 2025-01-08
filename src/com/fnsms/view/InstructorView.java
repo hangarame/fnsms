@@ -1,6 +1,5 @@
 package com.fnsms.view;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class InstructorView implements ConsoleColor{
@@ -46,11 +45,7 @@ public class InstructorView implements ConsoleColor{
 			System.out.println("\t4. 수업료 정산");
 			System.out.println("\t(로그아웃을 하려면 E를 입력해주세요.)");
 			System.out.println();
-			System.out.print("\t🖙 원하는 작업을 입력하세요 :");
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
+//			System.out.print("\t🖙 원하는 작업을 입력하세요 :");
 		}
 
 		// 근퇴 관리
