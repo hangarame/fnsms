@@ -10,14 +10,17 @@ import com.fnsms.member.Member;
 public class UserService {
 
     
-	User user;
+	protected User user;
 	static String 유저구분;
     
 	public UserService(User user) {
 		super();
 		this.user = user;
 	}
-
+	
+	public UserService() {
+		this.user = null;
+	}
 	
 	
 	// 로그인

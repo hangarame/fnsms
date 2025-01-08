@@ -74,16 +74,15 @@ public class MemberDAO {
 	}
 	
 	
-	public static ArrayList<Member> getMemberList(String memberNo){
-		ArrayList<Member> memList = new ArrayList<Member>();
-		
-		for(Member mem : MemberDAO.memberList) {
+	public static Member getMemberList(String memberNo){
+		for(Member mem : memberList) {
 			if(mem.getMemberNo().equals(memberNo)) {
-				memList.add(mem);
+				return mem;
+			}else {
+				return null;
 			}
 		}
-			
-		return memList;
+		return null;
 	}
 	
 		
