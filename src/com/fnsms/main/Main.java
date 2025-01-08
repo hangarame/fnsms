@@ -5,9 +5,10 @@ import com.fnsms.view.InstructorMemberView;
 public class Main {
 	public static void main(String[] args) {
 		
-		InstructorMemberView.selectMember();
-		InstructorMemberView.editMember();
-		InstructorMemberView.editMemberName();
+		
+		InstructorMemberView.registerSubscription();
+		InstructorMemberView.editSubscription();
+		
 
 
 	}
