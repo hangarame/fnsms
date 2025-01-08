@@ -1,5 +1,7 @@
 package com.fnsms.main;
 
+import com.fnsms.view.CalendarView;
+import com.fnsms.view.CommonView;
 import com.fnsms.view.MemberView;
 
 public class Main {
@@ -10,7 +12,8 @@ public class Main {
 //
 //		new CalendarView().start();
 		
-		MemberView.printMainmenu();
+//		MemberView.printMainmenu();
+//		MemberView.printUsingTicket();
 		
 
 	}
