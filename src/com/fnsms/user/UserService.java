@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.fnsms.dao.EmpDAO;
 import com.fnsms.dao.MemberDAO;
 import com.fnsms.emp.Emp;
+import com.fnsms.member.MemberService;
 import com.fnsms.member.Member;
 import com.fnsms.view.AdministratorView;
 import com.fnsms.view.CommonView;
@@ -39,7 +40,14 @@ public class UserService {
 				
 				if (user != null) {
 					//회원화면();
-					MemberView.printMainmenu();
+					//(String name, String tel, String birth, boolean towel, String ticket, int count)
+					MemberService memberService = new MemberService(user);
+					
+					memberService.getMember()
+					
+					
+					
+					MemberView.printMainmenu(memberService.getMember().getName(), memberService.getMember().getTel(), memberService.getMember().getBirthDate(), memberService.haveUseTowelTicketUse(), (Member)user);
 					pause();
 					return user;
 				

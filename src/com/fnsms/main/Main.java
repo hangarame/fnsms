@@ -1,5 +1,12 @@
 package com.fnsms.main;
 
+import com.fnsms.dao.AttendanceDAO;
+import com.fnsms.dao.EmpDAO;
+import com.fnsms.dao.MemberDAO;
+import com.fnsms.dao.ReservationDAO;
+import com.fnsms.dao.TicketDAO;
+import com.fnsms.dao.TicketRegistrationDAO;
+import com.fnsms.user.UserService;
 import com.fnsms.view.AdministratorView;
 import com.fnsms.view.CalendarView;
 import com.fnsms.view.CommonView;
@@ -10,43 +17,20 @@ import com.fnsms.view.MemberView;
 
 public class Main {
 	public static void main(String[] args) {
-
-//		CommonView.printLoginSelct();
-//		MemberView.PrintBanner();
-//		CommonView.printLoginFailed();
-//		CommonView.printLogout();
-//
-//		new CalendarView().start();
 		
-//		MemberView.printMainmenu();
-//		MemberView.printUsingTicket();
-//		MemberView.printDate();
-//		MemberView.ticketBreak();
-//		MemberView.ticketBreakSuccess();
-//		MemberView.ticketBreakFailed();
-//		
-//		AdministratorView.adminPrintBanner();
-
+		// 파일 데이터 객체 생성
+		AttendanceDAO.load();
+		EmpDAO.load();
+		MemberDAO.load();
+		ReservationDAO.load();
+		TicketDAO.load();
+		TicketRegistrationDAO.load();
 		
-		AdministratorView.PrintBanner();
-		AdministratorView.instructorManagement();
-		AdministratorView.instructorManagementFailed();
-		AdministratorView.selectInstructor();
-		AdministratorView.attendanceManagement();
-
-
+		//로그인
+		UserService.logIn();
 		
-//		AttendanceDAO.load();
-//		AttendanceDAO.save();
-//		
-////		for(Attendance a : AttendanceDAO.getAttendanceList("i00000001")) {
-////			System.out.println(a);
-////		}
-////		
-//		for(Attendance a : AttendanceDAO.getAttendanceByDateList("20241201")) {
-//			System.out.println(a);
-		}
+		
+		
 
-
-
+	}
 }

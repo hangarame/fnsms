@@ -50,7 +50,7 @@ public class MemberView implements ConsoleColor {
 	
 
 	//화면 설계2, 회원일경우 메인화면
-	public static void printMainmenu() {
+	public static void printMainmenu(String name, String tel, String birth, boolean towel, String ticket, int count) {
 		
         // 종료일 설정 (예: 2025년 1월 30일)
         endDate.set(2025, Calendar.JANUARY, 30);
