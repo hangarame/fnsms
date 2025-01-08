@@ -23,6 +23,6 @@ public class InstructorClassMngView implements ConsoleColor {
 	}
 
 
-	}
+	
 
 }

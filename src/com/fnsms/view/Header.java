@@ -9,6 +9,10 @@ public class Header implements ConsoleColor {
 		// Calendar 인스턴스 생성
 	    Calendar cal = Calendar.getInstance();
 	    
+	    System.out.println();
+	    System.out.println();
+	    System.out.println();
+	    System.out.println();
 		System.out.println();
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");

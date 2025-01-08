@@ -63,7 +63,7 @@ public class UserService {
 					}
 				
 			} else if (sel.equals("2")) {//2번 강사
-				InstructorView.PrintBanner();
+				CommonView.instructorPrintBanner();
 				listRoad(sel);
 				user = instructorIDFW();
 				
@@ -80,7 +80,7 @@ public class UserService {
 		
 				
 			} else if (sel.equals("3")) {//2번 강사
-				AdministratorView.PrintBanner();
+				CommonView.adminPrintBanner();
 				listRoad(sel);
 				user = administratorIDFW();
 				
