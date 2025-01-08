@@ -3,14 +3,20 @@ package com.fnsms.member;
 import com.fnsms.user.User;
 
 public class Member extends User{
+	
+	
+	public String memberNo;
 
-	private String memberNo;
 
+
+	//	생성자
 	public Member(String name, String tel, String birthDate, String memberNo) {
 		super(name, tel, birthDate);
 		this.memberNo = memberNo;
 	}
 
+	
+//	GetterSetter
 	public String getMemberNo() {
 		return memberNo;
 	}
@@ -18,6 +24,9 @@ public class Member extends User{
 	public void setMemberNo(String memberNo) {
 		this.memberNo = memberNo;
 	}
+
+	
+	
 
 	@Override
 	public String toString() {

@@ -1,13 +1,19 @@
 package com.fnsms.main;
 
+<<<<<<< Updated upstream
 import com.fnsms.attendance.Attendance;
 import com.fnsms.dao.AttendanceDAO;
+=======
+import com.fnsms.dao.MemberDAO;
+import com.fnsms.instructor.InstructorService;
+>>>>>>> Stashed changes
 
 public class Main {
 	public static void main(String[] args) {
 //		CommonView.printLoginSelct();
 //		CommonView.printLoginFailed();
 //		CommonView.printLogout();
+<<<<<<< Updated upstream
 //
 //		new CalendarView().start();
 		
@@ -29,5 +35,12 @@ public class Main {
 		
 		
 		
+=======
+
+//		CommonView.printCalendar();
+		MemberDAO.load();
+		InstructorService.readMemberList();
+	
+>>>>>>> Stashed changes
 	}
 }
