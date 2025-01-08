@@ -44,7 +44,7 @@ public class MemberView implements ConsoleColor {
 		System.out.println();
 	}
 
-	
+	//화면 설계2, 회원일경우 메인화면
 	public static void printMainmenu() {
 		
 		 String name = "홍길동";
@@ -84,7 +84,7 @@ public class MemberView implements ConsoleColor {
 		System.out.println();
        
 	}
-	
+	//화면 설계 2-1에서 윗 3줄(중복됨)
 	public static void printUsingTicket() {
 		
 		String name = "홍길동";
@@ -125,6 +125,7 @@ public class MemberView implements ConsoleColor {
 
 	}
 	
+	//화면설계서 2-1
 	public static void printDate() {
 		
 		printUsingTicket();
@@ -150,11 +151,54 @@ public class MemberView implements ConsoleColor {
       System.out.printf("\t등록일 : %tF\n",registerDate);
       System.out.printf("\t시작일 : %tF\n",startDate);
       System.out.printf("\t종료일 : %tF\n",endDate);
-      System.out.printf("\t운동복/수건 미용 : %s\n",towel?"이용함":"이용 안함");
-		
+      System.out.printf("\t운동복/수건 이용 : %s\n",towel?"이용함":"이용 안함");
+      System.out.println("=================================================================================");
+      System.out.println("\t이용권 휴회가 필요하신가요?(y/n) : ");
+      System.out.println("\t(메인으로 돌아가려면 '#'을 입력해주세요.)");
+      //n을 누른경우도 메인으로 돌아감
+      System.out.println();
+      System.out.println();
+      System.out.println();
 	}
 	
 	public static void ticketBreak() {
+		printUsingTicket();
+		int possible_break=5;
+		System.out.printf("\t회원님은 최대 %d일 휴회가 가능합니다.\n",possible_break);
+		System.out.println("\t며칠 휴회하시겠습니까?) : ");
+		System.out.println("\t(메인으로 돌아가려면 '#'을 입력해주세요.)");
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		
+	}
+	
+	public static void ticketBreakSuccess() {
+		Header logo = new Header();
+        logo.Logo();
+        int breaktime=2; //입력받은 휴회일
+        
+        System.out.println("=================================================================================");
+		System.out.printf("\t신청하신 %d일 휴회가 등록되었습니다.\n",breaktime);
+		System.out.printf("\t홍길동 회원님은 %tF ~ %tF일 이용이 가능합니다.\n",now,now);
+		System.out.println("\t(메인으로 돌아가려면 '#'을 입력해주세요.)");
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		
+	}
+	
+	public static void ticketBreakFailed() {
+		Header logo = new Header();
+        logo.Logo();
+		int possible_break=5;
+		System.out.printf("\t회원님은 최대 %d일 휴회가 가능합니다.\n",possible_break);
+		System.out.printf("\t%d일 이내의 숫자를 입력해주세요.\n ",possible_break);
+		System.out.println("\t(메인으로 돌아가려면 '#'을 입력해주세요.)");
+		System.out.print("\t입력 : ");
+		System.out.println();
+		System.out.println();
+		System.out.println();
 		
 	}
 
