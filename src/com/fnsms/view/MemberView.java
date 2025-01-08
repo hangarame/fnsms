@@ -155,7 +155,6 @@ public class MemberView implements ConsoleColor {
 	public static void ticketBreakFailed() {
 		int possible_break=5;
 
-		
 		Header logo = new Header();
         logo.Logo();
         System.out.println("\t\t\t\t\t\t회원 메인페이지/이용권 정보 조회/이용권 휴회");
