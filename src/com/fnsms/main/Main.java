@@ -1,5 +1,6 @@
 package com.fnsms.main;
 
+<<<<<<< HEAD
 import com.fnsms.view.CalendarView;
 import com.fnsms.view.CommonView;
 import com.fnsms.view.InstructorClassMngView;
@@ -34,6 +35,18 @@ public class Main {
 //		InstructorMemberView.selectMemberList();
 //		InstructorMemberView.selectMemberListFailed();
 //		InstructorMemberView.selectMember();
+=======
+import com.fnsms.view.InstructorMemberView;
+
+public class Main {
+	public static void main(String[] args) {
+		
+
+		InstructorMemberView.calculateTuition();
+		
+
+
+>>>>>>> main
 	}
 
 }

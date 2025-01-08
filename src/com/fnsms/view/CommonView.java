@@ -14,6 +14,42 @@ public class CommonView implements ConsoleColor {
 		// 입력받을 숫자 문자열로 받음
 		Scanner scan = new Scanner(System.in);
 
+<<<<<<< HEAD
+=======
+		//회원 로그인 실패시
+
+		public static void printLoginFailed() {
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t"+RESET+BOLD+UNDERLINE+"SSANGYONG FITNESS"+RESET+bWHITE+"\t\t\t\t\t"+RESET+"┃");                                
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t"+RESET+"[ 운영 시간 : 09:00 ~ 21:00 ]"+bWHITE+"\t\t"+RESET+"┃");                                
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+			System.out.printf( "┃"+bWHITE+tBLACK+"\t\t\t\t\t\t\t%2tY년  %2tm월  %2td일  %2tH시  %2tM분\t"+RESET+"┃\r\n",now,now,now,now,now);
+			System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+			System.out.println("┃"+bWHITE+tBLACK+"\t\t※아이디 또는 비밀번호가 잘못되었습니다.\t\t\t\t\t"+RESET+"┃");//2
+			System.out.println("┃"+bWHITE+tBLACK+"\t\t※다음 형식으로 출력해주세요.\t\t\t\t\t\t"+ RESET+"┃");//4
+			System.out.println("┃"+bWHITE+tBLACK+"\t\tID\t:\t회원명\t\t\t\t\t\t\t"+RESET+"┃");//5
+			System.out.println("┃"+bWHITE+tBLACK+"\t\tPW\t:\t ●  +  일련번호(8자리)\t\t\t\t\t"+RESET+"┃");//6
+			System.out.println("┃"+bWHITE+tBLACK+"\t\t(● : 회원은 m,강사는 i,관리자는 a를 입력해주세요.)\t\t\t"+RESET+"┃");//8
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//7
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//9
+			System.out.println("┃"+bWHITE+tBLACK+"\t\t※재시도 하시겠습니까? ( Y / N )\t\t\t\t\t\t"+RESET+"┃");//3
+			System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+			System.out.println();
+			
+		}
+
+	
+	public static void printLogout() {
+
+		
+>>>>>>> main
 		System.out.println();
 		System.out.println();
 		System.out.println();
@@ -199,7 +235,7 @@ public class CommonView implements ConsoleColor {
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" + RESET);
 	}
 
-	public static void printInputErrorh() {
+	public static void printInputError() {
 
 		System.out.println();
 		System.out.println("\t\t\t\t\t\t\t\t" + tRED + "입력오류" + RESET);
