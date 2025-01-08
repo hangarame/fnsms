@@ -7,22 +7,24 @@ import com.fnsms.view.MemberView;
 
 public class Main {
 	public static void main(String[] args) {
-		CommonView.printLoginSelct();
-		MemberView.memPrintBanner();
-		CommonView.printLoginFailed();
-		CommonView.printLogout();
+//		CommonView.printLoginSelct();
+//		MemberView.PrintBanner();
+//		CommonView.printLoginFailed();
+//		CommonView.printLogout();
 //
 //		new CalendarView().start();
 		
 //		MemberView.printMainmenu();
-//		MemberView.printUsingTicket();
 //		MemberView.printDate();
 //		MemberView.ticketBreak();
 //		MemberView.ticketBreakSuccess();
 //		MemberView.ticketBreakFailed();
 //		
-//		AdministratorView.adminPrintBanner();
-		
+		AdministratorView.PrintBanner();
+		AdministratorView.instructorManagement();
+		AdministratorView.instructorManagementFailed();
+		AdministratorView.selectInstructor();
+		AdministratorView.attendanceManagement();
 
 	}
 }
