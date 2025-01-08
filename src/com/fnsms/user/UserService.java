@@ -15,7 +15,21 @@ public class UserService {
 
     
 	
-	// 로그인
+	//로그아웃
+	public static void logOut() {
+		Scanner scan = new Scanner(System.in);
+		String sel = scan.nextLine();
+		if (sel.equals("E")) {
+			logIn();
+			
+		} else {
+			
+		}		
+	}
+	
+	
+	
+	//로그인
 	public static User logIn() {
 		
 		Scanner scan = new Scanner(System.in);
