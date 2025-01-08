@@ -5,18 +5,19 @@ import java.util.Calendar;
 
 public class InstructorView implements ConsoleColor{
 	
-    static String instrutorName = "";
-    static String position = "";
-    static String tel = "";
-    static String gender = "";
-    static String birth = "";
-    static int memberOfIns  = 12;
-    static String memberName  = "";
-    static int classTime = 00;
-    static Calendar now = Calendar.getInstance();
-    static String commutingRecords = "";
-    static Calendar commutingCheckDate  = Calendar.getInstance();
-    
+    static String instrutorName = ""; // 강사이름
+    static String position = "";  //직책
+    static String tel = "";  //전화번호
+    static String gender = "";  //성별
+    static String birth = "";  //생년월일
+    static int memberOfIns  = 0;  //담당회원
+    static String memberName  = ""; //담당회원이름
+    static int classTime = 00;  //수업시간
+    static Calendar now = Calendar.getInstance(); //현재시간 전용
+    static Calendar commutingCheckDate  = Calendar.getInstance(); //출퇴근 조회 날짜
+    static Calendar checkInTime = Calendar.getInstance();// 출근시간
+    static Calendar checkOutTime = Calendar.getInstance();// 퇴근시간
+    static String commutingResult = ""; //근퇴결과 > 출근, 지각, 조퇴, 결근
 		
 
 		// 강사 로그인 베너 출력
@@ -45,9 +46,11 @@ public class InstructorView implements ConsoleColor{
 
 		// 강사메인 화면
 		public static void printMainMenu() {
-
+			
+			
 			Header logo = new Header();
 			logo.Logo();
+			System.out.println("\t\t\t\t\t\t\t\t강사 메인페이지");
 			System.out.println("=================================================================================");
 			System.out.printf("\t안녕하세요, %s %s님!\r\n", instrutorName, position);
 			System.out.println();
@@ -119,10 +122,11 @@ public class InstructorView implements ConsoleColor{
 		
 		//출근 기록하기
 		public static void printAtendancePunchIn() {
+
 			Header logo = new Header();
 			logo.Logo();
 			System.out.println("=================================================================================");
-			System.out.printf("%s %s %tF %tT 출근되었습니다.\r\n", instrutorName, position, now, now);
+			System.out.printf("%s %s %tF %tT 출근되었습니다.\r\n", instrutorName, position, checkInTime, checkInTime);
 			System.out.println("=================================================================================");
 			System.out.println();
 			System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
@@ -131,124 +135,66 @@ public class InstructorView implements ConsoleColor{
 			System.out.println();
 			System.out.println();
 			System.out.println();
-			
-			
+
 		}
 
-		//퇴근 기록하기
+		// 퇴근 기록하기
 		public static void printAtendancePunchOut() {
-
 			Header logo = new Header();
 			logo.Logo();
+
 			System.out.println("=================================================================================");
-			System.out.printf("\t%s %s %tF %tT 퇴근되었습니다.\r\n", instrutorName, position, now, now);
+			System.out.printf("%s %s %tF %tT 출근되었습니다.\r\n", instrutorName, position, checkOutTime, checkOutTime);
+			System.out.println("=================================================================================");
+			System.out.println();
 			System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
-			System.out.println("=================================================================================");
-			
+			System.out.println();
+			System.out.println("\t🖙 원하는 작업을 입력하세요 : ");
+			System.out.println();
+			System.out.println();
+			System.out.println();
+
 		}
 		
 		//근퇴기록 조회하기
 		public static void printCheckAttendanceRecord() {
-//			-> 25-01-06 14:38 출근 , 25-01-06 21:00 퇴근 "지각"입니다. 로 출력
-//			 예외처리 -> 년-월-일(YYYY-MM-DD) 을 맞춰서 입력해주세요.
-
-			System.out.println("=================================================================================");
-			System.out.printf("\t%s %s님의 근퇴기록을 조회할 날짜를 입력해주세요(YYYY-MM-DD)\r\n", instrutorName, position);
 			System.out.println();
-			System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
+			System.out.println();
+			System.out.println();
+			System.out.println();
+			Header logo = new Header();
+			logo.Logo();
 			System.out.println("=================================================================================");
-			System.out.print("\t날짜(YYYY-MM-DD) :");
+			System.out.println();
+			System.out.printf("\t%s %s님의 근퇴기록을 조회할 날짜를 입력해주세요.\r\n", instrutorName, position);
+			System.out.println();
+			System.out.println("=================================================================================");
+			System.out.println();
+			System.out.println("\t(YYYY-MM-DD 형식으로 '-'를 포함하는 날짜를 입력해주세요.)");
+			System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
+			System.out.println();
+			System.out.println("\t🖙 원하는 작업을 입력하세요 : ");
 			
+//			-> 25-01-06 14:38 출근 , 25-01-06 21:00 퇴근 "지각"입니다. 로 출력
+
 		}
 		
 		//근퇴기록 결과판단하기
 		public static void printCheckAttendanceRecordResult() {
+
+			Header logo = new Header();
+			logo.Logo();
 //			-> 25-01-06 14:38 출근 , 25-01-06 21:00 퇴근 "지각"입니다. 로 출력
 //			 예외처리 -> 년-월-일(YYYY-MM-DD) 을 맞춰서 입력해주세요.
-			
+
 			System.out.println("=================================================================================");
-			System.out.printf("\t조회하신 [%tF] %s님의 근퇴결과는 [%s]입니다.\r\n", commutingCheckDate, instrutorName, commutingRecords);
+			System.out.println();
+			System.out.printf("\t조회하신 [%tF] %s님의 근퇴결과는 [%s]입니다.\r\n", commutingCheckDate, instrutorName,
+					commutingResult);
+			System.out.println();
+			System.out.println("=================================================================================");
 			System.out.println();
 			System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
-			System.out.println("=================================================================================");
-			
 		}
-		
-		// 수업관리 출력
-		public static void printInquiryClass() {
-
-		}
-		
-		// 수업예약 출력
-		public static void printAddReservClass() {
-			
-		}
-		
-		//수업변경 출력
-		public static void printEditReservClass() {
-
-		}
-		
-		//수업취소 출력
-		public static void printDeleteReservClass() {
-
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		public static void test() {
-		
-		
-		Header logo = new Header();
-		logo.Logo();
-		System.out.println("=================================================================================");
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println("=================================================================================");
-		System.out.println();
-		System.out.println();
-		System.out.println("=================================================================================");
-		System.out.println();
-		System.out.println("\t1. 메뉴");
-		System.out.println("\t2. 메뉴");
-		System.out.println("\t3. 메뉴");
-		System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
-		System.out.println();
-		System.out.println("\t🖙 원하는 작업을 입력하세요 : ");
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		
 
 	}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-}
