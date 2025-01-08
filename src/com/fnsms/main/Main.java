@@ -1,15 +1,13 @@
 package com.fnsms.main;
 
-import com.fnsms.view.CommonView;
+import com.fnsms.view.InstructorMemberView;
 
 public class Main {
 	public static void main(String[] args) {
-//		CommonView.printLogin();
-//		CommonView.printLoginFailed();
-//		CommonView.printLogout();
 
-		CommonView.printCalendar();
-		
+		InstructorMemberView.memberManagement();
 
 	}
+
+
 }

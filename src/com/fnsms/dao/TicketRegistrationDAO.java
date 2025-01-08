@@ -6,10 +6,6 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import com.fnsms.administrator.Administrator;
-import com.fnsms.attendance.Attendance;
-import com.fnsms.instructor.Instructor;
-import com.fnsms.member.Member;
 import com.fnsms.ticketregistration.TicketRegistration;
 
 public class TicketRegistrationDAO {
