@@ -5,9 +5,10 @@ import com.fnsms.view.CommonView;
 
 public class Main {
 	public static void main(String[] args) {
+		CommonView.printLoginSelct();
 		CommonView.printLogin();
-		CommonView.printLoginFailed();
-		CommonView.printLogout();
+//		CommonView.printLoginFailed();
+//		CommonView.printLogout();
 //
 		new CalendarView().start();
 		
