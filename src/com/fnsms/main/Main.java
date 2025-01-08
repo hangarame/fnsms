@@ -5,8 +5,7 @@ import com.fnsms.view.CommonView;
 
 public class Main {
 	public static void main(String[] args) {
-		CommonView.printLoginSelct();
-		CommonView.printLogin();
+//		CommonView.printLoginSelct();
 //		CommonView.printLoginFailed();
 //		CommonView.printLogout();
 //

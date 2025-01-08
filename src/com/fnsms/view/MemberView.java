@@ -31,7 +31,7 @@ public class MemberView {
 	public static Calendar now = Calendar.getInstance();
 
 	// 회원 로그인 베너 출력
-	public void printBanner() {
+	public void memPrintBanner() {
 		
 
 		System.out.println();
