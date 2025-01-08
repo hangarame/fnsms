@@ -3,7 +3,7 @@ package com.fnsms.view;
 import java.util.Calendar;
 import java.util.Scanner;
 
-public class CalendarView implements ConsoleColor{
+public class CalendarView implements ConsoleColor {
     private Calendar currentCal;  // 실제 현재 날짜
     private Calendar displayCal;  // 화면에 표시할 날짜
     

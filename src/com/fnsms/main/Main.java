@@ -2,6 +2,7 @@ package com.fnsms.main;
 
 import com.fnsms.attendance.Attendance;
 import com.fnsms.dao.AttendanceDAO;
+import com.fnsms.user.UserService;
 
 public class Main {
 	public static void main(String[] args) {
@@ -13,15 +14,17 @@ public class Main {
 		
 //		MemberView.printMainmenu();
 		
-		AttendanceDAO.load();
-		AttendanceDAO.save();
+		UserService.logIn();
 		
-//		for(Attendance a : AttendanceDAO.getAttendanceList("i00000001")) {
-//			System.out.println(a);
-//		}
+//		AttendanceDAO.load();
+//		AttendanceDAO.save();
 //		
-		for(Attendance a : AttendanceDAO.getAttendanceByDateList("20241201")) {
-			System.out.println(a);
+////		for(Attendance a : AttendanceDAO.getAttendanceList("i00000001")) {
+////			System.out.println(a);
+////		}
+////		
+//		for(Attendance a : AttendanceDAO.getAttendanceByDateList("20241201")) {
+//			System.out.println(a);
 		}
 		
 		
@@ -29,5 +32,5 @@ public class Main {
 		
 		
 		
-	}
+	
 }
