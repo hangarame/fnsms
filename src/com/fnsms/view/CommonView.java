@@ -98,7 +98,7 @@ public class CommonView implements ConsoleColor {
 	}
 	
 		// 회원 로그인 베너 출력
-		public static void PrintBanner() {
+		public static void memberPrintBanner() {
 
 			System.out.println();
 			System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
