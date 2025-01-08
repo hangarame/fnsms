@@ -4,6 +4,13 @@ package com.fnsms.main;
 import com.fnsms.view.AdministratorView;
 import com.fnsms.view.CalendarView;
 import com.fnsms.view.CommonView;
+<<<<<<< HEAD
+import com.fnsms.view.InstructorView;
+
+public class Main {
+	public static void main(String[] args) {
+		new InstructorView().printInquiryAtendancePunchOut();
+=======
 import com.fnsms.view.MemberView;
 =======
 import com.fnsms.attendance.Attendance;
@@ -29,6 +36,7 @@ public class Main {
 //		MemberView.ticketBreakFailed();
 //		
 //		AdministratorView.adminPrintBanner();
+>>>>>>> 1541f55fd6defcb8f9f32375293272d5c9e32283
 		
 
 	}

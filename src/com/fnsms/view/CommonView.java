@@ -3,7 +3,11 @@ package com.fnsms.view;
 import java.util.Calendar;
 import java.util.Scanner;
 
+<<<<<<< HEAD
+public class CommonView implements ConsoleColor {
+=======
 public class CommonView implements ConsoleColor{
+>>>>>>> 1541f55fd6defcb8f9f32375293272d5c9e32283
 	
 
 	
