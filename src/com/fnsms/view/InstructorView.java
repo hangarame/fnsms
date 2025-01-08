@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class InstructorView implements ConsoleColor{
-<<<<<<< HEAD
 	
     String name = "";
     String position = "";
@@ -14,15 +13,10 @@ public class InstructorView implements ConsoleColor{
     int memberOfIns  = 12;
     String memberName  = "";
 	int classTime = 00;
-	Calendar now = Calendar.getInstance();
-=======
-		
-		//오늘의 년도와 달
-		public static Calendar now = Calendar.getInstance();
->>>>>>> 1541f55fd6defcb8f9f32375293272d5c9e32283
+	static Calendar now = Calendar.getInstance();
 
 		// 강사 로그인 베너 출력
-		public void insPrintBanner() {
+		public static void insPrintBanner() {
 
 			System.out.println();
 			System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
