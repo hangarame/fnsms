@@ -5,7 +5,7 @@ import java.util.Calendar;
 public class Ticket {
 	
 	private int ticketNo;
-	private int ticketClassify;
+	private String ticketClassify;
 	private int ticketUseDays;
 	private Calendar regDate;
 	private Calendar sellEndDate;
@@ -13,7 +13,7 @@ public class Ticket {
 	private int price;
 	
 	
-	public Ticket(int ticketNo, int ticketClassify, int ticketUseDays, Calendar regDate, Calendar sellEndDate,
+	public Ticket(int ticketNo, String ticketClassify, int ticketUseDays, Calendar regDate, Calendar sellEndDate,
 			int classTimes, int price) {
 		super();
 		this.ticketNo = ticketNo;
@@ -36,12 +36,12 @@ public class Ticket {
 	}
 
 
-	public int getTicketClassify() {
+	public String getTicketClassify() {
 		return ticketClassify;
 	}
 
 
-	public void setTicketClassify(int ticketClassify) {
+	public void setTicketClassify(String ticketClassify) {
 		this.ticketClassify = ticketClassify;
 	}
 
@@ -106,9 +106,9 @@ public class Ticket {
 		builder.append(", ticketUseDays=");
 		builder.append(ticketUseDays);
 		builder.append(", regDate=");
-		builder.append(regDate);
+		builder.append("" + regDate.get(Calendar.YEAR) + (regDate.get(Calendar.MONTH)+1) + regDate.get(Calendar.DATE));
 		builder.append(", sellEndDate=");
-		builder.append(sellEndDate);
+		builder.append("" + sellEndDate.get(Calendar.YEAR) + (sellEndDate.get(Calendar.MONTH)+1) + sellEndDate.get(Calendar.DATE));
 		builder.append(", classTimes=");
 		builder.append(classTimes);
 		builder.append(", price=");
@@ -116,11 +116,6 @@ public class Ticket {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
-	
-	
-	
 	
 	
 

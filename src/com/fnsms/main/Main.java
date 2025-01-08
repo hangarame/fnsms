@@ -1,16 +1,16 @@
 package com.fnsms.main;
 
-import com.fnsms.dao.MemberDAO;
-import com.fnsms.view.CommonView;
+import com.fnsms.view.MemberView;
 
 public class Main {
 	public static void main(String[] args) {
-//		CommonView.printLogin();
+//		CommonView.printLoginSelct();
 //		CommonView.printLoginFailed();
 //		CommonView.printLogout();
-
-		MemberDAO.load();
-		불러오기();
+//
+//		new CalendarView().start();
+		
+		MemberView.printMainmenu();
 		
 
 	}
