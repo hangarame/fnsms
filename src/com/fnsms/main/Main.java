@@ -1,5 +1,6 @@
 package com.fnsms.main;
 
+<<<<<<< HEAD
 import com.fnsms.dao.AttendanceDAO;
 import com.fnsms.dao.EmpDAO;
 import com.fnsms.dao.MemberDAO;
@@ -15,11 +16,15 @@ import com.fnsms.view.CommonView;
 import com.fnsms.view.InstructorView;
 
 import com.fnsms.view.MemberView;
+=======
+import com.fnsms.view.InstructorMemberView;
+>>>>>>> sw
 
 
 public class Main {
 	public static void main(String[] args) {
 		
+<<<<<<< HEAD
 		// 파일 데이터 객체 생성
 		AttendanceDAO.load();
 		EmpDAO.load();
@@ -33,6 +38,12 @@ public class Main {
 
 		
 		
+=======
+		InstructorMemberView.selectMember();
+		InstructorMemberView.editMember();
+		InstructorMemberView.editMemberName();
+
+>>>>>>> sw
 
 	}
 }
