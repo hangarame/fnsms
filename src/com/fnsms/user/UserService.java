@@ -33,7 +33,7 @@ public class UserService {
 	        
 	        
 			if (sel.equals("1")) {//1번 회원
-				MemberView.memPrintBanner();
+				MemberView.PrintBanner();
 				listRoad(sel);
 				user = memberIDFW();
 				
@@ -66,7 +66,7 @@ public class UserService {
 		
 				
 			} else if (sel.equals("3")) {//2번 강사
-				AdministratorView.adminPrintBanner();
+				AdministratorView.PrintBanner();
 				listRoad(sel);
 				user = administratorIDFW();
 				

@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 public class InstructorView implements ConsoleColor{
 	
+<<<<<<< HEAD
     static String instrutorName = "";
     static String position = "";
     static String tel = "";
@@ -20,6 +21,20 @@ public class InstructorView implements ConsoleColor{
 		
 		// 강사 로그인 베너 출력
 		public static void PrintBanner() {
+=======
+    String name = "";
+    String position = "";
+    String tel = "";
+    String gender = "";
+    String birth = "";
+    int memberOfIns  = 12;
+    String memberName  = "";
+	int classTime = 00;
+	static Calendar now = Calendar.getInstance();
+
+		// 강사 로그인 베너 출력
+		public static void insPrintBanner() {
+>>>>>>> sw
 
 			System.out.println();
 			System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");

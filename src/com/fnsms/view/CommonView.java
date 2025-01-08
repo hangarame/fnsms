@@ -4,7 +4,10 @@ import java.util.Calendar;
 import java.util.Scanner;
 
 public class CommonView implements ConsoleColor {
+<<<<<<< HEAD
 	
+=======
+>>>>>>> sw
 
 	
 	//오늘의 년도와 달
