@@ -1,5 +1,7 @@
 package com.fnsms.view;
 
+import java.util.Calendar;
+
 public class InstructorMemberView {
 	
 	static String id = "아무개"; //아무개로 로그인 함
@@ -510,5 +512,70 @@ public class InstructorMemberView {
 //			System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
 
 		}
+		
+		
+		public static void deleteSubscription() {
+			String member = "홍길동"; //홍길동을 입력 받았을때
+			
+			Header logo = new Header();
+			logo.Logo();
+			System.out.println("\t\t\t\t\t       강사 메인페이지/회원 관리/회원 조회/이용권 삭제");
+			System.out.println("=================================================================================");
+			System.out.println("\t"+ member + "님이 현재 이용중인 이용권 목록입니다.");
+			System.out.println("=================================================================================");
+			System.out.println("\t[등록일]\t\t[이름]\t[이용권 구분]\t[담당자]\t\t[기간]");
+			System.out.printf("\t%s\t%s\t%6s\t\t%4s\t\t%3d\n","2025-01-05","홍길동","PT","아무개",30);
+			System.out.println();
+			System.out.println("\t[남은 횟수/총 횟수]\t\t[시작일]\t\t[종료일]\t\t[금액]");
+			System.out.printf("\t%10s\t %15s      %s\t%,d\n","60/100","2025-01-05","2025-02-06",211000);
+			System.out.println("=================================================================================");
+			System.out.println();
+			System.out.println("\t(메인으로 돌아가려면 '#'을 입력해주세요.)");
+//			System.out.println("\t홍길동의 이용권을 삭제하시겠습니까? (Y/N) : ");
+//			Y를 누르면 삭ㅈ제 후 경우 홍길동님의 PT이용권 삭제가 완료되었습니다! 출력
+//			N을 누르면 메인화면으로 간다.
+		}
+		
+		//4. 수업료 정산
+		public static void calculateTuition() {
+			
+			// 현재 날짜 가져오기
+	        Calendar calendar = Calendar.getInstance();
+	        int currentYear = calendar.get(Calendar.YEAR);
+	        int currentMonth = calendar.get(Calendar.MONTH) + 1; // MONTH는 0부터 시작하므로 +1
+	        int previousMonth = currentMonth - 1;
+	        int previousYear = currentYear;
+
+	        // 이전 월이 12월일 경우 연도 처리
+	        if (previousMonth == 0) {
+	            previousMonth = 12;
+	            previousYear -= 1;
+	        }
+			
+			
+			// 변수 선언
+	        String name = "아무개 PT님";
+	        int currentMonthHours = 10; // 이번 달 근무 시간
+	        int currentMonthLessons = 5; // 이번 달 수업 횟수
+	        int currentMonthSalary = 100000; // 이번 달 예상 급여
+
+	        int previousMonthHours = 100; // 이전 달 근무 시간
+	        int previousMonthSalary = 3200000; // 이전 달 정산 금액
+			
+			
+			Header logo = new Header();
+			logo.Logo();
+			System.out.println("\t\t\t\t\t\t\t     강사 메인페이지/수업료 정산");
+			System.out.println("=================================================================================");
+			System.out.printf( "\t%s은 이번달 %d시간 근무했습니다.\n",name,currentMonthHours);
+	        System.out.printf("\t%d년 %d월 수업 횟수는 %d회 입니다.\n",currentYear, currentMonth,currentMonthLessons);
+	        System.out.printf("\t%d년 %d월 예상 급여는 %d원입니다.\n",currentYear,currentMonth, currentMonthSalary);
+	        System.out.printf("\t%d년 %d월은 %d시간 근무했으며, %,d원 정산했습니다.\n",previousYear,previousMonth,previousMonthHours,previousMonthSalary);
+	        System.out.println("=================================================================================");
+	        System.out.println();
+			System.out.println("\t(메인으로 돌아가려면 '#'을 입력해주세요.)");
+//			System.out.print("\t월급을 조회하고 싶은 달을 입력하세요.:");
+		}
+		
 
 }
