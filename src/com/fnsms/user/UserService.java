@@ -6,6 +6,7 @@ import com.fnsms.dao.EmpDAO;
 import com.fnsms.dao.MemberDAO;
 import com.fnsms.emp.Emp;
 import com.fnsms.member.Member;
+import com.fnsms.view.MemberView;
 
 public class UserService {
 
@@ -21,7 +22,7 @@ public class UserService {
 	
 	
 	// 로그인
-	public void logIn() {
+	public static void logIn() {
 		
 		Scanner scan = new Scanner(System.in);
 		boolean loop = true;
@@ -36,7 +37,8 @@ public class UserService {
 			if (sel.equals("1")) {//1번 회원
 				불러오기(sel);//member, emp (name, memberNO, empNO) 불러오기
 				memberIDFW();
-				//회원화면();
+				MemberView.memPrintBanner();
+				
 				pause();
 				
 			} else if (sel.equals("2")) {//2번 강사
@@ -52,13 +54,13 @@ public class UserService {
 				pause();	
 				
 			} else { 
-			System.out.println("잘못 입력했습니다!");
+			// System.out.println("잘못 입력했습니다!");
 			
 			loop = false;
 			}	
 		}
-		System.out.println();
-		System.out.println("메모장을 종료합니다.");
+		//System.out.println();
+		//System.out.println("메모장을 종료합니다.");
 		
 	}//login
 	
@@ -68,7 +70,7 @@ public class UserService {
 		Scanner scan = new Scanner(System.in);
 		System.out.println();
 		
-		System.out.println("계속하려면 엔터를 입력하세요.");
+		//System.out.println("계속하려면 엔터를 입력하세요.");
 		scan.nextLine();
 		
 	}	//일시정지
@@ -78,7 +80,7 @@ public class UserService {
 
     // 멤버와 직원 데이터 초기화
 	// 로그인했을 때 ID/PW를 비교하기 위해 데이터를 불러오는 메서드
-    public void 불러오기(String 유저구분) {
+    public static void 불러오기(String 유저구분) {
     	if(유저구분.equals("1")) {
     		MemberDAO.load();
     	
@@ -89,7 +91,7 @@ public class UserService {
     		MemberDAO.load();
     		
     	} else {
-    		System.out.println("잘못된 입력입니다.");//재입력메시지 출력
+    		//System.out.println("잘못된 입력입니다.");//재입력메시지 출력
     		//종료(); 
     	}
     	
@@ -111,12 +113,12 @@ public class UserService {
 			for (Member m : MemberDAO.memberList) {
 				if (ID.equals(m.getName()) && PW.equals(m.getMemberNo())) {				
 					
-					System.out.println("회원님 안녕하세요.");
+					//System.out.println("회원님 안녕하세요.");
 					
 					return;
 				}
 			}
-			System.out.println("ID/PW가 잘못되었습니다. 다시입력해 주세요.");
+			//System.out.println("ID/PW가 잘못되었습니다. 다시입력해 주세요.");
 			//***
 			
 		}
@@ -140,12 +142,12 @@ public class UserService {
 			for (Emp i : EmpDAO.instructorList) {
 				if (ID.equals(i.getName()) && PW.equals(i.getEmpNo())) {				
 					
-					System.out.println("강사님 안녕하세요.");
+					//System.out.println("강사님 안녕하세요.");
 					
 					return;
 				}
 			}
-			System.out.println("ID/PW가 잘못되었습니다. 다시입력해 주세요.");
+			//System.out.println("ID/PW가 잘못되었습니다. 다시입력해 주세요.");
 			//***
 		}
 		
@@ -167,12 +169,12 @@ public class UserService {
 			for (Emp a : EmpDAO.adminList) {
 				if (ID.equals(a.getName()) && PW.equals(a.getEmpNo())) {				
 					
-					System.out.println("강사님 안녕하세요.");
+					//System.out.println("강사님 안녕하세요.");
 					
 					return;
 				}
 			}
-			System.out.println("ID/PW가 잘못되었습니다. 다시입력해 주세요.");
+			//System.out.println("ID/PW가 잘못되었습니다. 다시입력해 주세요.");
 			//***
 		}
 		

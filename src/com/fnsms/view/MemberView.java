@@ -9,7 +9,7 @@ public class MemberView implements ConsoleColor {
 	public static Calendar now = Calendar.getInstance();
 
 	// 회원 로그인 베너 출력
-	public void memPrintBanner() {
+	public static void memPrintBanner() {
 		
 
 		System.out.println();
