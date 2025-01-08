@@ -2,6 +2,9 @@ package com.fnsms.view;
 
 import java.util.Calendar;
 
+import com.fnsms.ticket.Ticket;
+import com.fnsms.ticketregistration.TicketRegistration;
+
 public class MemberView implements ConsoleColor {
 	
 	
@@ -61,23 +64,23 @@ public class MemberView implements ConsoleColor {
 	}
 	
 	//화면설계서 2-1
-	public static void printDate() {
+	public static void printDate(Calendar registerDate, Calendar startDate, Calendar endDate, long totalDays, long remainingDays, String name, boolean towel, String ticket, int count) {
 		
 		// 등록일 설정 (예: 2025년 1월 1일)
-       registerDate.set(2025, Calendar.JANUARY, 1);
+//       registerDate.set(2025, Calendar.JANUARY, 1);
 
 		// 시작일 설정 (예: 2025년 1월 1일)
-       startDate.set(2025, Calendar.JANUARY, 1);
+//       startDate.set(2025, Calendar.JANUARY, 1);
 
        // 종료일 설정 (예: 2025년 1월 30일)
-       endDate.set(2025, Calendar.JANUARY, 30);
+//       endDate.set(2025, Calendar.JANUARY, 30);
        
 		
        // 전체 이용일 계산
-       long totalDays = (endDate.getTimeInMillis() - startDate.getTimeInMillis()) / (1000 * 60 * 60 * 24);
+//       long totalDays = (endDate.getTimeInMillis() - startDate.getTimeInMillis()) / (1000 * 60 * 60 * 24);
 
        // 남은 일수 계산
-       long remainingDays = (endDate.getTimeInMillis() - now.getTimeInMillis()) / (1000 * 60 * 60 * 24);
+//       long remainingDays = (endDate.getTimeInMillis() - now.getTimeInMillis()) / (1000 * 60 * 60 * 24);
        
        Header logo = new Header();
        logo.Logo();
