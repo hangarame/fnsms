@@ -1,11 +1,11 @@
 package com.fnsms.main;
 
-import com.fnsms.view.AdministratorView;
-import com.fnsms.view.CalendarView;
+//import com.fnsms.view.AdministratorView;
+//import com.fnsms.view.CalendarView;
 import com.fnsms.view.CommonView;
-import com.fnsms.view.InstructorView;
-
-import com.fnsms.view.MemberView;
+//import com.fnsms.view.InstructorView;
+//
+//import com.fnsms.view.MemberView;
 
 
 public class Main {
@@ -28,11 +28,11 @@ public class Main {
 //		AdministratorView.adminPrintBanner();
 
 		
-		AdministratorView.PrintBanner();
-		AdministratorView.instructorManagement();
-		AdministratorView.instructorManagementFailed();
-		AdministratorView.selectInstructor();
-		AdministratorView.attendanceManagement();
+//		AdministratorView.PrintBanner();
+//		AdministratorView.instructorManagement();
+//		AdministratorView.instructorManagementFailed();
+//		AdministratorView.selectInstructor();
+//		AdministratorView.attendanceManagement();
 
 
 		
