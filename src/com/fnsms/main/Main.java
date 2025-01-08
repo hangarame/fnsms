@@ -1,25 +1,14 @@
 package com.fnsms.main;
 
-<<<<<<< HEAD
 import com.fnsms.view.AdministratorView;
 import com.fnsms.view.CalendarView;
 import com.fnsms.view.CommonView;
-<<<<<<< HEAD
 import com.fnsms.view.InstructorView;
-
-public class Main {
-	public static void main(String[] args) {
-		new InstructorView().printInquiryAtendancePunchOut();
-=======
 import com.fnsms.view.MemberView;
-=======
-import com.fnsms.attendance.Attendance;
-import com.fnsms.dao.AttendanceDAO;
-import com.fnsms.user.UserService;
->>>>>>> ij
 
 public class Main {
 	public static void main(String[] args) {
+<<<<<<< HEAD
 //		CommonView.printLoginSelct();
 //		MemberView.PrintBanner();
 //		CommonView.printLoginFailed();
@@ -41,6 +30,8 @@ public class Main {
 <<<<<<< HEAD
 //		AdministratorView.adminPrintBanner();
 >>>>>>> 1541f55fd6defcb8f9f32375293272d5c9e32283
+=======
+>>>>>>> jo
 		
 =======
 		AdministratorView.PrintBanner();
@@ -50,27 +41,18 @@ public class Main {
 		AdministratorView.attendanceManagement();
 >>>>>>> sw
 
+		System.out.println("printMainMenu");
+		new InstructorView().printMainMenu();
+		System.out.println("printInquiryAtendance");
+		new InstructorView().printInquiryAtendance();
+		System.out.println("printAtendancePunchIn");
+		new InstructorView().printAtendancePunchIn();
+		System.out.println("printAtendancePunchOut");
+		new InstructorView().printAtendancePunchOut();
+		System.out.println("printCheckAttendanceRecord");
+		new InstructorView().printCheckAttendanceRecord();
+		System.out.println("printCheckAttendanceRecordResult");
+		new InstructorView().printCheckAttendanceRecordResult();
+		
 	}
-=======
-		
-		UserService.logIn();
-		
-//		AttendanceDAO.load();
-//		AttendanceDAO.save();
-//		
-////		for(Attendance a : AttendanceDAO.getAttendanceList("i00000001")) {
-////			System.out.println(a);
-////		}
-////		
-//		for(Attendance a : AttendanceDAO.getAttendanceByDateList("20241201")) {
-//			System.out.println(a);
-		}
-		
-		
-		
-		
-		
-		
-	
->>>>>>> ij
 }
