@@ -10,83 +10,49 @@ import java.util.Scanner;
 import com.fnsms.attendance.Attendance;
 import com.fnsms.dao.AttendanceDAO;
 import com.fnsms.dao.MemberDAO;
-import com.fnsms.emp.MemberService;
+import com.fnsms.emp.EmpService;
 import com.fnsms.member.Member;
 import com.fnsms.reservation.Reservation;
+import com.fnsms.ticket.Ticket;
 
-public class InstructorService extends MemberService {
+public class InstructorService extends EmpService {
 
 	
-//	회원등록
-	public static void resisterMember() {
-		Scanner scan = new Scanner(System.in);
+	
+	
 
-//		입력 안내 메시지 출력
-//		>
-		System.out.print("이름: ");
-		String name = scan.nextLine();
-		System.out.print("생년월일: ");
-		String birthDate = scan.nextLine();
-		System.out.print("연락처: ");
-		String tel = scan.nextLine();
-		System.out.print("회원번호: ");
-		String memberNo = scan.nextLine();
-		
-		Member newMember = new Member(name,tel,birthDate,memberNo);
-		MemberDAO.memberList.add(newMember);
-		
-		MemberDAO.save();
-//		등록 완료 메시지 출력
-		
-	}//resisterMember
 	
-// 회원조회
-	public static void readMemberList() {
-//      회원 목록이 비어있는지 확인
-		if (MemberDAO.memberList.isEmpty()) {
-			System.out.println("등록된 회원이 없습니다.\n");
-			return;
-		}
-		
-		Scanner scan = new Scanner(System.in);
-		
-		int pageSize = 20;
-		int total = MemberDAO.memberList.size();
-		int currentIndex = 0;
-		
-//		회원 조회 안내 메시지 출력
-//		>
-		
-//      전체 회원 정보 출력
-        System.out.println("\t[이름]\t\t[연락처]\t\t[생년월일]");
-        while (currentIndex < total) {
-        	int endIndex = currentIndex + pageSize;
-        	if(endIndex > total) {
-        		endIndex = total;
-        	}
-        	
-        	for (int i = currentIndex; i<endIndex; i++) {
-        		Member m = MemberDAO.memberList.get(i);
-        		System.out.printf("%-3d\t%s\t\t%s\t\t%s\r\n"
-        				,i+1, m.getName(), m.getTel(), m.getBirthDate());
-        	}
-        	
-        		currentIndex = endIndex;
-        		if(currentIndex >= total) {
-        			System.out.println("더 이상 조회할 정보가 없습니다.");
-        			break;
-        		}
-        		
-        	System.out.println("엔터를 누르면 목록을 더 불러옵니다.");
-        	System.out.println("그만 보려면 1을 입력");
-        	String input = scan.nextLine();
-        	if(input.equalsIgnoreCase("1")) {
-        		System.out.println("조회를 중단합니다.");
-        		break;
-        	}
-        }//while
-	}//readMemberList
-	
+//	특정 회원 조회하기
+	public static void readMember() {
+//	이름을 입력받아서
+//	해당 이름을 가진 회원의 정보를 출력
+//	(1)회원정보 수정 (2)이용권등록 (3)이용권수정 	
+	}//readMember 회원조회
+//	회원정보 수정 기능 추가해야함
+//	이용권 등록, 수정 기능 추가해야함
+/*
+	 # 이용권 등록
+	 
+	 1.
+	 DummyTicket.txt
+	 상품번호, 이용권이름, 기간, 등록일, 판매종료일, 수업횟수, 가격
+	 ex) 1◈헬스1개월◈30◈19700101000000◈99991231235900◈0◈150000
+	 
+	 DummyRegistTicket.txt
+	 등록번호, 회원번호, 이용권이름, 구매일(등록일), 등록담당자, 시작일, 종료일, 가격
+	 ex) 959◈m0000000459◈운동복12개월◈2024-08-07◈i000000003◈2024-08-10◈2025-02-06◈132000
+	 
+	 2. 
+	 (등록일, 이용권이름, 이용가능기간, 등록담당자, 시작일, 금액)을 입력받기
+	 > 이용권 정보를 생성
+	 > TicketDAO.java의 ArrayList<Ticket> ticketList 안에 추가
+	 > data폴더의 DummyTicket.txt에 저장
+	 상품번호, 이용권이름, 이용권기간, 등록일, 판매종료일,수업횟수,금액
+	 
+	 2. 
+ 	
+ 	
+*/
 	
 	
 
@@ -253,18 +219,50 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
 	
 	
 	
+	private static boolean isSameDateTime(Calendar c1, Calendar c2) {
+		return c1.getTimeInMillis() == c2.getTimeInMillis();
+	}
 	
+
 	
 	// 수업관리
 	public void manageClass() {
 
 	}
 	
-	private static boolean isSameDateTime(Calendar c1, Calendar c2) {
-        return c1.getTimeInMillis() == c2.getTimeInMillis();
-    }
 
-	// 예약조회
+//	 # 예약조회 > 추가,수정,삭제
+/*
+ 	  1. 이번달 달력 출력
+	  2. 날짜를 입력받음
+	  > 그 날짜의 예약 목록을 출력
+	  (1)신규 예약 추가
+	  (2)기존 예약 변경
+	  (3)기존 예약 삭제
+	  3. 1에서 날짜가 아니라 회원의 이름을 입력받음
+	  > 해당 회원의 예약정보를 출력
+	  (1)신규 예약 추가
+	  (2)기존 예약 변경
+	  (3)기존 예약 삭제
+	  
+	  
+	 
+	 
+	 # 수업료정산
+	 1. 근무현황출력
+	 - 해당 달에 총 몇시간 근무했는지 출력
+	 - 해당 달에 예약되어 있는 수업 횟수 출력
+	 - 지금까지 근무한 시간을 토대로 급여 계산해서 출력
+	 - 지난달 근무시간과 그에 해당하는 급여 출력
+	 - 숫자(year, month값: yyyymm)을 입력받아서 해당 월에 대한 근무시간과 그에 대한 급여 출력
+	 
+	 
+	 
+	 
+	 
+	
+	 
+*/
 //	public ArrayList<Reservation> inquiryReservinfo() {
 		
 		

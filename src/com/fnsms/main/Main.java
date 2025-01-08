@@ -4,6 +4,7 @@ import com.fnsms.attendance.Attendance;
 import com.fnsms.dao.AttendanceDAO;
 
 import com.fnsms.dao.MemberDAO;
+import com.fnsms.emp.EmpService;
 import com.fnsms.instructor.InstructorService;
 
 
@@ -28,9 +29,9 @@ public class Main {
 //			System.out.println(a);
 //		}
 		
+		MemberDAO.load();
+		EmpService.readMemberList(10);
 		
 		
-		AttendanceDAO.load();
-		InstructorService.testm();	
-	}
+	}//main
 }
