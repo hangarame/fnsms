@@ -28,11 +28,15 @@ public class CommonView {
 
 	// 효과 초기화
 	public static final String RESET = "\033[0m";
+	
+	//오늘의 년도와 달
+	public static Calendar now = Calendar.getInstance();
+	public static int year = now.get(Calendar.YEAR);
+	public static int month = now.get(Calendar.MONTH) + 1;
 
 	
 	//로그인하기전 출력될 문구
 	public static void printLogin() {
-		Calendar now = Calendar.getInstance();
 		
 	    System.out.println();
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
@@ -70,7 +74,6 @@ public class CommonView {
 	}
 	
 	public static void printLoginFailed() {
-		Calendar now = Calendar.getInstance();
 		
 		System.out.println();
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
@@ -92,7 +95,7 @@ public class CommonView {
 		System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"└───────────────┘"+RESET+bWHITE+"  \t"+RESET+bBULE+"└───────────────┘"+RESET+bWHITE+"  \t"+RESET+bBULE+"└───────────────┘"+RESET+bWHITE+ "\t\t" +RESET+"┃");
 		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//1
 		System.out.println("┃"+bWHITE+tBLACK+"\t\t※아이디 또는 비밀번호가 잘못되었습니다.\t\t\t\t\t"+RESET+"┃");//2
-		System.out.println("┃"+bWHITE+tBLACK+"\t\t※아이디와 비밀번호를 정확히 입력해주세요.\t\t\t\t"+RESET+"┃");//3
+		System.out.println("┃"+bWHITE+tBLACK+"\t\t※아이디와 비밀번호를 정확히 입력해주세요.\t\t\t\t\t"+RESET+"┃");//3
 		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//4
 		System.out.println("┃"+bWHITE+tBLACK+"\t\tID\t:\t회원명\t\t\t\t\t\t\t"+RESET+"┃");//5
 		System.out.println("┃"+bWHITE+tBLACK+"\t\tPW\t:\t ●  +  일련번호(8자리)\t\t\t\t\t"+RESET+"┃");//6
@@ -107,8 +110,7 @@ public class CommonView {
 	}
 	
 	public static void printLogout() {
-		
-		Calendar now = Calendar.getInstance();
+
 		
 		System.out.println();
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
@@ -132,26 +134,23 @@ public class CommonView {
 	}
 	
 	//이번달 달력 출력
-	public static void printCalendar() {
-		// Calendar 인스턴스 생성
-        Calendar cal = Calendar.getInstance();
-        
-        // 현재 년도와 월 가져오기
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH) + 1; // 월은 0부터 시작하므로 1을 더함
-        
+	public static void printCalendar(int year, int month) {
+		
+    	Header logo = new Header();
+    	logo.Logo();
+    	
         // 해당 월의 1일로 설정
-        cal.set(Calendar.DAY_OF_MONTH, 1);
+        now.set(Calendar.DAY_OF_MONTH, 1);
         
         // 해당 월의 최대 일수 구하기
-        int maxDays = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+        int maxDays = now.getActualMaximum(Calendar.DAY_OF_MONTH);
         
         // 1일의 요일 구하기 (1:일요일, 2:월요일, ..., 7:토요일)
-        int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+        int dayOfWeek = now.get(Calendar.DAY_OF_WEEK);
         
         // 달력 헤더 출력
-        System.out.println("\n" + year + "년 " + month + "월");
-        System.out.println("일\t월\t화\t수\t목\t금\t토");
+        System.out.println("\n\t" + year + "년 " + month + "월");
+        System.out.println("\t일\t월\t화\t수\t목\t금\t토");
         
         // 1일의 요일만큼 탭으로 공백 추가
         for (int i = 1; i < dayOfWeek; i++) {
@@ -160,7 +159,7 @@ public class CommonView {
         
         // 날짜 출력
         for (int day = 1; day <= maxDays; day++) {
-            System.out.printf("%2d\t",day);
+            System.out.printf("\t%2d",day);
             
             // 토요일이면 줄바꿈
             if ((dayOfWeek + day - 1) % 7 == 0) {
@@ -174,5 +173,60 @@ public class CommonView {
         }
 
 	}
+	
+		//저번달 혹은 이번달 달력 출력
+//		public static void printCalendar(String string) {
+//			
+//	    	Header logo = new Header();
+//	    	logo.Logo();
+//	    	
+//			// 현재 년도와 월 가져오기
+//	        int year = now.get(Calendar.YEAR);
+//	        int month = now.get(Calendar.MONTH) + 1; // 월은 0부터 시작하므로 1을 더함
+//	        
+//	        if(string.equals(">")) {
+//	        	month += 1;
+//	        	printCalendar();
+//	        }else if(string.equals("<")) {
+//	        	month -=1;
+//	        }else if(string.equals("@")) {
+//				printCalendar();
+//			}
+//	        
+//	        // 해당 월의 1일로 설정
+//	        now.set(Calendar.DAY_OF_MONTH, 1);
+//	        
+//	        // 해당 월의 최대 일수 구하기
+//	        int maxDays = now.getActualMaximum(Calendar.DAY_OF_MONTH);
+//	        
+//	        // 1일의 요일 구하기 (1:일요일, 2:월요일, ..., 7:토요일)
+//	        int dayOfWeek = now.get(Calendar.DAY_OF_WEEK);
+//	        
+//	        // 달력 헤더 출력
+//	        System.out.println("\n\t" + year + "년 " + month + "월");
+//	        System.out.println("\t일\t월\t화\t수\t목\t금\t토");
+//	        
+//	        // 1일의 요일만큼 탭으로 공백 추가
+//	        for (int i = 1; i < dayOfWeek; i++) {
+//	            System.out.print("\t");
+//	        }
+//	        
+//	        // 날짜 출력
+//	        for (int day = 1; day <= maxDays; day++) {
+//	            System.out.printf("\t%2d",day);
+//	            
+//	            // 토요일이면 줄바꿈
+//	            if ((dayOfWeek + day - 1) % 7 == 0) {
+//	                System.out.println();
+//	            }
+//	        }
+//	        
+//	        // 마지막 줄 처리
+//	        if ((dayOfWeek + maxDays - 1) % 7 != 0) {
+//	            System.out.println();
+//	        }
+//
+//		}
+
 	
 }
