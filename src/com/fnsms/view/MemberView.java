@@ -66,11 +66,14 @@ public class MemberView {
 		System.out.println();
 	}
 
-	public void printUsingTicket() {
-
+	
+	public static void printMainmenu() {
+		Header logo = new Header();
+        logo.Logo();
+		
 	}
-
-	public void printMainmenu() {
+	
+	public void printUsingTicket() {
 
 	}
 
