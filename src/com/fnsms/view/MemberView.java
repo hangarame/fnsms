@@ -26,7 +26,7 @@ public class MemberView implements ConsoleColor {
 
 
 	//화면 설계2, 회원일경우 메인화면
-	public static void printMainmenu() {
+	public static void printMainmenu(String name, String tel, String birth, boolean towel, String ticket, int count, Calendar varenddate) {
 		
         // 종료일 설정 (예: 2025년 1월 30일)
         endDate.set(2025, Calendar.JANUARY, 30);
@@ -49,7 +49,7 @@ public class MemberView implements ConsoleColor {
         System.out.println("=================================================================================");
         System.out.printf("\t%s님은 '%s%s'을 이용중입니다.\n",name,towel ? "(운)":"", ticket);
         System.out.printf("\t남은 횟수는 %d입니다.\n",count);
-        System.out.printf("\t%s%s의 만료일은 %tF입니다.\n",towel?"(운)":"",ticket,endDate);
+        System.out.printf("\t%s%s의 만료일은 %tF입니다.\n",towel?"(운)":"",ticket,varenddate);
         System.out.println("=================================================================================");
         System.out.println();
         System.out.println("\t1. 이용권 정보 조회");
