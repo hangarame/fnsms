@@ -7,7 +7,7 @@ import com.fnsms.view.MemberView;
 public class Main {
 	public static void main(String[] args) {
 //		CommonView.printLoginSelct();
-//		CommonView.printLoginFailed();
+		CommonView.printLoginFailed();
 //		CommonView.printLogout();
 //
 //		new CalendarView().start();
