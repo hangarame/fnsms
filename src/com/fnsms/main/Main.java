@@ -2,33 +2,18 @@ package com.fnsms.main;
 
 import com.fnsms.view.InstructorMemberView;
 import com.fnsms.view.InstructorView;
+import com.fnsms.view.MemberView;
 
 public class Main {
 	public static void main(String[] args) {
 
+	
+		MemberView.printMainmenu();
+		MemberView.printDate();
+		MemberView.ticketBreak();
+		MemberView.ticketBreakSuccess();
+		MemberView.ticketBreakFailed();
 		
-		System.out.println("printMainMenu");
-		InstructorView.printMainMenu();
-		System.out.println("printInquiryAtendance");
-		InstructorView.printInquiryAtendance();
-		System.out.println("printAtendancePunchIn");
-		InstructorView.printAtendancePunchIn();
-		System.out.println("printAtendancePunchOut");
-		InstructorView.printAtendancePunchOut();
-		System.out.println("printCheckAttendanceRecord");
-		InstructorView.printCheckAttendanceRecord();
-		System.out.println("printCheckAttendanceRecord");
-		InstructorView.printCheckAttendanceRecordResult();
-		
-
-
-//		InstructorMemberView.memberManagement();
-//		InstructorMemberView.newMemRegistration();
-//		InstructorMemberView.searchMember();
-//		InstructorMemberView.searchMemberFailed();
-//		InstructorMemberView.selectMemberList();
-		InstructorMemberView.selectMemberListFailed();
-		InstructorMemberView.selectMember();
 	}
 
 
