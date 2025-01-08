@@ -58,10 +58,10 @@ public class ReservationDAO {
 	public static void save() {
 		
 		try {
-//			FileWriter writer = new FileWriter(RESERVATION_DATA_PATH);
+			FileWriter writer = new FileWriter(RESERVATION_DATA_PATH);
 			
 			//test.code
-			FileWriter writer = new FileWriter(".\\data\\testsave.txt");
+//			FileWriter writer = new FileWriter(".\\data\\testsave.txt");
 			
 			for(Reservation reserv : reservationList ) {
 								
