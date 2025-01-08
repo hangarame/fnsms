@@ -2,13 +2,17 @@ package com.fnsms.member;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 
 import com.fnsms.dao.MemberDAO;
 import com.fnsms.dao.ReservationDAO;
+import com.fnsms.dao.TicketDAO;
 import com.fnsms.dao.TicketRegistrationDAO;
 import com.fnsms.reservation.Reservation;
+import com.fnsms.ticket.Ticket;
 import com.fnsms.ticketregistration.TicketRegistration;
 import com.fnsms.user.UserService;
+import com.fnsms.view.MemberView;
 
 public class MemberService extends UserService {
 	
@@ -17,7 +21,7 @@ public class MemberService extends UserService {
 	public MemberService(String memberNo) {
 		this.member = MemberDAO.getMemberList(memberNo);
 	}
-	
+
 	
 	public Member getMember() {
 		return member;
@@ -114,14 +118,66 @@ public class MemberService extends UserService {
 			
 		}
 		
+		regList.sort(new Comparator<TicketRegistration>() {
+			public int compare(TicketRegistration o1, TicketRegistration o2) {
+				long basDt = o1.getEndDate().getTimeInMillis();
+				long compareDt = o2.getEndDate().getTimeInMillis();
+				
+				return (int)(basDt - basDt);
+			};
+		});
+		
 		return regList;
 	}
 	
-	//이용권의 남은 횟수
-	public int getRemainIning(TicketRegistration ticketReg) {
-		ReservationDAO.getReservationList(ticketReg.getTicketRegNo());
+	//이용권의 사용 횟수
+	public int getTicketUsedIning(TicketRegistration ticketReg) {
 		
-		this.member.getMemberNo();
+		//해당 이용권번호의 예약 리스트
+		ArrayList<Reservation> reservList = ReservationDAO.getReservationList(ticketReg.getTicketRegNo());
+		
+		//예약횟수
+		int reservCount = reservList.size();
+		
+		return reservCount;
+		
+	}
+	
+	//이용권의 남은 횟수
+	public int getTicketRemainIning(TicketRegistration ticketReg) {
+		//이용권의 횟수
+		ArrayList<Ticket> ticketList = TicketDAO.getTicketList(ticketReg.getTicket());
+		
+		int useIning = 0;
+		
+		if(ticketList.isEmpty()) {
+			return -1;
+		} else {
+			useIning = ticketList.get(0).getClassTimes();
+		}
+		
+		//예약횟수
+		int reservCount = getTicketUsedIning(ticketReg);
+		
+		
+		
+		
+		return useIning - reservCount;
+		
+	}
+	
+	
+	
+	//로그인 후 회원 메인화면
+	public void memberMainMenu() {
+		//회원의 이용중인 유효한 이용권
+		ArrayList<TicketRegistration> validRegList = this.getValidRegstration(this.getMember());
+		
+		MemberView.printMainmenu(this.getMember().getName(), this.getMember().getTel(), this.getMember().getBirthDate()
+				, this.haveUseTowelTicketUse()
+				, validRegList.get(0).getTicket()
+				, this.getTicketRemainIning(validRegList.get(0))
+				, validRegList.get(0).getEndDate());
 	}
 	
 

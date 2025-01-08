@@ -40,15 +40,12 @@ public class UserService {
 				
 				if (user != null) {
 					//회원화면();
-					//(String name, String tel, String birth, boolean towel, String ticket, int count)
-					MemberService memberService = new MemberService(user);
-					
-					memberService.getMember()
-					
-					
-					
-					MemberView.printMainmenu(memberService.getMember().getName(), memberService.getMember().getTel(), memberService.getMember().getBirthDate(), memberService.haveUseTowelTicketUse(), (Member)user);
+					MemberService memberService = new MemberService(((Member)user).getMemberNo());					
+					memberService.memberMainMenu();					
+
 					pause();
+					
+					
 					return user;
 				
 				} else {

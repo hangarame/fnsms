@@ -78,8 +78,6 @@ public class MemberDAO {
 		for(Member mem : memberList) {
 			if(mem.getMemberNo().equals(memberNo)) {
 				return mem;
-			}else {
-				return null;
 			}
 		}
 		return null;

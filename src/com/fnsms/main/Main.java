@@ -6,6 +6,8 @@ import com.fnsms.dao.MemberDAO;
 import com.fnsms.dao.ReservationDAO;
 import com.fnsms.dao.TicketDAO;
 import com.fnsms.dao.TicketRegistrationDAO;
+import com.fnsms.member.Member;
+import com.fnsms.member.MemberService;
 import com.fnsms.user.UserService;
 import com.fnsms.view.AdministratorView;
 import com.fnsms.view.CalendarView;
@@ -28,7 +30,7 @@ public class Main {
 		
 		//로그인
 		UserService.logIn();
-		
+
 		
 		
 
