@@ -1,41 +1,28 @@
 package com.fnsms.main;
 
-import com.fnsms.attendance.Attendance;
-import com.fnsms.dao.AttendanceDAO;
+import com.fnsms.view.AdministratorView;
+import com.fnsms.view.CalendarView;
+import com.fnsms.view.CommonView;
+import com.fnsms.view.MemberView;
 
 public class Main {
 	public static void main(String[] args) {
-//		CommonView.printLoginSelct();
-//		CommonView.printLoginFailed();
-//		CommonView.printLogout();
+		CommonView.printLoginSelct();
+		MemberView.memPrintBanner();
+		CommonView.printLoginFailed();
+		CommonView.printLogout();
 //
 //		new CalendarView().start();
 		
 //		MemberView.printMainmenu();
-<<<<<<< HEAD
-=======
 //		MemberView.printUsingTicket();
-		MemberView.printDate();
-		MemberView.ticketBreak();
-		MemberView.ticketBreakSuccess();
-		MemberView.ticketBreakFailed();
->>>>>>> sw
-		
-		AttendanceDAO.load();
-		AttendanceDAO.save();
-		
-//		for(Attendance a : AttendanceDAO.getAttendanceList("i00000001")) {
-//			System.out.println(a);
-//		}
+//		MemberView.printDate();
+//		MemberView.ticketBreak();
+//		MemberView.ticketBreakSuccess();
+//		MemberView.ticketBreakFailed();
 //		
-		for(Attendance a : AttendanceDAO.getAttendanceByDateList("20241201")) {
-			System.out.println(a);
-		}
+//		AdministratorView.adminPrintBanner();
 		
-		
-		
-		
-		
-		
+
 	}
 }
