@@ -44,7 +44,7 @@ public class CommonView implements ConsoleColor{
 			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//3
 			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//4
 			System.out.println("┃"+bWHITE+tBLACK+"\t\t\t\t\t\t\t\t\t\t\t"+RESET+"┃");//5
-			System.out.println("┃"+bWHITE+tBLACK+"\t\t\t\t\t\t\t\t\t\t\t"+RESET+"┃");//6
+			System.out.println("┃"+bWHITE+tBLACK+"\t종료 : E"+"\t\t\t\t\t\t\t\t\t"+RESET+"┃");//6
 			System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"+RESET);
 			System.out.print("\t"+bYELLOW+tBLACK+UNDERLINE+"선택"+RESET+" : ");
 			System.out.println();
@@ -74,7 +74,7 @@ public class CommonView implements ConsoleColor{
 			System.out.println("┃"+bWHITE+tBLACK+"\t\t(● : 회원은 m,강사는 i,관리자는 a를 입력해주세요.)\t\t\t"+RESET+"┃");//8
 			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//7
 			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//9
-			System.out.println("┃"+bWHITE+tBLACK+"\t\t※초기화면으로 이동합니다.\t\t\t\t\t\t"+RESET+"┃");//3
+			System.out.println("┃"+bWHITE+tBLACK+"\t\t※재시도 하시겠습니까? ( Y / N )\t\t\t\t\t\t"+RESET+"┃");//3
 			System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 			System.out.println();
 			System.out.println();

@@ -20,24 +20,35 @@ import com.fnsms.user.UserService;
 
 public class Main {
 	public static void main(String[] args) {
-		CommonView.printLoginSelct();
-		MemberView.memPrintBanner();
-		CommonView.printLoginFailed();
-		CommonView.printLogout();
+//		CommonView.printLoginSelct();
+//		MemberView.PrintBanner();
+//		CommonView.printLoginFailed();
+//		CommonView.printLogout();
 //
 //		new CalendarView().start();
 		
 //		MemberView.printMainmenu();
 <<<<<<< HEAD
+<<<<<<< HEAD
 //		MemberView.printUsingTicket();
+=======
+>>>>>>> sw
 //		MemberView.printDate();
 //		MemberView.ticketBreak();
 //		MemberView.ticketBreakSuccess();
 //		MemberView.ticketBreakFailed();
 //		
+<<<<<<< HEAD
 //		AdministratorView.adminPrintBanner();
 >>>>>>> 1541f55fd6defcb8f9f32375293272d5c9e32283
 		
+=======
+		AdministratorView.PrintBanner();
+		AdministratorView.instructorManagement();
+		AdministratorView.instructorManagementFailed();
+		AdministratorView.selectInstructor();
+		AdministratorView.attendanceManagement();
+>>>>>>> sw
 
 	}
 =======
