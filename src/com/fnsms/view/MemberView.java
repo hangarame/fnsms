@@ -9,7 +9,7 @@ public class MemberView implements ConsoleColor {
 	public static Calendar now = Calendar.getInstance();
 
 	// 회원 로그인 베너 출력
-	public static void memPrintBanner() {
+	public static void PrintBanner() {
 
 		System.out.println();
 		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
@@ -23,7 +23,6 @@ public class MemberView implements ConsoleColor {
 		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
 		System.out.println("┃"+bWHITE+tBLACK+"\t\t\t안녕하세요, <회원님>\t\t\t\t\t\t"+RESET+"┃");
 		System.out.println("┃"+bWHITE+tBLACK+"\t\t\t로그인을 위해 아이디와 비밀번호를 입력해주세요.\t\t\t"+RESET+"┃");
-		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
 		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//
 		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//
 		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"+RESET);
