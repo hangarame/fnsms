@@ -23,10 +23,7 @@ public class MemberView implements ConsoleColor {
 	static Calendar startDate = Calendar.getInstance();
 	static Calendar endDate = Calendar.getInstance();
 
-	
-	
-	
-	
+
 
 	//화면 설계2, 회원일경우 메인화면
 	public static void printMainmenu() {
@@ -34,6 +31,11 @@ public class MemberView implements ConsoleColor {
         // 종료일 설정 (예: 2025년 1월 30일)
         endDate.set(2025, Calendar.JANUARY, 30);
         
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
 
 		Header logo = new Header();
         logo.Logo();
@@ -54,10 +56,6 @@ public class MemberView implements ConsoleColor {
 		System.out.println("\t(로그아웃을 하려면 \"E\"를 입력해주세요.)");
 		System.out.println();
 		System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
        
 	}
 	//중복돼서 따로 뺐습니다.따로 출력 x
