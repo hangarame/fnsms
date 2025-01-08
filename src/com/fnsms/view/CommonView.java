@@ -3,7 +3,7 @@ package com.fnsms.view;
 import java.util.Calendar;
 import java.util.Scanner;
 
-public class CommonView {
+public class CommonView implements ConsoleColor {
 	
 
 	
