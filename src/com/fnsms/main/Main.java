@@ -32,7 +32,6 @@ public class Main {
 		UserService.logIn();
 
 		
-		
 
 	}
 }
