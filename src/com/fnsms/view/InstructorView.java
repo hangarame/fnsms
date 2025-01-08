@@ -193,5 +193,62 @@ public class InstructorView implements ConsoleColor{
 		public static void printDeleteReservClass() {
 
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		public static void test() {
+		
+		
+		Header logo = new Header();
+		logo.Logo();
+		System.out.println("=================================================================================");
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println("=================================================================================");
+		System.out.println();
+		System.out.println();
+		System.out.println("=================================================================================");
+		System.out.println();
+		System.out.println("\t1. 메뉴");
+		System.out.println("\t2. 메뉴");
+		System.out.println("\t3. 메뉴");
+		System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
+		System.out.println();
+		System.out.println("\t🖙 원하는 작업을 입력하세요 : ");
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		
+
+	}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 }
