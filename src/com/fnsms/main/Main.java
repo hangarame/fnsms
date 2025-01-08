@@ -10,6 +10,8 @@ import com.fnsms.view.MemberView;
 
 public class Main {
 	public static void main(String[] args) {
+<<<<<<< HEAD
+=======
 
 //		CommonView.printLoginSelct();
 //		MemberView.PrintBanner();
@@ -33,9 +35,28 @@ public class Main {
 		AdministratorView.instructorManagementFailed();
 		AdministratorView.selectInstructor();
 		AdministratorView.attendanceManagement();
+>>>>>>> 7635bfae0c2b4440782c0c82fff76295f1591572
 
 
 		
+<<<<<<< HEAD
+//		System.out.println("PrintBanner");
+//		new MemberView().PrintBanner();
+//		System.out.println("printDate");
+//		new MemberView().printDate();
+//		System.out.println("printMainmenu");
+//		new MemberView().printMainmenu();
+//		System.out.println("printUsingTicket");
+//		new MemberView().printUsingTicket();
+//		System.out.println("ticketBreak");
+//		new MemberView().ticketBreak();
+//		System.out.println("ticketBreakFailed");
+//		new MemberView().ticketBreakFailed();
+//		System.out.println("ticketBreakSuccess");
+//		new MemberView().ticketBreakSuccess();
+
+	}
+=======
 //		AttendanceDAO.load();
 //		AttendanceDAO.save();
 //		
@@ -49,4 +70,5 @@ public class Main {
 
 
 
+>>>>>>> 7635bfae0c2b4440782c0c82fff76295f1591572
 }
