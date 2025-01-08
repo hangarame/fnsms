@@ -8,38 +8,6 @@ import com.fnsms.view.MemberView;
 
 public class Main {
 	public static void main(String[] args) {
-<<<<<<< HEAD
-//		CommonView.printLoginSelct();
-//		MemberView.PrintBanner();
-//		CommonView.printLoginFailed();
-//		CommonView.printLogout();
-//
-//		new CalendarView().start();
-		
-//		MemberView.printMainmenu();
-<<<<<<< HEAD
-<<<<<<< HEAD
-//		MemberView.printUsingTicket();
-=======
->>>>>>> sw
-//		MemberView.printDate();
-//		MemberView.ticketBreak();
-//		MemberView.ticketBreakSuccess();
-//		MemberView.ticketBreakFailed();
-//		
-<<<<<<< HEAD
-//		AdministratorView.adminPrintBanner();
->>>>>>> 1541f55fd6defcb8f9f32375293272d5c9e32283
-=======
->>>>>>> jo
-		
-=======
-		AdministratorView.PrintBanner();
-		AdministratorView.instructorManagement();
-		AdministratorView.instructorManagementFailed();
-		AdministratorView.selectInstructor();
-		AdministratorView.attendanceManagement();
->>>>>>> sw
 
 		System.out.println("printMainMenu");
 		new InstructorView().printMainMenu();
@@ -54,5 +22,20 @@ public class Main {
 		System.out.println("printCheckAttendanceRecordResult");
 		new InstructorView().printCheckAttendanceRecordResult();
 		
+//		System.out.println("PrintBanner");
+//		new MemberView().PrintBanner();
+//		System.out.println("printDate");
+//		new MemberView().printDate();
+//		System.out.println("printMainmenu");
+//		new MemberView().printMainmenu();
+//		System.out.println("printUsingTicket");
+//		new MemberView().printUsingTicket();
+//		System.out.println("ticketBreak");
+//		new MemberView().ticketBreak();
+//		System.out.println("ticketBreakFailed");
+//		new MemberView().ticketBreakFailed();
+//		System.out.println("ticketBreakSuccess");
+//		new MemberView().ticketBreakSuccess();
+
 	}
 }

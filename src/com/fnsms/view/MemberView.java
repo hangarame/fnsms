@@ -137,6 +137,7 @@ public class MemberView implements ConsoleColor {
       System.out.println("\t이용권 휴회가 필요하신가요?(y/n)");
       System.out.println("\t(메인으로 돌아가려면 '#'을 입력해주세요.)");
       //n을 누른경우도 메인으로 돌아감
+      System.out.println();
       System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
       System.out.println();
       System.out.println();
@@ -150,6 +151,7 @@ public class MemberView implements ConsoleColor {
 		System.out.printf("\t회원님은 최대 %d일 휴회가 가능합니다.\n",possible_break);
 		System.out.println("\t며칠 휴회하시겠습니까?");
 		System.out.println("\t(메인으로 돌아가려면 '#'을 입력해주세요.)");
+		System.out.println();
 		System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
 		System.out.println();
 		System.out.println();
@@ -166,6 +168,7 @@ public class MemberView implements ConsoleColor {
 		System.out.printf("\t신청하신 %d일 휴회가 등록되었습니다.\n",breaktime);
 		System.out.printf("\t홍길동 회원님은 %tF ~ %tF일 이용이 가능합니다.\n",now,now);
 		System.out.println("\t(메인으로 돌아가려면 '#'을 입력해주세요.)");
+		System.out.println();
 		System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
 		System.out.println();
 		System.out.println();
@@ -182,6 +185,7 @@ public class MemberView implements ConsoleColor {
 		System.out.printf("\t회원님은 최대 %d일 휴회가 가능합니다.\n",possible_break);
 		System.out.printf("\t%d일 이내의 숫자를 입력해주세요.\n ",possible_break);
 		System.out.println("\t(메인으로 돌아가려면 '#'을 입력해주세요.)");
+		System.out.println();
 		System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
 		System.out.println();
 		System.out.println();
