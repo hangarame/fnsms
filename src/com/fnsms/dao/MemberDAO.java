@@ -74,7 +74,7 @@ public class MemberDAO {
 	}
 	
 	
-	public static ArrayList<Member> getInstructorList(String memberNo){
+	public static ArrayList<Member> getMemberList(String memberNo){
 		ArrayList<Member> memList = new ArrayList<Member>();
 		
 		for(Member mem : MemberDAO.memberList) {
