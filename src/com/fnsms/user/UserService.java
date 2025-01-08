@@ -15,7 +15,21 @@ public class UserService {
 
     
 	
-	// 로그인
+	//로그아웃
+	public static void logOut() {
+		Scanner scan = new Scanner(System.in);
+		String sel = scan.nextLine();
+		if (sel.equals("E")) {
+			logIn();
+			
+		} else {
+			
+		}		
+	}
+	
+	
+	
+	//로그인
 	public static User logIn() {
 		
 		Scanner scan = new Scanner(System.in);
@@ -37,32 +51,32 @@ public class UserService {
 				listRoad(sel);
 				user = memberIDFW();
 				
-				if (user != null) {
-					//회원화면();
-					MemberView.printMainmenu();
-					pause();
-					return user;
-				
-				} else {
-					//System.out.println("로그인 실패 초기화면");
-				
-				}
+					if (user != null) {
+						//회원화면();
+						MemberView.printMainmenu();
+						pause();
+						return user;
+					
+					} else {
+						//System.out.println("로그인 실패 초기화면");
+					
+					}
 				
 			} else if (sel.equals("2")) {//2번 강사
 				InstructorView.PrintBanner();
 				listRoad(sel);
 				user = instructorIDFW();
 				
-				if (user != null) {
-					//강사화면();
-					//InstructorView.
-					pause();
-					return user;
-				
-				} else {
-					//System.out.println("로그인 실패 초기화면");
-				
-				}
+					if (user != null) {
+						//강사화면();
+						InstructorView.printMainMenu();
+						pause();
+						return user;
+					
+					} else {
+						//System.out.println("로그인 실패 초기화면");
+					
+					}
 		
 				
 			} else if (sel.equals("3")) {//2번 강사
@@ -70,18 +84,21 @@ public class UserService {
 				listRoad(sel);
 				user = administratorIDFW();
 				
-				if (user != null) {
-					//관리자화면();
-					pause();
-					return user;
-				
-				} else {
-					//System.out.println("로그인 실패 초기화면");
-				
-				}	
+					if (user != null) {
+						//관리자화면();
+						AdministratorView.printMainmenu();
+						pause();
+						return user;
+					
+					} else {
+						//System.out.println("로그인 실패 초기화면");
+					
+					}	
 				
 			} else if(sel.equals("E")) { 
+				System.out.println("프로그램을 종료합니다.");
 				loop = false;
+				break;
 
 			}
 			// System.out.println("잘못 입력했습니다!");
@@ -103,8 +120,6 @@ public class UserService {
 		
 	}	//일시정지
 	
-
-	   
 
     // 멤버와 직원 데이터 초기화
 	// 로그인했을 때 ID/PW를 비교하기 위해 데이터를 불러오는 메서드
@@ -217,7 +232,6 @@ public class UserService {
 	        
 		}
 	}//관리자Login
-	
 	
 	
 //	// 로그아웃
