@@ -153,9 +153,10 @@ public class MemberView implements ConsoleColor {
       System.out.printf("\t종료일 : %tF\n",endDate);
       System.out.printf("\t운동복/수건 이용 : %s\n",towel?"이용함":"이용 안함");
       System.out.println("=================================================================================");
-      System.out.println("\t이용권 휴회가 필요하신가요?(y/n) : ");
+      System.out.println("\t이용권 휴회가 필요하신가요?(y/n)");
       System.out.println("\t(메인으로 돌아가려면 '#'을 입력해주세요.)");
       //n을 누른경우도 메인으로 돌아감
+      System.out.print("\t입력 : ");
       System.out.println();
       System.out.println();
       System.out.println();
@@ -165,8 +166,9 @@ public class MemberView implements ConsoleColor {
 		printUsingTicket();
 		int possible_break=5;
 		System.out.printf("\t회원님은 최대 %d일 휴회가 가능합니다.\n",possible_break);
-		System.out.println("\t며칠 휴회하시겠습니까?) : ");
+		System.out.println("\t며칠 휴회하시겠습니까?)");
 		System.out.println("\t(메인으로 돌아가려면 '#'을 입력해주세요.)");
+		System.out.print("\t입력 : ");
 		System.out.println();
 		System.out.println();
 		System.out.println();
@@ -182,6 +184,7 @@ public class MemberView implements ConsoleColor {
 		System.out.printf("\t신청하신 %d일 휴회가 등록되었습니다.\n",breaktime);
 		System.out.printf("\t홍길동 회원님은 %tF ~ %tF일 이용이 가능합니다.\n",now,now);
 		System.out.println("\t(메인으로 돌아가려면 '#'을 입력해주세요.)");
+		System.out.print("\t입력 : ");
 		System.out.println();
 		System.out.println();
 		System.out.println();
