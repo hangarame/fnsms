@@ -1,6 +1,7 @@
 package com.fnsms.view;
 
 import java.util.Calendar;
+import java.util.Scanner;
 
 public class CommonView {
 	
@@ -31,47 +32,47 @@ public class CommonView {
 	
 	//오늘의 년도와 달
 	public static Calendar now = Calendar.getInstance();
-	public static int year = now.get(Calendar.YEAR);
-	public static int month = now.get(Calendar.MONTH) + 1;
+	
 
 	
-	//로그인하기전 출력될 문구
-	public static void printLogin() {
-		
-	    System.out.println();
-		System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
-		System.out.println("┃"+bWHITE+"\t\t\t\t\t"+RESET+BOLD+UNDERLINE+"SSANGYONG FITNESS"+RESET+bWHITE+"\t\t\t\t\t"+RESET+"┃");                                
-		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
-		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t"+RESET+"[ 운영 시간 : 09:00 ~ 21:00 ]"+bWHITE+"\t\t"+RESET+"┃");                                
-		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
-		System.out.printf( "┃"+bWHITE+tBLACK+"\t\t\t\t\t\t\t%2tY년  %2tm월  %2td일  %2tH시  %2tM분\t"+RESET+"┃\r\n",now,now,now,now,now);
-		System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
-		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
-		System.out.println("┃"+bWHITE+tBLACK+"\t\t\t쌍용 헬스장에 오신것을 환영합니다!!!\t\t\t\t"+RESET+"┃");
-		System.out.println("┃"+bWHITE+tBLACK+"\t\t\t이용할 서비스를 선택해주세요.\t\t\t\t\t"+RESET+"┃");
-		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
-		System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"┌───────────────┐"+RESET+bWHITE+"  \t"+RESET+bBULE+"┌───────────────┐"+RESET+bWHITE+"  \t"+RESET+bBULE+"┌───────────────┐"+RESET+bWHITE+ "\t\t" +RESET+"┃");
-		System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+ "\t\t" +RESET+"┃");
-		System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"│   (1)회원\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│   (2)강사\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│   (3)관리자\t│"+RESET+bWHITE+ "\t\t" +RESET+"┃");
-		System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+ "\t\t" +RESET+"┃");
-		System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"└───────────────┘"+RESET+bWHITE+"  \t"+RESET+bBULE+"└───────────────┘"+RESET+bWHITE+"  \t"+RESET+bBULE+"└───────────────┘"+RESET+bWHITE+ "\t\t" +RESET+"┃");
-		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//1
-		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//2
-		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//3
-		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//4
-		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//5
-		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//6
-		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//7
-		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//8
-		System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//9
-		System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"+RESET);
-		System.out.print(  bYELLOW+tBLACK+" "+UNDERLINE+"선택 : "+RESET);
-		System.out.println();
-		System.out.println();
+		//로그인하기전 회원/강사/관리자 선택
+		public static void printLoginSelct() {
+			//입력받을 숫자 문자열로 받음
+			Scanner scan = new Scanner(System.in);
+			
+		    System.out.println();
+			System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t"+RESET+BOLD+UNDERLINE+"SSANGYONG FITNESS"+RESET+bWHITE+"\t\t\t\t\t"+RESET+"┃");                                
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t"+RESET+"[ 운영 시간 : 09:00 ~ 21:00 ]"+bWHITE+"\t\t"+RESET+"┃");                                
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+			System.out.printf( "┃"+bWHITE+tBLACK+"\t\t\t\t\t\t\t%2tY년  %2tm월  %2td일  %2tH시  %2tM분\t"+RESET+"┃\r\n",now,now,now,now,now);
+			System.out.println("┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫");
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+			System.out.println("┃"+bWHITE+tBLACK+"\t\t\t쌍용 헬스장에 오신것을 환영합니다!!!\t\t\t\t"+RESET+"┃");
+			System.out.println("┃"+bWHITE+tBLACK+"\t\t\t이용할 서비스를 선택해주세요.\t\t\t\t\t"+RESET+"┃");
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");
+			System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"┌───────────────┐"+RESET+bWHITE+"  \t"+RESET+bBULE+"┌───────────────┐"+RESET+bWHITE+"  \t"+RESET+bBULE+"┌───────────────┐"+RESET+bWHITE+ "\t\t" +RESET+"┃");
+			System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+ "\t\t" +RESET+"┃");
+			System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"│   (1)회원\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│   (2)강사\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│   (3)관리자\t│"+RESET+bWHITE+ "\t\t" +RESET+"┃");
+			System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+"  \t"+RESET+bBULE+"│\t\t│"+RESET+bWHITE+ "\t\t" +RESET+"┃");
+			System.out.println("┃"+bWHITE+"\t\t"+RESET+bBULE+"└───────────────┘"+RESET+bWHITE+"  \t"+RESET+bBULE+"└───────────────┘"+RESET+bWHITE+"  \t"+RESET+bBULE+"└───────────────┘"+RESET+bWHITE+ "\t\t" +RESET+"┃");
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//1
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//2
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//3
+			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//4
+			System.out.println("┃"+bWHITE+tBLACK+"\t\t\t\t\t\t\t\t\t\t\t"+RESET+"┃");//5
+			System.out.println("┃"+bWHITE+tBLACK+"\t\t\t\t\t\t\t\t\t\t\t"+RESET+"┃");//6
+			System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"+RESET);
+			System.out.print(  bYELLOW+tBLACK+" "+UNDERLINE+"선택 :"+RESET);
+			System.out.println();
 
-		
-	}
+			
+			
+		}
+	
+	
 	
 	public static void printLoginFailed() {
 		
@@ -133,100 +134,8 @@ public class CommonView {
 	
 	}
 	
-	//이번달 달력 출력
-	public static void printCalendar(int year, int month) {
-		
-    	Header logo = new Header();
-    	logo.Logo();
-    	
-        // 해당 월의 1일로 설정
-        now.set(Calendar.DAY_OF_MONTH, 1);
-        
-        // 해당 월의 최대 일수 구하기
-        int maxDays = now.getActualMaximum(Calendar.DAY_OF_MONTH);
-        
-        // 1일의 요일 구하기 (1:일요일, 2:월요일, ..., 7:토요일)
-        int dayOfWeek = now.get(Calendar.DAY_OF_WEEK);
-        
-        // 달력 헤더 출력
-        System.out.println("\n\t" + year + "년 " + month + "월");
-        System.out.println("\t일\t월\t화\t수\t목\t금\t토");
-        
-        // 1일의 요일만큼 탭으로 공백 추가
-        for (int i = 1; i < dayOfWeek; i++) {
-            System.out.print("\t");
-        }
-        
-        // 날짜 출력
-        for (int day = 1; day <= maxDays; day++) {
-            System.out.printf("\t%2d",day);
-            
-            // 토요일이면 줄바꿈
-            if ((dayOfWeek + day - 1) % 7 == 0) {
-                System.out.println();
-            }
-        }
-        
-        // 마지막 줄 처리
-        if ((dayOfWeek + maxDays - 1) % 7 != 0) {
-            System.out.println();
-        }
 
-	}
 	
-		//저번달 혹은 이번달 달력 출력
-//		public static void printCalendar(String string) {
-//			
-//	    	Header logo = new Header();
-//	    	logo.Logo();
-//	    	
-//			// 현재 년도와 월 가져오기
-//	        int year = now.get(Calendar.YEAR);
-//	        int month = now.get(Calendar.MONTH) + 1; // 월은 0부터 시작하므로 1을 더함
-//	        
-//	        if(string.equals(">")) {
-//	        	month += 1;
-//	        	printCalendar();
-//	        }else if(string.equals("<")) {
-//	        	month -=1;
-//	        }else if(string.equals("@")) {
-//				printCalendar();
-//			}
-//	        
-//	        // 해당 월의 1일로 설정
-//	        now.set(Calendar.DAY_OF_MONTH, 1);
-//	        
-//	        // 해당 월의 최대 일수 구하기
-//	        int maxDays = now.getActualMaximum(Calendar.DAY_OF_MONTH);
-//	        
-//	        // 1일의 요일 구하기 (1:일요일, 2:월요일, ..., 7:토요일)
-//	        int dayOfWeek = now.get(Calendar.DAY_OF_WEEK);
-//	        
-//	        // 달력 헤더 출력
-//	        System.out.println("\n\t" + year + "년 " + month + "월");
-//	        System.out.println("\t일\t월\t화\t수\t목\t금\t토");
-//	        
-//	        // 1일의 요일만큼 탭으로 공백 추가
-//	        for (int i = 1; i < dayOfWeek; i++) {
-//	            System.out.print("\t");
-//	        }
-//	        
-//	        // 날짜 출력
-//	        for (int day = 1; day <= maxDays; day++) {
-//	            System.out.printf("\t%2d",day);
-//	            
-//	            // 토요일이면 줄바꿈
-//	            if ((dayOfWeek + day - 1) % 7 == 0) {
-//	                System.out.println();
-//	            }
-//	        }
-//	        
-//	        // 마지막 줄 처리
-//	        if ((dayOfWeek + maxDays - 1) % 7 != 0) {
-//	            System.out.println();
-//	        }
-//
-//		}
 
 	
 }

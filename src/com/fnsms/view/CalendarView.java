@@ -16,6 +16,9 @@ public class CalendarView {
         Scanner scanner = new Scanner(System.in);
         String input;
         
+         Header logo = new Header();
+         logo.Logo();
+        
         // 처음에 현재 달 출력
         printCalendar();
         
