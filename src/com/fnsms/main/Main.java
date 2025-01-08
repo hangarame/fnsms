@@ -12,6 +12,14 @@ public class Main {
 //		new CalendarView().start();
 		
 //		MemberView.printMainmenu();
+<<<<<<< HEAD
+=======
+//		MemberView.printUsingTicket();
+		MemberView.printDate();
+		MemberView.ticketBreak();
+		MemberView.ticketBreakSuccess();
+		MemberView.ticketBreakFailed();
+>>>>>>> sw
 		
 		AttendanceDAO.load();
 		AttendanceDAO.save();
