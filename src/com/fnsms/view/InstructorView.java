@@ -137,10 +137,7 @@ public class InstructorView implements ConsoleColor{
 
 		//퇴근 기록하기
 		public static void printAtendancePunchOut() {
-<<<<<<< HEAD
-			
-=======
->>>>>>> 7635bfae0c2b4440782c0c82fff76295f1591572
+
 			Header logo = new Header();
 			logo.Logo();
 			System.out.println("=================================================================================");
