@@ -44,10 +44,8 @@ public class CommonView implements ConsoleColor {
 
 		}
 
-		
-
 		//회원 로그인 실패시
-		public static void printLoginFailed() {
+	public static void printLoginFailed() {
 			
 			System.out.println();
 			System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
