@@ -2,9 +2,11 @@ package com.fnsms.main;
 
 import com.fnsms.view.InstructorClassMngView;
 import com.fnsms.view.InstructorView;
+import com.fnsms.view.MemberView;
 
 public class Main {
 	public static void main(String[] args) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 		
 		System.out.println("printMainMenu > 강사메인");
@@ -45,6 +47,16 @@ public class Main {
 		InstructorMemberView.selectMemberListFailed();
 		InstructorMemberView.selectMember();
 >>>>>>> 720dfbe28f6d562c2a648b45853cbe30114d2f80
+=======
+
+	
+		MemberView.printMainmenu();
+		MemberView.printDate();
+		MemberView.ticketBreak();
+		MemberView.ticketBreakSuccess();
+		MemberView.ticketBreakFailed();
+		
+>>>>>>> sw
 	}
 
 
