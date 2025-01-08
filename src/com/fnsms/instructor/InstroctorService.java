@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import com.fnsms.attendance.Attendance;
 import com.fnsms.emp.MemberService;
-import com.fnsms.reservation.Reservation;
+
 
 public class InstroctorService extends MemberService {
 
@@ -42,33 +42,33 @@ public class InstroctorService extends MemberService {
 	
 	
 
-	// 예약조회
-	public ArrayList<Reservation> inquiryReservinfo() {
-
-	}
-
-	public ArrayList<Reservation> inquiryReservinfo() {
-
-	}
-
-	public ArrayList<Reservation> inquiryReservinfo() {
-
-	}
-
-	
-	//수업예약
-	public Reservation addReserv() {
-
-	}
-	
-	//수업변경
-	public Reservation editReserv() {
-		
-	}
-	
-	//수업삭제
-	public Reservation deleteReserv() {
-		
-	}
+//	// 예약조회
+//	public ArrayList<Reservation> inquiryReservinfo() {
+//
+//	}
+//
+//	public ArrayList<Reservation> inquiryReservinfo() {
+//
+//	}
+//
+//	public ArrayList<Reservation> inquiryReservinfo() {
+//
+//	}
+//
+//	
+//	//수업예약
+//	public Reservation addReserv() {
+//
+//	}
+//	
+//	//수업변경
+//	public Reservation editReserv() {
+//		
+//	}
+//	
+//	//수업삭제
+//	public Reservation deleteReserv() {
+//		
+//	}
 
 }
