@@ -6,7 +6,9 @@ import com.fnsms.dao.EmpDAO;
 import com.fnsms.dao.MemberDAO;
 import com.fnsms.emp.Emp;
 import com.fnsms.member.Member;
+import com.fnsms.view.AdministratorView;
 import com.fnsms.view.CommonView;
+import com.fnsms.view.InstructorView;
 import com.fnsms.view.MemberView;
 
 public class UserService {
@@ -31,33 +33,59 @@ public class UserService {
 	        
 	        
 			if (sel.equals("1")) {//1번 회원
-				
-				불러오기(sel);//member, emp (name, memberNO, empNO) 불러오기
 				MemberView.memPrintBanner();
+				listRoad(sel);
 				user = memberIDFW();
-				pause();
 				
-				return user;
+				if (user != null) {
+					//회원화면();
+					MemberView.printMainmenu();
+					pause();
+					return user;
+				
+				} else {
+					//System.out.println("로그인 실패 초기화면");
+				
+				}
 				
 			} else if (sel.equals("2")) {//2번 강사
-				불러오기(sel);//member, emp (name, memberNO, empNO) 불러오기
+				InstructorView.insPrintBanner();
+				listRoad(sel);
 				user = instructorIDFW();
-				//강사화면();
-				pause();
-				return user;
+				
+				if (user != null) {
+					//강사화면();
+					//InstructorView.
+					pause();
+					return user;
+				
+				} else {
+					//System.out.println("로그인 실패 초기화면");
+				
+				}
+		
 				
 			} else if (sel.equals("3")) {//2번 강사
-				불러오기(sel);//member, emp (name, memberNO, empNO) 불러오기
+				AdministratorView.adminPrintBanner();
+				listRoad(sel);
 				user = administratorIDFW();
-				//관리자화면();
-				pause();	
-				return user;
 				
-			} else { 
+				if (user != null) {
+					//관리자화면();
+					pause();
+					return user;
+				
+				} else {
+					//System.out.println("로그인 실패 초기화면");
+				
+				}	
+				
+			} else if(sel.equals("E")) { 
+				loop = false;
+
+			}
 			// System.out.println("잘못 입력했습니다!");
-			
 			loop = true;
-			}	
 		}
 		//System.out.println();
 		//System.out.println("메모장을 종료합니다.");
@@ -80,15 +108,15 @@ public class UserService {
 
     // 멤버와 직원 데이터 초기화
 	// 로그인했을 때 ID/PW를 비교하기 위해 데이터를 불러오는 메서드
-    public static void 불러오기(String sel) {
+    public static void listRoad(String sel) {
     	if(sel.equals("1")) {
     		MemberDAO.load();
     	
     	} else if(sel.equals("2")) {
-    		MemberDAO.load();
+    		EmpDAO.load();
     	
     	} else if(sel.equals("3")) {
-    		MemberDAO.load();
+    		EmpDAO.load();
     		
     	} else {
     		//System.out.println("잘못된 입력입니다.");//재입력메시지 출력
@@ -101,88 +129,93 @@ public class UserService {
 	private static User memberIDFW() {
 		Scanner scan = new Scanner(System.in);
 		
-		System.out.print("ID: ");
-		String ID = scan.nextLine();
-		
-		System.out.print("PW: ");
-		String PW = scan.nextLine();
-		
-		boolean loop = true;
-		
-		while (loop) {
+		while (true) {
+			
+			System.out.print("ID: ");
+			String ID = scan.nextLine();
+			
+			System.out.print("PW: ");
+			String PW = scan.nextLine();
 			
 			for (Member m : MemberDAO.memberList) {
 				if (ID.equals(m.getName()) && PW.equals(m.getMemberNo())) {				
-					
 					//System.out.println("회원님 안녕하세요.");
-					
 					return m;
-				}
 				
+				}
 			}
+			
+			CommonView.printLoginFailed();
+			
 			//System.out.println("ID/PW가 잘못되었습니다. 다시입력해 주세요.");
 			//CommonView.printLoginFailed();
-			
 			//***
+			 //System.out.print("다시 시도하시겠습니까? (Y/N): ");
+	        String retry = scan.nextLine();
+	        if (retry.equalsIgnoreCase("N")) {
+	            return null; // 초기 화면으로 돌아가게 하기 위해 null 반환
+	        }
 			
 		}
-		return null;
 	}//회원Login
 	
 
 	private static User instructorIDFW() {
 		Scanner scan = new Scanner(System.in);
 		
-		System.out.print("ID: ");
-		String ID = scan.nextLine();
 		
-		System.out.print("PW: ");
-		String PW = scan.nextLine();
-		
-		boolean loop = true;
-		
-		while (loop) {
+		while (true) {
+			System.out.print("ID: ");
+			String ID = scan.nextLine();
+			
+			System.out.print("PW: ");
+			String PW = scan.nextLine();
+			
 			for (Emp i : EmpDAO.instructorList) {
 				if (ID.equals(i.getName()) && PW.equals(i.getEmpNo())) {				
-					
 					//System.out.println("강사님 안녕하세요.");
-					
 					return i;
+					
 				}
 			}
+			
 			CommonView.printLoginFailed();
 			//***
+	        String retry = scan.nextLine();
+	        if (retry.equalsIgnoreCase("N")) {
+	            return null; // 초기 화면으로 돌아가게 하기 위해 null 반환
+	        
+	        }
 		}
-		return null;
 	}//강사Login
 
 	
 	private static User administratorIDFW() {
 		Scanner scan = new Scanner(System.in);
 		
-		System.out.print("ID: ");
-		String ID = scan.nextLine();
-		
-		System.out.print("PW: ");
-		String PW = scan.nextLine();
-		
-		boolean loop = true;
-		
-		while (loop) {
+		while (true) {
+			System.out.print("ID: ");
+			String ID = scan.nextLine();
+			
+			System.out.print("PW: ");
+			String PW = scan.nextLine();
+			
 			for (Emp a : EmpDAO.adminList) {
 				if (ID.equals(a.getName()) && PW.equals(a.getEmpNo())) {				
-					
-					//System.out.println("강사님 안녕하세요.");
-					
+					//System.out.println("관리자님 안녕하세요.");
 					return a;
 				}
 			}
-			
+
 			CommonView.printLoginFailed();
 			//***
+	        String retry = scan.nextLine();
+	        if (retry.equalsIgnoreCase("N")) {
+	            return null; // 초기 화면으로 돌아가게 하기 위해 null 반환
+	        
+	        }	
+	        
 		}
-		
-		return null;
 	}//관리자Login
 	
 	
