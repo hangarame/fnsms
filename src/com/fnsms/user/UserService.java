@@ -47,7 +47,7 @@ public class UserService {
 	        
 	        
 			if (sel.equals("1")) {//1번 회원
-				MemberView.PrintBanner();
+				CommonView.memberPrintBanner();
 				listRoad(sel);
 				user = memberIDFW();
 				
