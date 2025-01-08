@@ -106,9 +106,9 @@ public class Ticket {
 		builder.append(", ticketUseDays=");
 		builder.append(ticketUseDays);
 		builder.append(", regDate=");
-		builder.append(regDate);
+		builder.append("" + regDate.get(Calendar.YEAR) + (regDate.get(Calendar.MONTH)+1) + regDate.get(Calendar.DATE));
 		builder.append(", sellEndDate=");
-		builder.append(sellEndDate);
+		builder.append("" + sellEndDate.get(Calendar.YEAR) + (sellEndDate.get(Calendar.MONTH)+1) + sellEndDate.get(Calendar.DATE));
 		builder.append(", classTimes=");
 		builder.append(classTimes);
 		builder.append(", price=");

@@ -26,8 +26,21 @@ public class TicketDAO {
 			String line = null; 
 
 			while((line = reader.readLine()) != null) {
+				
+				//1◈헬스1개월◈30◈197001010000◈999912312359◈0◈150000
+				
 				String[] temp = line.split("◈");
 				
+				
+//				System.out.println(Integer.parseInt(temp[3].substring(0, 4)));
+//				System.out.println(Integer.parseInt(temp[3].substring(4, 6)) - 1);
+//				System.out.println(Integer.parseInt(temp[3].substring(6,8)));
+//				
+//				System.out.println(Integer.parseInt(temp[4].substring(0, 4)));
+//				System.out.println(Integer.parseInt(temp[4].substring(4, 6)) - 1);
+//				System.out.println(Integer.parseInt(temp[4].substring(6,8)));
+//				
+
 				Calendar regDt = Calendar.getInstance();
 				regDt.set(Integer.parseInt(temp[3].substring(0, 4)), Integer.parseInt(temp[3].substring(4, 6)) - 1, Integer.parseInt(temp[3].substring(6,8)));
 				regDt.set(Calendar.HOUR_OF_DAY, Integer.parseInt(temp[3].substring(8, 10)));
@@ -39,6 +52,8 @@ public class TicketDAO {
 				endDt.set(Calendar.HOUR_OF_DAY, Integer.parseInt(temp[4].substring(8, 10)));
 				endDt.set(Calendar.MINUTE, Integer.parseInt(temp[4].substring(10, 12)));
 				endDt.set(Calendar.SECOND, Integer.parseInt(temp[4].substring(12)));
+				
+				
 				
 
 				ticketList.add(new Ticket(Integer.parseInt(temp[0]), temp[1], Integer.parseInt(temp[2]), regDt, endDt, Integer.parseInt(temp[5]), Integer.parseInt(temp[6])));
@@ -56,24 +71,36 @@ public class TicketDAO {
 //		for(Instructor ins : instructorList) {
 //			System.out.println(ins.toString());
 //		}
-			
-		
 
-		
 	}
 	
 	public static void save() {
 		
 		try {
-			FileWriter writer = new FileWriter(TICKET_DATA_PATH);
+//			FileWriter writer = new FileWriter(TICKET_DATA_PATH);
 			//test.code
-//			FileWriter writer = new FileWriter(".\\data\\testsave.txt");
+			FileWriter writer = new FileWriter(".\\data\\testsave.txt");
+			
+			
 			
 			for(Ticket ticket : ticketList ) {
-
-				String line = ticket.getTicketNo() + "◈" + ticket.getTicketClassify() + "◈" + ticket.getTicketUseDays() + "◈" + ticket.getRegDate() + "◈" + ticket.getSellEndDate() + "◈" + ticket.getPrice() + "\r\n";
-
 				
+				String regYyyy = ticket.getRegDate().get(Calendar.YEAR) +"";
+				String regMm = String.format("%02d", (ticket.getRegDate().get(Calendar.MONTH) + 1)) ;
+				String regDd = String.format("%02d", ticket.getRegDate().get(Calendar.DATE));
+				String regHh = String.format("%02d", ticket.getRegDate().get(Calendar.HOUR_OF_DAY));
+				String regMi = String.format("%02d", ticket.getRegDate().get(Calendar.MINUTE));
+				String regSs = String.format("%02d", ticket.getRegDate().get(Calendar.SECOND));  
+				
+				String endYyyy = ticket.getSellEndDate().get(Calendar.YEAR) +"";
+				String endMm = String.format("%02d", (ticket.getSellEndDate().get(Calendar.MONTH) + 1));
+				String endDd = String.format("%02d", ticket.getSellEndDate().get(Calendar.DATE));
+				String endHh = String.format("%02d", ticket.getSellEndDate().get(Calendar.HOUR_OF_DAY));
+				String endMi = String.format("%02d", ticket.getSellEndDate().get(Calendar.MINUTE));
+				String endSs = String.format("%02d", ticket.getSellEndDate().get(Calendar.SECOND));
+				
+				String line = ticket.getTicketNo() + "◈" + ticket.getTicketClassify() + "◈" + ticket.getTicketUseDays() + "◈" + regYyyy + regMm + regDd + regHh + regMi + regSs + "◈" + endYyyy + endMm + endDd + endHh + endMi + endSs + "◈" + ticket.getClassTimes() + "◈" + ticket.getPrice() + "\r\n";
+
 				
 				writer.write(line);
 				
