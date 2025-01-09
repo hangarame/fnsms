@@ -3,6 +3,8 @@ package com.fnsms.view;
 import java.util.Calendar;
 import java.util.Scanner;
 
+import com.fnsms.emp.EmpDateService;
+
 public class CalendarView implements ConsoleColor {
     private Calendar currentCal;  // 실제 현재 날짜
     private Calendar displayCal;  // 화면에 표시할 날짜
@@ -23,12 +25,18 @@ public class CalendarView implements ConsoleColor {
         printCalendar();
         
         while (true) {
+        	// 현재 displayCal의 연도와 월
+            int year = displayCal.get(Calendar.YEAR);
+            int month = displayCal.get(Calendar.MONTH) + 1; // MONTH는 0부터 시작
+            int lastDay = displayCal.getActualMaximum(Calendar.DAY_OF_MONTH); // 해당 월의 마지막 날
+            
             System.out.println("\t다음달 일정을 보려면 \" >\"를,");
             System.out.println("\t이전달 일정을 보려면 \" <\"를,");
-            System.out.println("\t이번달 일정을 보려면 \"@\"를 입력해주세요.");
             System.out.println("\t메인으로 돌아가려면 \"#\"을 입력해주세요.");
             System.out.print("\t입력 : ");
             input = scanner.nextLine();
+            System.out.println();
+            System.out.println();
             System.out.println();
             System.out.println();
             System.out.println();
@@ -42,17 +50,28 @@ public class CalendarView implements ConsoleColor {
                     displayCal.add(Calendar.MONTH, -1);
                     printCalendar();
                     break;
-                case "@":
-                    displayCal = (Calendar) currentCal.clone();
-                    printCalendar();
-                    break;
+ 
                 case "#":
-                    System.out.println("\t메인으로 돌아갑니다(회원 페이지로 돌아가야한다).");
                     return;
                 default:
-                    System.out.println("\t잘못된 명령어입니다.");
-                    break;
-            }
+                	 try {
+                         int day = Integer.parseInt(input); // 숫자로 변환
+                         if (day >= 1 && day <= lastDay) { // 유효한 날짜인지 확인
+                             String date = String.format("%4d-%02d-%02d", 
+                                 year, 
+                                 month, 
+                                 day);
+                             EmpDateService empDateService = new EmpDateService();
+							empDateService.viewReservationDetails(date); // 예약 상세 보기
+                         } else {
+                             System.out.println("유효한 날짜를 입력해주세요.");
+                         }
+                     } catch (NumberFormatException e) {
+                         System.out.println("잘못된 입력입니다. 다시 시도해주세요.");
+                     }
+                     break;
+             }
+            
         }
     }
     
@@ -89,6 +108,7 @@ public class CalendarView implements ConsoleColor {
             }
         }
         System.out.println("\n");
+        System.out.println("=================================================================================");
     }
     
     
