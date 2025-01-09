@@ -1,11 +1,21 @@
 package com.fnsms.main;
+<<<<<<< HEAD
+=======
+
+
+import com.fnsms.ticketregistration.TicketRegistration;
+import com.fnsms.user.UserService;
+import com.fnsms.view.AdministratorView;
+=======
+>>>>>>> jo
+>>>>>>> 38684f966595db9a114e1aed47640f6e0bd7ecfd
 import com.fnsms.view.CalendarView;
 import com.fnsms.view.CommonView;
 import com.fnsms.view.InstructorClassMngView;
 import com.fnsms.view.InstructorView;
-
 public class Main {
 	public static void main(String[] args) {
+<<<<<<< HEAD
 
 //		System.out.println("printMainMenu > 강사메인");
 //		InstructorView.printMainMenu();
@@ -35,6 +45,11 @@ public class Main {
 		InstructorClassMngView.printEditReservation_Member();// 담당회원별 예약 수정
 		InstructorClassMngView.printDeleteReservation_Member();// 담당회원별 예약 삭제
 
+=======
+		
+		
+		
+>>>>>>> 38684f966595db9a114e1aed47640f6e0bd7ecfd
 	}
 
 }
