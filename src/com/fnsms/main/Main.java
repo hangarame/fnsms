@@ -1,6 +1,5 @@
 package com.fnsms.main;
 
-<<<<<<< HEAD
 import com.fnsms.view.CalendarView;
 import com.fnsms.view.CommonView;
 import com.fnsms.view.InstructorClassMngView;
@@ -24,29 +23,19 @@ public class Main {
 //		System.out.println("printCheckAttendanceRecord > 강사 근퇴입력오류");
 //		InstructorView.printCheckAttendanceRecordFailed();
 //		CommonView.printInputErrorh();
-		InstructorClassMngView.printInquiryClass(); // 수업 관리 및 예약
-		InstructorClassMngView.printSelectReservationDate(); //날짜별 예약 조회
-		InstructorClassMngView.printReservationDate();// 일자별 수업 예약 상세내역
-		InstructorClassMngView.printAddReservation_Date(); //수업예약 등록(날짜별)
-		InstructorClassMngView.printEditReservation_Date(); //수업예약 변경(날짜별)
-		InstructorClassMngView.printDeleteReservation_Date();//수업예약 삭제(날짜별)
-//		InstructorMemberView.searchMember();
-//		InstructorMemberView.searchMemberFailed();
-//		InstructorMemberView.selectMemberList();
-//		InstructorMemberView.selectMemberListFailed();
-//		InstructorMemberView.selectMember();
-=======
-import com.fnsms.view.InstructorMemberView;
+//		InstructorClassMngView.printInquiryClass(); // 수업 관리 및 예약
+//		InstructorClassMngView.printSelectReservationDate(); // 날짜별 예약 조회
+//		InstructorClassMngView.printReservationDate();// 일자별 수업 예약 상세내역
+//		InstructorClassMngView.printAddReservation_Date(); // 수업예약 등록(날짜별)
+//		InstructorClassMngView.printEditReservation_Date(); // 수업예약 변경(날짜별)
+//		InstructorClassMngView.printDeleteReservation_Date(); // 수업예약 삭제(날짜별)
+//		InstructorClassMngView.printSearchReservationMember();// 담당회원별 예약 조회
+//		InstructorClassMngView.ifSameNameClassMember();// 담당회원별 예약 조회 동명이인인경우
+		InstructorClassMngView.ifNameSelectSuccess();// 회원별 예약 조회 성공
+		InstructorClassMngView.printAddReservation_Member();// 담당회원별 예약 입력
+		InstructorClassMngView.printEditReservation_Member();// 담당회원별 예약 수정
+		InstructorClassMngView.printDeleteReservation_Member();// 담당회원별 예약 삭제
 
-public class Main {
-	public static void main(String[] args) {
-		
-
-		InstructorMemberView.calculateTuition();
-		
-
-
->>>>>>> main
 	}
 
 }
