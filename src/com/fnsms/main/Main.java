@@ -2,6 +2,7 @@ package com.fnsms.main;
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
 
 import com.fnsms.ticketregistration.TicketRegistration;
 import com.fnsms.user.UserService;
@@ -50,6 +51,16 @@ public class Main {
 		
 		
 >>>>>>> 38684f966595db9a114e1aed47640f6e0bd7ecfd
+=======
+import com.fnsms.user.UserService;
+import com.fnsms.view.InstructorClassMngView;
+
+public class Main {
+	public static void main(String[] args) {
+		InstructorClassMngView.printSelectReservationDate("홍길동","PT");
+		
+		UserService.logIn();
+>>>>>>> sw
 	}
 
 }
