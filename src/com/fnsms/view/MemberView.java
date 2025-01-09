@@ -26,8 +26,8 @@ public class MemberView implements ConsoleColor {
 	static Calendar startDate = Calendar.getInstance();
 	static Calendar endDate = Calendar.getInstance();
 
-
-
+	
+	
 	//화면 설계2, 회원일경우 메인화면
 	public static void printMainmenu(String name, String tel, String birth, boolean towel, String ticket, int count, Calendar varenddate) {
 		
