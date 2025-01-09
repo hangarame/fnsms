@@ -14,8 +14,6 @@ public class CommonView implements ConsoleColor {
 		// 입력받을 숫자 문자열로 받음
 		Scanner scan = new Scanner(System.in);
 
-<<<<<<< HEAD
-=======
 		//회원 로그인 실패시
 
 		public static void printLoginFailed() {
@@ -49,7 +47,6 @@ public class CommonView implements ConsoleColor {
 	public static void printLogout() {
 
 		
->>>>>>> main
 		System.out.println();
 		System.out.println();
 		System.out.println();
@@ -128,7 +125,7 @@ public class CommonView implements ConsoleColor {
 
 	}
 
-	public static void printLogout() {
+	public static void printLogout1() {
 
 		System.out.println();
 		System.out.println();
