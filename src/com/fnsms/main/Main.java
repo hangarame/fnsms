@@ -1,10 +1,4 @@
 package com.fnsms.main;
-
-<<<<<<< HEAD
-
-import com.fnsms.view.AdministratorView;
-=======
->>>>>>> jo
 import com.fnsms.view.CalendarView;
 import com.fnsms.view.CommonView;
 import com.fnsms.view.InstructorClassMngView;
@@ -12,14 +6,7 @@ import com.fnsms.view.InstructorView;
 
 public class Main {
 	public static void main(String[] args) {
-		AdministratorView.manageClass();
 
-<<<<<<< HEAD
-
-		
-		
-		
-=======
 //		System.out.println("printMainMenu > 강사메인");
 //		InstructorView.printMainMenu();
 //		System.out.println("printInquiryAtendance > 강사 근퇴관리");
@@ -48,7 +35,6 @@ public class Main {
 		InstructorClassMngView.printEditReservation_Member();// 담당회원별 예약 수정
 		InstructorClassMngView.printDeleteReservation_Member();// 담당회원별 예약 삭제
 
->>>>>>> jo
 	}
 
 }
