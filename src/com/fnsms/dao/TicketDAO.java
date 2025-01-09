@@ -5,8 +5,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Comparator;
 
 import com.fnsms.ticket.Ticket;
+import com.fnsms.ticketregistration.TicketRegistration;
 
 public class TicketDAO {
 	//파일 경로
@@ -130,6 +133,7 @@ public class TicketDAO {
 		return tList;
 	}
 	
+	
 	//티켓구분 파라미터 조회
 	public static ArrayList<Ticket> getTicketList(String ticketClassify){
 		ArrayList<Ticket> tList = new ArrayList<Ticket>();
@@ -139,7 +143,18 @@ public class TicketDAO {
 				tList.add(t);
 			}
 		}
-			
+		
+		//등록일 기준 역순 정렬
+		tList.sort(new Comparator<Ticket>() {
+			@Override
+			public int compare(Ticket o1, Ticket o2) {
+				long basDt = o1.getRegDate().getTimeInMillis();
+				long compareDt = o2.getRegDate().getTimeInMillis();
+				
+				return (int)(compareDt - basDt);
+			}
+		});
+		
 		return tList;
 	}
 }

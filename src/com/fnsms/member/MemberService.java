@@ -187,8 +187,34 @@ public class MemberService extends UserService {
 		
 	}
 	
+	//휴회 신청가능 총 횟수 > 30일 당 +5일
+	public int getticketBreakTotalIning(TicketRegistration ticketReg) {
+		//티켓의 기본정보 리스트
+		ArrayList<Ticket> ticketInfoList = TicketDAO.getTicketList(ticketReg.getTicket());
+		
+		
+		if(ticketInfoList.isEmpty()) {
+			return -1;
+		} else {
+			int ticketIning = ticketInfoList.get(0).getTicketUseDays();
+			return ticketIning / 30 * 5;
+		}
+		
+	}
 	
-	//로그인 후 회원 메인화면
+	
+	
+	//휴회 신청 가능 여부
+	public boolean canticketBreak(TicketRegistration ticketReg) {
+		if(getticketBreakTotalIning(ticketReg) > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	
+	//2. 로그인 후 회원 메인화면
 	public void memberMainMenu() {
 		
 		Scanner scan = new Scanner(System.in);
@@ -214,17 +240,18 @@ public class MemberService extends UserService {
 			} else if(cmd.equals("2")) {
 				
 			} else if(cmd.equals("E")) {
-				
+				return;
 			} else {
-				
+				System.out.println("정해진 문자를 입력해주세요.");
 			}
 		}
 		
 	}
 	
-	//2-1 이용권 정보 조회
+	//2-1. 이용권 정보 조회
 	public void inquiryTicketInfo(TicketRegistration ticketReg) {
-		//printDate(Calendar registerDate, Calendar startDate, Calendar endDate, long totalDays, long remainingDays, String name, boolean towel, String ticket, int count)
+		Scanner scan = new Scanner(System.in);
+		
 		Calendar registerDate = ticketReg.getPurchaseDate();
 		Calendar startDate = ticketReg.getStartDate();
 		Calendar endDate = ticketReg.getEndDate();
@@ -237,15 +264,51 @@ public class MemberService extends UserService {
 		
 		MemberView.printDate(registerDate, startDate, endDate, totalDays, remainingDays, name, towel, ticket, count);
 		
+		while(true) {
+			String cmd = scan.nextLine();
+			if(cmd.equals("y")) {
+				requestRecess(ticketReg);
+			} else if(cmd.equals("#")) {
+				return;
+			} else {
+				System.out.println("정해진 문자를 입력해주세요.");
+			}
+		}
+		
+		
 	}
 	
 
 	// 휴회신청
-	public void requestRecess() {
+	public void requestRecess(TicketRegistration ticketReg) {
+		Scanner scan = new Scanner(System.in);
+		
+		Calendar registerDate = ticketReg.getPurchaseDate();
+		Calendar startDate = ticketReg.getStartDate();
+		Calendar endDate = ticketReg.getEndDate();
+		long totalDays = getTicketTotalDays(ticketReg);
+		long remainingDays = getTicketExpireDateGap(ticketReg);
+		String name = this.getMember().getName();
+		boolean towel = haveUseTowelTicketUse();
+		String ticket = ticketReg.getTicket();
+		int count = getTicketRemainIning(ticketReg);
+		boolean possible_break = canticketBreak(ticketReg);
+		
+		MemberView.ticketBreak(registerDate, startDate, endDate, totalDays, remainingDays, name, towel, ticket, count, possible_break);
+
+
+		while(true) {
+			String cmd = scan.nextLine();
+			
+			if(cmd.equals("y")) {
+				
+			} else if(cmd.equals("#")) {
+				return;
+			} else {
+				System.out.println("정해진 문자를 입력해주세요.");
+			}
+		}
 		
 	}
-
-
-
 	
 }
