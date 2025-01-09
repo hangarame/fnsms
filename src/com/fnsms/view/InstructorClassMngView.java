@@ -31,7 +31,7 @@ public class InstructorClassMngView implements ConsoleColor {
 	}
 
 	// 수업 예약 날짜 선택 >> 미완
-	public static void printSelectReservationDate() {
+	public static void printSelectReservationDate(String name, String position) {
 
 		int ResvationDate = 0;
 
@@ -39,19 +39,15 @@ public class InstructorClassMngView implements ConsoleColor {
 		logo.Logo();
 		System.out.println("\t\t\t\t\t\t\t\t날짜별 예약 조회");
 		System.out.println("=================================================================================");
-		System.out.println();
-		System.out.printf("\t%s %s님의 날짜별 예약현황 조회 페이지입니다.\r\n", InstructorView.instrutorName, InstructorView.position);
-		System.out.println();
-		System.out.println("=================================================================================");
-		System.out.println();
-//		CalendarView calendar = new CalendarView();
-//		calendar.start();
+		System.out.printf("\t%s %s님의 날짜별 예약현황 조회 페이지입니다.\r\n", name, position);
+		CalendarView calendar = new CalendarView();
+		calendar.printCalendar();
 		System.out.println();
 		System.out.println("=================================================================================");
 		System.out.println();
 		System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
 		System.out.println("\t이전 달을 보고싶을 경우 \"<\"을, 다음달을 보고싶을 경우 \">\"을 입력해주세요.");
-		System.out.println("\t>>날짜 선택 하기 : ");
+		System.out.println("\t예약을 조회하고 싶을 경우 날짜를 입력하세요 :  ");
 		System.out.println();
 		// System.out.println("\t🖙 원하는 작업을 입력하세요 : ");
 
