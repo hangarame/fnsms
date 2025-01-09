@@ -123,8 +123,9 @@ public class EmpDateService {
                  if (!overwrite.equalsIgnoreCase("y")) {
                 	 System.out.println();
                      System.out.println("\t예약 추가가 취소되었습니다.");
-                     System.out.println("\t엔터를 눌러 메인 화면으로 이동하세요.");
+                     System.out.println("\t엔터를 눌러 이전 화면으로 이동하세요.");
                      scanner.nextLine(); // 엔터 입력 대기
+                     viewReservationDetails(date); 
                      return;
                  }
              }
@@ -134,11 +135,10 @@ public class EmpDateService {
              reservations.put(date, times);
              System.out.println();
              System.out.println("\t예약이 성공적으로 추가되었습니다!");
-             System.out.println("\t엔터를 눌러 메인 화면으로 이동하세요.");
+             System.out.println("\t엔터를 눌러 이전 화면으로 이동하세요.");
              scanner.nextLine(); // 엔터 입력 대기
              
-          // 강사 메인 화면 출력
-             System.out.println("메인화면");
+             viewReservationDetails(date); 
              
          } catch (NumberFormatException e) {
              System.out.println("유효한 시간을 입력해주세요. (예: 09)");
@@ -149,16 +149,66 @@ public class EmpDateService {
 
 
     private void updateReservation(String date) {
-        System.out.println("변경할 시간을 입력해주세요 (예: 09): ");
-        int time = Integer.parseInt(scanner.nextLine());
-        System.out.println("새 예약자 이름을 입력해주세요: ");
-        String name = scanner.nextLine();
+    	Header logo = new Header();
+        logo.Logo();
+        System.out.println("\t\t\t\t\t\t\t강사 메인페이지/수업 조회/예약 변경");
+        System.out.println("=================================================================================");
+         System.out.printf("\t%s 김계란 PT님의 예약 현황입니다.%n", date);
 
-        List<String> times = reservations.getOrDefault(date, new ArrayList<>(Collections.nCopies(12, "")));
-        times.set(time - 9, name); // 시간대 변경
-        reservations.put(date, times);
+         // 예약 현황 표시
+         List<String> times = reservations.getOrDefault(date, new ArrayList<>(Collections.nCopies(12, "")));
+         for (int i = 0; i < times.size(); i++) {
+             System.out.printf("\t- %02d시 %s%n", 9 + i, times.get(i).isEmpty() ? "" : times.get(i));
+         }
 
-        System.out.println("예약이 변경되었습니다!");
+         System.out.println("=================================================================================");
+         System.out.println("\t변경할 시간과 회원을 입력해주세요.");
+        
+         try {
+             // 시간 입력
+             System.out.print("\t시간: ");
+             int time = Integer.parseInt(scanner.nextLine());
+
+             // 유효성 검사
+             if (time < 9 || time > 20) {
+            	 System.out.println();
+                 System.out.println("\t※시간은 09시부터 20시 사이로 입력해주세요!");
+                 System.out.println("\t엔터를 눌러 이전 화면으로 이동하세요.");
+                 scanner.nextLine(); // 엔터 입력 대기
+                 viewReservationDetails(date); 
+                 return;
+             }
+
+             // 예약자 이름 입력
+             System.out.print("\t회원 이름: ");
+             String name = scanner.nextLine();
+
+             // 기존 예약 확인
+             String currentReservation = times.get(time - 9);
+             if (currentReservation.isEmpty()) {
+            	 System.out.println();
+                 System.out.printf("\t%02d시에 기존 예약이 없습니다. 새로 예약을 추가합니다.%n", time);
+             } else {
+            	 System.out.println();
+                 System.out.printf("\t%02d시의 기존 예약(%s)을 변경합니다.%n", time, currentReservation);
+             }
+
+             // 예약 변경
+             times.set(time - 9, name);
+             reservations.put(date, times);
+
+             System.out.println("\t예약이 성공적으로 추가되었습니다!");
+             System.out.println("\t엔터를 눌러 이전 화면으로 이동하세요.");
+             scanner.nextLine(); // 엔터 입력 대기
+             
+             viewReservationDetails(date); 
+             
+            
+         } catch (NumberFormatException e) {
+             System.out.println("유효한 시간을 입력해주세요. (예: 09)");
+             viewReservationDetails(date); // 이전 메뉴로 돌아가기
+         }
+         
     }
 
     private void cancelReservation(String date) {

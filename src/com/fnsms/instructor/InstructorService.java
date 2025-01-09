@@ -16,6 +16,7 @@ import com.fnsms.emp.EmpDateService;
 import com.fnsms.emp.EmpService;
 import com.fnsms.reservation.Reservation;
 import com.fnsms.ticketregistration.TicketRegistration;
+import com.fnsms.view.InstructorClassMngView;
 import com.fnsms.view.InstructorView;
 
 public class InstructorService extends EmpService {
@@ -323,7 +324,7 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
 
   //3-2 수업 관리 및 예약 출력 메서드
     public static void classManagement() {
-//        InstructorClassMngView.printInquiryClass("홍길종","필테");
+        InstructorClassMngView.printInquiryClass("김계란","PT");
         Scanner scan = new Scanner(System.in);
         boolean isRunning = true;
 
