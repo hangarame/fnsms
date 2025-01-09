@@ -228,7 +228,7 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
         System.out.println("===========================================");
 
         // 0 누르면 “처음 화면” 복귀
-        System.out.print("처음 화면으로 돌아가려면 0을 입력, 계속하려면 Enter> ");
+        System.out.print("처음 화면으로 돌아가려면 0을 입력, 지난 기록을 조회하려면 Enter ");
         String choice = scan.nextLine().trim();
         if (choice.equals("0")) {
             return;
@@ -258,7 +258,9 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
             System.out.printf("[%s월 근무기록] 근무시간: %d시간, 수업횟수: %d회, 정산금액: %,d원\n",
                     inputYYYYMM, hours, classesCount, monthlySalary);
         }
-    }
+    }//calcSalary
+	
+	
     private static Instructor
     findInstructor(String inputName, String inputBirth6) {
         for (Instructor ins : EmpDAO.instructorList) {
