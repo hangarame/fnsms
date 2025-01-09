@@ -22,9 +22,16 @@ public class EmpDateService {
 	    
     }
 
+    //다음화면에 출력될 이름의 예시
+    public void initializeSampleReservations(String date) {
+        List<String> sampleNames = Arrays.asList("홍길동", "", "강호동", "이수근", "", "", "", "", "", "", "", "");
+        reservations.put(date, sampleNames);
+    }
+    
+    //3-2-1-1 날짜를 선택할 경우
     public void viewReservationDetails(String date) {
         System.out.println("============================================");
-        System.out.printf("%s 아무개 PT님의 예약 현황입니다.%n", date);
+        System.out.printf("%s 김계란 PT님의 예약 현황입니다.%n", date);
 
         // 예약 현황 표시
         List<String> times = reservations.getOrDefault(date, new ArrayList<>(Collections.nCopies(12, "")));
