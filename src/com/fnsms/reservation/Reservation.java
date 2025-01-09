@@ -8,11 +8,13 @@ public class Reservation {
 	Calendar reservDate;
 	String classDiary;
 	
+	
+	
 	public Reservation(int ticketRegNo, Calendar reservDate, String classDiary) {
 		super();
-		this.ticketRegNo = ticketRegNo;
-		this.reservDate = reservDate;
-		this.classDiary = classDiary;
+		this.ticketRegNo = ticketRegNo; //등록된 티켓 번호
+		this.reservDate = reservDate;	//예약일
+		this.classDiary = classDiary;	//수업일지
 	}
 
 	public int getTicketRegNo() {

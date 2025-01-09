@@ -26,7 +26,7 @@ public class CalendarView implements ConsoleColor {
             System.out.println("\t다음달 일정을 보려면 \" >\"를,");
             System.out.println("\t이전달 일정을 보려면 \" <\"를,");
             System.out.println("\t이번달 일정을 보려면 \"@\"를 입력해주세요.");
-            System.out.println("\t\t메인으로 돌아가려면 \"#\"을 입력해주세요.");
+            System.out.println("\t메인으로 돌아가려면 \"#\"을 입력해주세요.");
             System.out.print("\t입력 : ");
             input = scanner.nextLine();
             System.out.println();
@@ -56,14 +56,15 @@ public class CalendarView implements ConsoleColor {
         }
     }
     
-    private void printCalendar() {
-    	System.out.println("================================================================");
+    public void printCalendar() {
+    	System.out.println("=================================================================================");
     	
-        System.out.println("------------------------- " + displayCal.get(Calendar.YEAR) + "년 " + 
-                          (displayCal.get(Calendar.MONTH) + 1) + "월 ----------------------------");
-        System.out.println("===============================================================");
+        System.out.println("---------------------- " + displayCal.get(Calendar.YEAR) + "년 " + 
+                          (displayCal.get(Calendar.MONTH) + 1) + "월 -----------------------------------------------");
+        System.out.println("=================================================================================");
         System.out.println("\t일\t월\t화\t수\t목\t금\t토");
-        
+        System.out.println();
+        System.out.println();
         // 1일의 요일을 구함
         Calendar firstDay = (Calendar) displayCal.clone();
         firstDay.set(Calendar.DAY_OF_MONTH, 1);
@@ -84,13 +85,11 @@ public class CalendarView implements ConsoleColor {
             // 토요일이면 줄바꿈
             if ((dayOfWeek + i - 1) % 7 == 0) {
                 System.out.println();
+                System.out.println("\t\t");
             }
         }
         System.out.println("\n");
     }
     
-    public static void main(String[] args) {
-        CalendarView calendar = new CalendarView();
-        calendar.start();
-    }
+    
 }
