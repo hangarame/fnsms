@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class InstructorView implements ConsoleColor {
+	
+	
 
 	static ArrayList<String> instrutorName = new ArrayList<String>(); // 강사이름
 	static ArrayList<String> position = new ArrayList<String>(); // 직책

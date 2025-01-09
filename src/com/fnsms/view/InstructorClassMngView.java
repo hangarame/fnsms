@@ -44,8 +44,8 @@ public class InstructorClassMngView implements ConsoleColor {
 		System.out.println();
 		System.out.println("=================================================================================");
 		System.out.println();
-//		CalendarView calendar = new CalendarView();
-//		calendar.start();
+		CalendarView calendar = new CalendarView();
+		calendar.start();
 		System.out.println();
 		System.out.println("=================================================================================");
 		System.out.println();
