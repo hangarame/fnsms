@@ -15,6 +15,7 @@ import com.fnsms.dao.MemberDAO;
 import com.fnsms.dao.ReservationDAO;
 import com.fnsms.dao.TicketDAO;
 import com.fnsms.dao.TicketRegistrationDAO;
+import com.fnsms.emp.EmpMemberService;
 import com.fnsms.emp.EmpService;
 import com.fnsms.member.Member;
 import com.fnsms.reservation.Reservation;
@@ -330,7 +331,7 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
 
   //3-2 수업 관리 및 예약 출력 메서드
     public static void classManagement() {
-        InstructorClassMngView.printInquiryClass("홍길종","필테");
+        InstructorClassMngView.printInquiryClass("홍길종","필테");// 임의 값 
         Scanner scan = new Scanner(System.in);
         boolean isRunning = true;
 
@@ -345,7 +346,7 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
                 break;
             case "2":
                 System.out.println("담당회원별 예약 조회를 선택하셨습니다.");
-//                viewByMember();지온
+                EmpMemberService.viewByMember();
                 break;
             case "#":
                 System.out.println("메인으로 돌아갑니다.");

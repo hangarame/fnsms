@@ -11,14 +11,14 @@ public class InstructorClassMngView implements ConsoleColor {
 	private static Calendar now = Calendar.getInstance();
 
 	// 수업관리 출력
-	public static void printInquiryClass() {
+	public static void printInquiryClass(String name, String position) {
 
 		Header logo = new Header();
 		logo.Logo();
 		System.out.println("\t\t\t\t\t\t\t\t수업 관리 및 예약");
 		System.out.println("=================================================================================");
 		System.out.println();
-		System.out.printf("\t%s %s님의 수업 관리 상세보기 페이지입니다.\r\n", InstructorView.instrutorName, InstructorView.position);
+		System.out.printf("\t%s %s님의 수업 관리 상세보기 페이지입니다.\r\n", name, position);
 		System.out.println();
 		System.out.println("=================================================================================");
 		System.out.println();
