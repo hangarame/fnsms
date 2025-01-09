@@ -98,7 +98,7 @@ public class InstructorClassMngView implements ConsoleColor {
 
 		Header logo = new Header();
 		logo.Logo();
-		System.out.println("\t\t\t\t\t\t\t\t수업예약 등록(날짜별)");
+		System.out.println("\t\t\t\t\t\t\t수업예약 등록(날짜별)");
 		System.out.println("=================================================================================");
 		System.out.println();
 //		System.out.printf("\t%tF %s %s님의 일자별 수업 예약 현황입니다.\r\n", now, InstructorView.instrutorName, InstructorView.position);
@@ -133,6 +133,7 @@ public class InstructorClassMngView implements ConsoleColor {
 
 		Header logo = new Header();
 		logo.Logo();
+		System.out.println("\t\t\t\t\t\t\t수업예약 변경(날짜별)");
 		System.out.println("=================================================================================");
 		System.out.println();
 //		System.out.printf("\t%tF %s %s님의 일자별 수업 예약 현황입니다.\r\n", now, InstructorView.instrutorName, InstructorView.position);
@@ -166,6 +167,7 @@ public class InstructorClassMngView implements ConsoleColor {
 	public static void printDeleteReservation_Date() {
 		Header logo = new Header();
 		logo.Logo();
+		System.out.println("\t\t\t\t\t\t\t수업예약 삭제(날짜별)");
 		System.out.println("=================================================================================");
 		System.out.println();
 //		System.out.printf("\t%tF %s %s님의 일자별 수업 예약 현황입니다.\r\n", now, InstructorView.instrutorName, InstructorView.position);
