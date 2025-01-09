@@ -231,7 +231,7 @@ public class EmpDateService {
          // 유효한 시간인지 확인
          if (time < 9 || time > 20) {
         	 System.out.println();
-             System.out.println("\t※시간은 09시부터 20시 사이로 입력해주세요!");
+             System.out.println("\t※시간은 09시부터 20시 사이로 입력해주세요!ㄴ");
              System.out.println("\t엔터를 눌러 이전 화면으로 이동하세요.");
              scanner.nextLine(); // 엔터 입력 대기
              viewReservationDetails(date); 
