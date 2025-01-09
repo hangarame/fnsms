@@ -5,8 +5,6 @@ import java.util.Scanner;
 import com.fnsms.dao.EmpDAO;
 import com.fnsms.dao.MemberDAO;
 import com.fnsms.emp.Emp;
-import com.fnsms.instructor.Instructor;
-import com.fnsms.instructor.InstructorService;
 import com.fnsms.member.Member;
 import com.fnsms.member.MemberService;
 import com.fnsms.view.CommonView;
@@ -17,88 +15,53 @@ public class UserService {
 	
 	// 로그인
 	public static User logIn() {
-		
-		Scanner scan = new Scanner(System.in);
-		boolean loop = true;
-		
-		while (loop) {
+	    Scanner scan = new Scanner(System.in);
+	    while (true) {
+	    	
+	        CommonView.printLoginSelct();
 
-			//로그인 권한 선택 출력부 
-			CommonView.printLoginSelct();
-			
-			
-	        //System.out.print("선택: ");
-	        String sel = scan.nextLine();
-	        User user=null;
+	        String sel = scan.nextLine().trim();
+	        User user = null;
 	        
-	        
-			if (sel.equals("1")) {//1번 회원
-				CommonView.memberPrintBanner();
-				listRoad(sel);
-				user = memberIDFW();
-				
-				if (user != null) {
-					//회원화면();
-					MemberService memberService = new MemberService(((Member)user).getMemberNo());					
-					memberService.memberMainMenu();					
-
-					pause();
-					
-					
-					return user;
-				
-				} else {
-					//System.out.println("로그인 실패 초기화면");
-				
-				}
-				
-			} else if (sel.equals("2")) {//2번 강사
-				CommonView.instructorPrintBanner();
-				listRoad(sel);
-				user = instructorIDFW();
-				
-				if (user != null) {
-					//강사화면();
-					
-					InstructorService instructorService = new InstructorService(((Instructor)user).getEmpNo());
-					instructorService.instructorMainMenu();
-					pause();
-					return user;
-				
-				} else {
-					//System.out.println("로그인 실패 초기화면");
-				
-				}
-		
-				
-			} else if (sel.equals("3")) {//2번 강사
-				CommonView.adminPrintBanner();
-				listRoad(sel);
-				user = administratorIDFW();
-				
-				if (user != null) {
-					//관리자화면();
-					pause();
-					return user;
-				
-				} else {
-					//System.out.println("로그인 실패 초기화면");
-				
-				}	
-				
-			} else if(sel.equals("E")) { 
-				loop = false;
-
-			}
-			// System.out.println("잘못 입력했습니다!");
-			loop = true;
-		}
-		//System.out.println();
-		//System.out.println("메모장을 종료합니다.");
-		return null;
-	}//login
-	
-	
+	        if (sel.equals("1")) { 
+	        // 1. 회원 로그인
+	            listRoad(sel);
+	            user = memberIDFW(); // ID/PW 비교
+	            if (user != null) {
+	        // 로그인 성공 -> memberMainMenu() 호출 등
+	                MemberService memberService = new MemberService(((Member)user).getMemberNo());
+	                memberService.memberMainMenu();
+	                
+	                // 이 시점에서 memberMainMenu()가 끝났다는 건 로그아웃 or 뒤로가기가 일어났을 때
+	                // 로그아웃 후 계속 진행 -> 다시 로그인 화면 or return user
+	                // 현재 구조상, memberMainMenu() 안에서 logOut() -> logIn() 재호출이 있으므로 
+	                // 여기서는 별도 처리 없음
+	            }
+	        } else if (sel.equals("2")) {
+	            // 2. 강사 로그인
+	            listRoad(sel);
+	            user = instructorIDFW();
+	            if (user != null) {
+	                // 강사 메인 화면 등
+	                // ...
+	                // return user; or loop to re-login
+	            }
+	        } else if (sel.equals("3")) {
+	            // 3. 관리자
+	            listRoad(sel);
+	            user = administratorIDFW();
+	            if (user != null) {
+	                // 관리자 메인 화면 등
+	                // ...
+	            }
+	        } else if (sel.equalsIgnoreCase("E")) {
+	            // 프로그램 종료 신호
+	            return null; 
+	        } else {
+	            System.out.println("잘못된 입력입니다.");
+	        }
+	    }
+	}//로그인
 	
 	protected static void pause() {
 		Scanner scan = new Scanner(System.in);
@@ -227,17 +190,7 @@ public class UserService {
 	
 	
 	//로그아웃
-	public static void logOut() {
-		Scanner scan = new Scanner(System.in);
-		String sel = scan.nextLine();
-		if (sel.equals("E")) {
-			logIn();
-			
-		} else {
-			
-		}		
-	}
-	
+	public static void logOut() { logIn(); }
 	
 	
 	//로그인

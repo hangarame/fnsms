@@ -1,8 +1,6 @@
 package com.fnsms.instructor;
 
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
@@ -14,19 +12,11 @@ import java.util.Scanner;
 import com.fnsms.attendance.Attendance;
 import com.fnsms.dao.AttendanceDAO;
 import com.fnsms.dao.EmpDAO;
-import com.fnsms.dao.MemberDAO;
-import com.fnsms.dao.ReservationDAO;
-import com.fnsms.dao.TicketDAO;
 import com.fnsms.dao.TicketRegistrationDAO;
+import com.fnsms.emp.EmpDateService;
 import com.fnsms.emp.EmpService;
-import com.fnsms.member.Member;
-import com.fnsms.reservation.Reservation;
-import com.fnsms.ticket.Ticket;
-import com.fnsms.ticketregistration.TicketRegistration;
-import com.fnsms.user.UserService;
 import com.fnsms.view.InstructorClassMngView;
 import com.fnsms.view.InstructorView;
-import com.fnsms.view.MemberView;
 
 public class InstructorService extends EmpService {
 
@@ -343,8 +333,9 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
 
             switch (input) {
             case "1":
-                System.out.println("날짜별 예약 조회를 선택하셨습니다.");
-//                viewByDate();세원
+//              System.out.println("날짜별 예약 조회를 선택하셨습니다.");
+            	EmpDateService empDateService = new EmpDateService();
+            	empDateService.viewByDate();
                 break;
             case "2":
                 System.out.println("담당회원별 예약 조회를 선택하셨습니다.");

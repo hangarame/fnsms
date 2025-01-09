@@ -19,20 +19,57 @@ public class MemberService extends UserService {
 	
 	Member member;
 //	static Scanner scan = new Scanner(System.in);
-	
+
+//	생성자
 	public MemberService(String memberNo) {
-		this.member = MemberDAO.getMemberList(memberNo);
-	}
+		this.member = MemberDAO.getMemberList(memberNo);}
+// 	게터세터
+	public Member getMember() {return member;}
+	public void setMember(Member member) {this.member = member;}
 
 	
-	public Member getMember() {
-		return member;
-	}
-
-	public void setMember(Member member) {
-		this.member = member;
-	}
-
+	
+	
+//  로그인 후 회원 메인화면
+	public void memberMainMenu() {
+		Scanner scan = new Scanner(System.in);
+		
+		//회원의 이용중인 유효한 이용권
+		ArrayList<TicketRegistration> validRegList =
+				this.getValidRegstration(this.getMember());
+		
+		MemberView.printMainmenu(this.getMember().getName(), this.getMember().getTel(), this.getMember().getBirthDate()
+				, this.haveUseTowelTicketUse()
+				, validRegList.get(0).getTicket()
+				, this.getTicketRemainIning(validRegList.get(0))
+				, validRegList.get(0).getEndDate());
+		
+//		return validRegList.get(0);
+		
+		while(true) {
+			System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
+			String cmd = scan.nextLine();
+			if(cmd.equals("1")) {
+//				이용권 정보 조회
+				inquiryTicketInfo(validRegList.get(0));
+//				scan.close();
+			} else if(cmd.equals("2")) {
+				// 예약 조회
+			} else if(cmd.equals("E")) {
+				//로그아웃 메서드
+				UserService.logOut();
+			} else {
+				System.out.println("\t정해진 문자를 입력해주세요.");
+//				scan.close();
+			}
+		}
+		
+	}//멤버메인	
+	
+	
+	
+	
+	
 	// 예약 조회
 	public ArrayList<Reservation> inquiryReservInfo(Member member) {
 		ArrayList<Reservation> reservList = new ArrayList<Reservation>();
@@ -215,46 +252,7 @@ public class MemberService extends UserService {
 	}
 	
 	
-	//2. 로그인 후 회원 메인화면
-	public void memberMainMenu() {
-		
-		Scanner scan = new Scanner(System.in);
-		
-		
-		//회원의 이용중인 유효한 이용권
-		ArrayList<TicketRegistration> validRegList = this.getValidRegstration(this.getMember());
-		
-		MemberView.printMainmenu(this.getMember().getName(), this.getMember().getTel(), this.getMember().getBirthDate()
-				, this.haveUseTowelTicketUse()
-				, validRegList.get(0).getTicket()
-				, this.getTicketRemainIning(validRegList.get(0))
-				, validRegList.get(0).getEndDate());
-		
-//		return validRegList.get(0);
-		
-		while(true) {
-//			Scanner scan = new Scanner(System.in);
-			
-			String cmd = scan.nextLine();
-			
-			if(cmd.equals("1")) {
-				inquiryTicketInfo(validRegList.get(0));
-//				scan.close();
-			} else if(cmd.equals("2")) {
 
-				// 예약 조회
-//				scan.close();
-			} else if(cmd.equals("E")) {
-
-				//로그아웃 메서드
-//				scan.close();
-			} else {
-				System.out.println("\t정해진 문자를 입력해주세요.");
-//				scan.close();
-			}
-		}
-		
-	}
 	
 	//2-1. 이용권 정보 조회
 	public void inquiryTicketInfo(TicketRegistration ticketReg) {
@@ -274,29 +272,29 @@ public class MemberService extends UserService {
 		
 		MemberView.printDate(registerDate, startDate, endDate, totalDays, remainingDays, name, towel, ticket, count);
 		
-		while(true) {
-//			Scanner scan = new Scanner(System.in);
-			String cmd = scan.nextLine();
-			System.out.println(cmd);
-			
-			if(cmd.equals("y")) {
-				requestRecess(ticketReg);
-
-			} else if(cmd.equals("#")) {
-//				scan.close();
-//				break;
-//				loop = false;
-				memberMainMenu();
-				
-			} else {
-				MemberView.printDate(registerDate, startDate, endDate, totalDays, remainingDays, name, towel, ticket, count);
-				System.out.println("\t정해진 문자를 입력해주세요.");
-//				scan.close();
-			}
+		 while(true) {
+		        String cmd = scan.nextLine().trim();
+		        
+		        if(cmd.equalsIgnoreCase("y")) {
+		            // 휴회 신청
+		            requestRecess(ticketReg);
+		            return; 
+		            // 휴회 신청 절차가 끝나면 여기서 끝내거나,
+		            // 또는 아래쪽에서 memberMainMenu()를 호출할 수도 있음.
+		        } else if(cmd.equalsIgnoreCase("n")) {
+		            // "휴회 안 하고 메인으로 돌아간다"
+		            System.out.println("휴회 신청을 하지 않습니다. 메인 화면으로 돌아갑니다.");
+		            memberMainMenu(); 
+		            return; 
+		        } else if(cmd.equals("#")) {
+		            // 메인 메뉴로 즉시 복귀
+		            memberMainMenu();
+		            return;
+		        } else {
+		            System.out.println("\t정해진 문자를 입력해주세요. (y / n / #)");
+		        }
+		    }
 		}
-		
-		
-	}
 	
 
 	// 2-1-1. 휴회신청
@@ -319,37 +317,40 @@ public class MemberService extends UserService {
 
 
 		while(true) {
-//			Scanner scan = new Scanner(System.in);
-			String cmd = scan.nextLine();
-			
-			try {
-				int days = Integer.parseInt(cmd);
-				
-				if(cmd.equals("y")) {
-					if(days <= count) {
-						ticketBreak(ticketReg, days);
-					} else {
-						MemberView.ticketBreakFailed(count);
-					}
-					
-				} else if(cmd.equals("#")) {
-					memberMainMenu();
-				} else if(cmd.equals("n")) {
-					inquiryTicketInfo(ticketReg);
-				} else {
-					MemberView.ticketBreakFailed(count);
-					System.out.println("\t정해진 문자를 입력해주세요.");
-				}
-				
-			} catch (Exception e) {
-				System.out.println("\t정해진 문자를 입력해주세요.");
-			}
-			
-			
-		}
-		
+	        String cmd = scan.nextLine().trim();
+	        
+	        // (1) 먼저 문자인지 확인
+	        if (cmd.equalsIgnoreCase("#")) {
+	            // 메인 메뉴
+	            System.out.println("메인화면으로 돌아갑니다.");
+	            memberMainMenu();
+	            return;
+	        } else if (cmd.equalsIgnoreCase("n")) {
+	            // 휴회 안 함 -> 메인
+	            System.out.println("휴회하지 않고 메인으로 돌아갑니다.");
+	            memberMainMenu();
+	            return;
+	        } 
+	        // 만약 "y"는...? 여기서는 의미 없으니 pass or?
+	        // "y" 자체가 일수가 아니므로, 
+	        // 아무 로직 안 하고 "정해진 문자를 입력해주세요" or 무시.
+	        
+	        // (2) 숫자인지 확인
+	        try {
+	            int days = Integer.parseInt(cmd);
+	            // 휴회일수가 days로 들어옴
+	            // 이 days가 remaining 횟수보다 큰지 검사 -> 가능하면 ticketBreak(ticketReg, days)
+	            if (days <= getTicketRemainIning(ticketReg) && days > 0) {
+	                ticketBreak(ticketReg, days);
+	                return;
+	            } else {
+	                System.out.println("\t휴회일을 정확하게 입력해주세요. 가능일수: " + getTicketRemainIning(ticketReg) );
+	            }
+	        } catch (NumberFormatException e) {
+	            System.out.println("\t정해진 문자를 입력해주세요. (#:메인, n:취소, or 휴회일(숫자))");
+	        }
+	    }
 	}
-	
 	//휴회 등록
 	public void ticketBreak(TicketRegistration ticketReg, int days) {
 		Calendar udtStartDate = ticketReg.getStartDate();
