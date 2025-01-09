@@ -1,5 +1,6 @@
 package com.fnsms.member;
 
+import com.fnsms.ticketregistration.TicketRegistration;
 import com.fnsms.user.User;
 
 public class Member extends User{
@@ -41,6 +42,11 @@ public class Member extends User{
 		builder.append(birthDate);
 		builder.append("]");
 		return builder.toString();
+	}
+
+
+	public void addTicketRegistration(TicketRegistration newReg) {
+		
 	}
 	
 	

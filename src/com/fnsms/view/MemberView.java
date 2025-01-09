@@ -139,7 +139,7 @@ public class MemberView implements ConsoleColor {
 		
 	}
 	
-	public static void ticketBreakSuccess(int breaktime, Calendar startDate, Calendar endDate) {
+	public static void ticketBreakSuccess(int breaktime, Calendar startDate, Calendar endDate, String name) {
 		Header logo = new Header();
         logo.Logo();
         System.out.println("\t\t\t\t\t\t회원 메인페이지/이용권 정보 조회/이용권 휴회");
@@ -147,7 +147,7 @@ public class MemberView implements ConsoleColor {
         System.out.println();
         System.out.println("\t(메인으로 돌아가려면 '#'을 입력해주세요.)");
         System.out.printf("\t신청하신 %d일 휴회가 등록되었습니다.\n",breaktime);
-		System.out.printf("\t홍길동 회원님은 %tF ~ %tF일 이용이 가능합니다.\n",startDate,endDate);
+		System.out.printf("\t%s 회원님은 %tF ~ %tF일 이용이 가능합니다.\n",name,startDate,endDate);
 		System.out.println();
 //		System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
 		
