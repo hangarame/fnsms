@@ -100,5 +100,15 @@ public class EmpDAO {
 		return insList;
 	}
 	
+	public static Instructor getInstructor(String empNo){
+		for(Instructor ins : instructorList) {
+			if(ins.getEmpNo().equals(empNo)) {
+				return ins;
+			}
+		}
+			
+		return null;
+	}
+	
 		
 }

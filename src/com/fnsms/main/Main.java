@@ -1,21 +1,15 @@
 package com.fnsms.main;
-<<<<<<< HEAD
-=======
 
-
-import com.fnsms.ticketregistration.TicketRegistration;
+import com.fnsms.dao.AttendanceDAO;
+import com.fnsms.dao.EmpDAO;
+import com.fnsms.dao.MemberDAO;
+import com.fnsms.dao.ReservationDAO;
+import com.fnsms.dao.TicketDAO;
+import com.fnsms.dao.TicketRegistrationDAO;
 import com.fnsms.user.UserService;
-import com.fnsms.view.AdministratorView;
-=======
->>>>>>> jo
->>>>>>> 38684f966595db9a114e1aed47640f6e0bd7ecfd
-import com.fnsms.view.CalendarView;
-import com.fnsms.view.CommonView;
-import com.fnsms.view.InstructorClassMngView;
-import com.fnsms.view.InstructorView;
 public class Main {
 	public static void main(String[] args) {
-<<<<<<< HEAD
+
 
 //		System.out.println("printMainMenu > 강사메인");
 //		InstructorView.printMainMenu();
@@ -40,16 +34,20 @@ public class Main {
 //		InstructorClassMngView.printDeleteReservation_Date(); // 수업예약 삭제(날짜별)
 //		InstructorClassMngView.printSearchReservationMember();// 담당회원별 예약 조회
 //		InstructorClassMngView.ifSameNameClassMember();// 담당회원별 예약 조회 동명이인인경우
-		InstructorClassMngView.ifNameSelectSuccess();// 회원별 예약 조회 성공
-		InstructorClassMngView.printAddReservation_Member();// 담당회원별 예약 입력
-		InstructorClassMngView.printEditReservation_Member();// 담당회원별 예약 수정
-		InstructorClassMngView.printDeleteReservation_Member();// 담당회원별 예약 삭제
+//		InstructorClassMngView.ifNameSelectSuccess();// 회원별 예약 조회 성공
+//		InstructorClassMngView.printAddReservation_Member();// 담당회원별 예약 입력
+//		InstructorClassMngView.printEditReservation_Member();// 담당회원별 예약 수정
+//		InstructorClassMngView.printDeleteReservation_Member();// 담당회원별 예약 삭제
+		
+		AttendanceDAO.load();
+        EmpDAO.load();
+        MemberDAO.load();
+        ReservationDAO.load();
+        TicketDAO.load();
+        TicketRegistrationDAO.load();
+		
+        UserService.logIn();
 
-=======
-		
-		
-		
->>>>>>> 38684f966595db9a114e1aed47640f6e0bd7ecfd
 	}
 
 }
