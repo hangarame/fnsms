@@ -6,10 +6,8 @@ import com.fnsms.dao.EmpDAO;
 import com.fnsms.dao.MemberDAO;
 import com.fnsms.emp.Emp;
 import com.fnsms.member.Member;
-import com.fnsms.view.AdministratorView;
+import com.fnsms.member.MemberService;
 import com.fnsms.view.CommonView;
-import com.fnsms.view.InstructorView;
-import com.fnsms.view.MemberView;
 
 public class UserService {
 
@@ -33,14 +31,18 @@ public class UserService {
 	        
 	        
 			if (sel.equals("1")) {//1번 회원
-				MemberView.PrintBanner();
+				CommonView.memberPrintBanner();
 				listRoad(sel);
 				user = memberIDFW();
 				
 				if (user != null) {
 					//회원화면();
-					MemberView.printMainmenu();
+					MemberService memberService = new MemberService(((Member)user).getMemberNo());					
+					memberService.memberMainMenu();					
+
 					pause();
+					
+					
 					return user;
 				
 				} else {
@@ -49,7 +51,7 @@ public class UserService {
 				}
 				
 			} else if (sel.equals("2")) {//2번 강사
-				InstructorView.insPrintBanner();
+				CommonView.instructorPrintBanner();
 				listRoad(sel);
 				user = instructorIDFW();
 				
@@ -66,7 +68,7 @@ public class UserService {
 		
 				
 			} else if (sel.equals("3")) {//2번 강사
-				AdministratorView.PrintBanner();
+				CommonView.adminPrintBanner();
 				listRoad(sel);
 				user = administratorIDFW();
 				
