@@ -18,6 +18,7 @@ import com.fnsms.view.MemberView;
 public class MemberService extends UserService {
 	
 	Member member;
+//	static Scanner scan = new Scanner(System.in);
 	
 	public MemberService(String memberNo) {
 		this.member = MemberDAO.getMemberList(memberNo);
@@ -147,7 +148,7 @@ public class MemberService extends UserService {
 				long basDt = o1.getEndDate().getTimeInMillis();
 				long compareDt = o2.getEndDate().getTimeInMillis();
 				
-				return (int)(basDt - basDt);
+				return (int)(basDt - compareDt);
 			};
 		});
 		
@@ -217,7 +218,7 @@ public class MemberService extends UserService {
 	//2. 로그인 후 회원 메인화면
 	public void memberMainMenu() {
 		
-		Scanner scan = new Scanner(System.in);
+//		Scanner scan = new Scanner(System.in);
 		
 		
 		//회원의 이용중인 유효한 이용권
@@ -232,15 +233,21 @@ public class MemberService extends UserService {
 //		return validRegList.get(0);
 		
 		while(true) {
+			Scanner scan = new Scanner(System.in);
+			
 			String cmd = scan.nextLine();
 			
 			if(cmd.equals("1")) {
 				inquiryTicketInfo(validRegList.get(0));
-				
+				scan.close();
 			} else if(cmd.equals("2")) {
-				
+
+				// 예약 조회
+				scan.close();
 			} else if(cmd.equals("E")) {
-				return;
+
+				//로그아웃 메서드
+				scan.close();
 			} else {
 				System.out.println("정해진 문자를 입력해주세요.");
 			}
@@ -250,7 +257,7 @@ public class MemberService extends UserService {
 	
 	//2-1. 이용권 정보 조회
 	public void inquiryTicketInfo(TicketRegistration ticketReg) {
-		Scanner scan = new Scanner(System.in);
+//		Scanner scan = new Scanner(System.in);
 		
 		Calendar registerDate = ticketReg.getPurchaseDate();
 		Calendar startDate = ticketReg.getStartDate();
@@ -262,14 +269,24 @@ public class MemberService extends UserService {
 		String ticket = ticketReg.getTicket();
 		int count = getTicketRemainIning(ticketReg);
 		
+		
 		MemberView.printDate(registerDate, startDate, endDate, totalDays, remainingDays, name, towel, ticket, count);
 		
 		while(true) {
+			Scanner scan = new Scanner(System.in);
 			String cmd = scan.nextLine();
+			System.out.println(cmd);
+			
 			if(cmd.equals("y")) {
-				requestRecess(ticketReg);
+				String temp = requestRecess(ticketReg);
+				if(temp.equals("#")) {
+					scan.close();
+					return;
+				}
 			} else if(cmd.equals("#")) {
+				scan.close();
 				return;
+//				break;
 			} else {
 				System.out.println("정해진 문자를 입력해주세요.");
 			}
@@ -279,8 +296,8 @@ public class MemberService extends UserService {
 	}
 	
 
-	// 휴회신청
-	public void requestRecess(TicketRegistration ticketReg) {
+	// 2-1-1. 휴회신청
+	public String requestRecess(TicketRegistration ticketReg) {
 		Scanner scan = new Scanner(System.in);
 		
 		Calendar registerDate = ticketReg.getPurchaseDate();
@@ -293,22 +310,54 @@ public class MemberService extends UserService {
 		String ticket = ticketReg.getTicket();
 		int count = getTicketRemainIning(ticketReg);
 		boolean possible_break = canticketBreak(ticketReg);
+		int possibleBreakDays = getticketBreakTotalIning(ticketReg);
 		
-		MemberView.ticketBreak(registerDate, startDate, endDate, totalDays, remainingDays, name, towel, ticket, count, possible_break);
+		MemberView.ticketBreak(registerDate, startDate, endDate, totalDays, remainingDays, name, towel, ticket, count, possible_break,possibleBreakDays);
 
 
 		while(true) {
 			String cmd = scan.nextLine();
 			
-			if(cmd.equals("y")) {
+			try {
+				int days = Integer.parseInt(cmd);
 				
-			} else if(cmd.equals("#")) {
-				return;
-			} else {
+				if(days <= count) {
+					if(possible_break) {
+						ticketBreak(ticketReg, days);
+					}else {
+						MemberView.ticketBreakFailed(count);
+					}
+				} else if(cmd.equals("#")) {
+					return "#";
+				} else {
+					System.out.println("정해진 문자를 입력해주세요.");
+				}
+				
+				
+			} catch (Exception e) {
 				System.out.println("정해진 문자를 입력해주세요.");
 			}
+			
+			
 		}
 		
 	}
+	
+	//휴회 등록
+	public void ticketBreak(TicketRegistration ticketReg, int days) {
+		Calendar udtStartDate = ticketReg.getStartDate();
+		Calendar udtEndDate = ticketReg.getEndDate();
+		
+		udtStartDate.add(Calendar.DATE, days);
+		udtEndDate.add(Calendar.DATE, days);
+		TicketRegistrationDAO.save();
+
+		MemberView.ticketBreakSuccess(days, udtStartDate, udtEndDate);
+		
+		
+		
+	}
+
+	
 	
 }
