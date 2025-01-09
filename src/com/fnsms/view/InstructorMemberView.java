@@ -13,7 +13,7 @@ public class InstructorMemberView {
 	public static void memberManagement() {
 		Header logo = new Header();
 		logo.Logo();
-		System.out.println("\t\t\t\t\t\t\t       강사 메인페이지/회원 관리");
+		System.out.println("\t\t\t\t\t\t\t   강사 메인페이지/회원 관리");
 		System.out.println("=================================================================================");
 		System.out.printf("\t쌍용 헬스장의 회원수는 %d명입니다.\n",total_mem);
 		System.out.printf("\t%s %s님의 담당 회원수는 %d명입니다.\n",id,position,manage_mem);

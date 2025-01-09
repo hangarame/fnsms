@@ -104,7 +104,7 @@ public class MemberView implements ConsoleColor {
 //      System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
 	}
 	
-	public static void ticketBreak(Calendar registerDate, Calendar startDate, Calendar endDate, long totalDays, long remainingDays, String name, boolean towel, String ticket, int count, boolean possible_break) {
+	public static void ticketBreak(Calendar registerDate, Calendar startDate, Calendar endDate, long totalDays, long remainingDays, String name, boolean towel, String ticket, int count, boolean possible_break, int possibleBreakDays) {
 		// 등록일 설정 (예: 2025년 1월 1일)
 //       registerDate.set(2025, Calendar.JANUARY, 1);
 
@@ -131,7 +131,7 @@ public class MemberView implements ConsoleColor {
        System.out.println("=================================================================================");
 		System.out.println();
 		System.out.println("\t(메인으로 돌아가려면 '#'을 입력해주세요.)");
-		System.out.printf("\t회원님은 최대 %d일 휴회가 가능합니다.\n",possible_break);
+		System.out.printf("\t회원님은 최대 %d일 휴회가 가능합니다.\n",possibleBreakDays);
 		System.out.println("\t며칠 휴회하시겠습니까?");
 		System.out.println();
 //		System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
@@ -139,7 +139,7 @@ public class MemberView implements ConsoleColor {
 		
 	}
 	
-	public static void ticketBreakSuccess() {
+	public static void ticketBreakSuccess(int breaktime, Calendar startDate, Calendar endDate) {
 		Header logo = new Header();
         logo.Logo();
         System.out.println("\t\t\t\t\t\t회원 메인페이지/이용권 정보 조회/이용권 휴회");
@@ -147,7 +147,7 @@ public class MemberView implements ConsoleColor {
         System.out.println();
         System.out.println("\t(메인으로 돌아가려면 '#'을 입력해주세요.)");
         System.out.printf("\t신청하신 %d일 휴회가 등록되었습니다.\n",breaktime);
-		System.out.printf("\t홍길동 회원님은 %tF ~ %tF일 이용이 가능합니다.\n",now,now);
+		System.out.printf("\t홍길동 회원님은 %tF ~ %tF일 이용이 가능합니다.\n",startDate,endDate);
 		System.out.println();
 //		System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
 		
@@ -155,8 +155,8 @@ public class MemberView implements ConsoleColor {
 	}
 	
 	
-	public static void ticketBreakFailed() {
-		int possible_break=5;
+	public static void ticketBreakFailed(int possible_break) {
+//		int possible_break=5;
 
 		Header logo = new Header();
         logo.Logo();

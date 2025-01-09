@@ -25,6 +25,7 @@ public class AdministratorView implements ConsoleColor{
 
 			Header logo = new Header();
 	        logo.Logo();
+	        System.out.println("\t\t\t\t\t\t\t\t 관리자 메인페이지");
 	        System.out.println("=================================================================================");
 	        System.out.printf("\t안녕하세요 %s 관리자님!\n",mem_name);
 	        System.out.println();
@@ -32,15 +33,14 @@ public class AdministratorView implements ConsoleColor{
 	        System.out.printf("\t성별 : %s\n",gender);
 	        System.out.printf("\t생년월일 : %s\n",birth);
 	        System.out.println("=================================================================================");
+	        System.out.println();
 	        System.out.println("\t1. 강사 관리");
 			System.out.println("\t2. 회원 관리");
 			System.out.println("\t3. 매출 관리");
 			System.out.println("\t(로그아웃을 하려면 \"E\"를 입력해주세요.)");
-			System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
 			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
+//			System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
+			
 	       
 		}
 		
@@ -48,6 +48,7 @@ public class AdministratorView implements ConsoleColor{
 		public static void instructorManagement()	{
 			Header logo = new Header();
 	        logo.Logo();
+	        System.out.println("\t\t\t\t\t\t       관리자 메인페이지/강사 관리");
 	        
 			System.out.println("=================================================================================");
 			System.out.printf("\t쌍용 헬스장에서는 %d명의 강사님이 계십니다!\n",in_mem);
@@ -60,11 +61,8 @@ public class AdministratorView implements ConsoleColor{
 			System.out.println();
 			System.out.println("=================================================================================");
 			System.out.println();
-			System.out.println("\t조회할 강사님의 사번을 적어주세요 : ");
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
+//			System.out.println("\t조회할 강사님의 사번을 적어주세요 : ");
+			
 			
 		}
 		
@@ -84,12 +82,8 @@ public class AdministratorView implements ConsoleColor{
 			System.out.println();
 			System.out.println("=================================================================================");
 			System.out.println();
-			System.out.println("\t조회할 강사님의 사번을 적어주세요 : ");
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			
+//			System.out.println("\t조회할 강사님의 사번을 적어주세요 : ");
+		
 		}
 		
 		//강사 선택 성공
@@ -97,19 +91,18 @@ public class AdministratorView implements ConsoleColor{
 		public static void selectInstructor() {
 			Header logo = new Header();
 	        logo.Logo();
+	        System.out.println("\t\t\t\t\t\t       관리자 메인페이지/강사 관리");
 	        System.out.println("=================================================================================");
 	        System.out.printf("\t%s %s님을 선택하셨습니다.\n",in_name[0],position[0]);
 	        System.out.println("=================================================================================");
 	        System.out.println();
+	        System.out.println("\t(메인으로 돌아가려면 #을 입력하세요.)");
 	        System.out.println("\t1. 근퇴 기록 관리");
 	        System.out.println("\t2. 수업 관리");
 	        System.out.println("\t3. 수업료 정산");
-	        System.out.println("\t(메인으로 돌아가려면 #을 입력하세요.)");
-	        System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
 	        System.out.println();
-	        System.out.println();
-	        System.out.println();
-	        System.out.println();
+//	        System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
+	      
 	        
 		}
 		
@@ -125,6 +118,7 @@ public class AdministratorView implements ConsoleColor{
 
             Header logo = new Header();
 	        logo.Logo();
+	        System.out.println("\t\t\t\t\t관리자 메인페이지/강사 관리/근퇴 기록 관리");
             System.out.println("=================================================================================");
             System.out.printf("\t%s %s님의 이번주 근퇴 현황입니다.(%tF~%tF)\r\n"
                                 ,in_name[0],position[0], startOfWeek, endOfWeek);
@@ -142,18 +136,98 @@ public class AdministratorView implements ConsoleColor{
             System.out.println();
             System.out.println("=================================================================================");
             System.out.println();
+            System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
             System.out.println("\t1. 근퇴 기록 조회하기");
             System.out.println("\t2. 근퇴 기록 수정하기");
-            System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
-            System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
             System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println();
+//          System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
+            
 			
 		}
 		
+		//달력 표시하고 근퇴 기록 조회할 날짜 받기
+		public static void getAttendanceRecords() {
+			CalendarView printCal = new CalendarView();
+			
+			
+			Header logo = new Header();
+	        logo.Logo();
+	        System.out.println("\t\t\t\t\t관리자 메인페이지/강사 관리/근퇴 기록 조회");
+			printCal.printCalendar();
+			System.out.println("=================================================================================");
+			//(지각, 조퇴, 결근인 경우 * 표시를 할 수 있나요)
+			System.out.println();
+//			System.out.print("조회할 날짜를 입력하세요(YYYY-MM-DD) :");
+		}
 		
+		//날짜 입력 받고 조회
+		public static void getAttendanceDate() {
+			
+			Header logo = new Header();
+	        logo.Logo();
+	        System.out.println("\t\t\t\t\t관리자 메인페이지/강사 관리/근퇴 기록 조회");
+			System.out.println("=================================================================================");
+			System.out.printf("%s %s님의 %s 근퇴 기록 조회",in_name[2],position[3],"2025-01-02");
+			System.out.printf("출근 시간 : %s\n","9:00");
+			System.out.printf("퇴근 시간 : %s\n","19:00");
+			System.out.printf("결과 : %s\n","조퇴");
+			System.out.println("=================================================================================");
+			System.out.println();
+			System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
+		}
 		
+		//날짜 입력 받고 조회
+		public static void editAttendance() {
+			
+			Header logo = new Header();
+	        logo.Logo();
+	        System.out.println("\t\t\t\t\t관리자 메인페이지/강사 관리/근퇴 기록 수정");
+			System.out.println("=================================================================================");
+			System.out.printf("%s %s님의 %s 근퇴 기록 조회",in_name[2],position[3],"2025-01-02");
+			System.out.printf("출근 시간 : %s\n","9:00");
+			System.out.printf("퇴근 시간 : %s\n","19:00");
+			System.out.printf("결과 : %s\n","조퇴");
+			System.out.println("=================================================================================");
+			System.out.println();
+			System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
+//			System.out.println("수정할 값을 입력하세요");
+//			System.out.println("출근 시간 : ");
+//			System.out.println("퇴근 시간 : ");
+//			System.out.println("결과 : ");
+		}
+		
+		//4-1-2 수업관리, 해당 강사의 수업관리와 같다.
+		public static void manageClass() {
+			
+			Header logo = new Header();
+	        logo.Logo();
+	        System.out.println("\t\t\t\t\t\t       관리자 메인페이지/강사 관리/수업 관리");
+			System.out.println("=================================================================================");
+			System.out.printf("%s %s님의 수업관리 상세보기 페이지입니다.",in_name[2],position[3]);
+			System.out.println("=================================================================================");
+			System.out.println();
+			System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
+			System.out.println("\t1. 날짜 검색");
+			System.out.println("\t2. 회원 검색");
+			System.out.println();
+//			System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
+		}
+		
+		//4-2 회원 관리
+		public static void managPpl() {
+			
+			Header logo = new Header();
+	        logo.Logo();
+	        System.out.println("\t\t\t\t\t\t       관리자 메인페이지/수업 관리");
+			System.out.println("=================================================================================");
+			System.out.printf("%s %s님의 수업관리 상세보기 페이지입니다.",in_name[2],position[3]);
+			System.out.println("=================================================================================");
+			System.out.println();
+			System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
+			System.out.println("\t1. 날짜 검색");
+			System.out.println("\t2. 회원 검색");
+			System.out.println();
+//					System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
+		}
 
 }

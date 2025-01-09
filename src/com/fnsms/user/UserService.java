@@ -96,7 +96,7 @@ public class UserService {
 	
 	
 	
-	private static void pause() {
+	protected static void pause() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println();
 		
