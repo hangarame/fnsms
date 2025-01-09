@@ -10,6 +10,9 @@ import com.fnsms.dao.TicketRegistrationDAO;
 import com.fnsms.member.Member;
 import com.fnsms.ticket.Ticket;
 import com.fnsms.ticketregistration.TicketRegistration;
+import com.test.memo.domain.Memo;
+import com.test.memo.repsitory.MemoDAO;
+import com.test.memo.view.MemoView;
 
 public class EmpService {
 
@@ -242,6 +245,8 @@ public class EmpService {
                 System.out.println("삭제가 취소되었습니다.");
             }//if
         }//deleteMember
+
+		private ArrayList<TicketRegistration> ticketRegList;
     
 
 	
@@ -252,10 +257,8 @@ public class EmpService {
 
 	
 
-	// 이용권정보조회
-	public ArrayList<TicketRegistration> inquriyOwnTicketInfo() {
-		return null;
-	}
+	// 회원 이용권 정보조회
+
 
 	
 	// 회원이용권등록
@@ -299,10 +302,59 @@ public class EmpService {
  
 	
 
-
 	// 회원이용권정보수정
 	public TicketRegistration updateRegTicket() {
-		return null;
+		//메모수정 > 순서?
+		//1. 컨텍스트 > 제목 출력
+		//2. 사용자 > 수정 메모 번호 입력
+		//3. 파일읽기(선택 메모)
+		//4. 출력(기존내용)
+		//5. 수정내용 > 입력
+		//6. 파일수정
+		
+		Scanner scan = new Scanner(System.in);
+		
+		//1.
+		System.out.println();
+		MemoView.subMenu("메모수정");	
+		System.out.println("수정을 원하지 않는 값은 그냥 엔터를 입력하세요.");
+
+		//2.
+		System.out.print("번호: ");
+		String seq = scan.nextLine();
+		
+		//5.
+		//1●홍길동●메모입니다.●2025-01-02 12:05:40
+		String name = "";
+		String memo = "";
+		
+		System.out.print("이름: ");
+		name = scan.nextLine(); //name = "";
+		
+		System.out.print("메모: ");
+		memo = scan.nextLine(); //memo = "";
+		
+		//Calendar now = Calendar.getInstance();
+		//String regdate = String.format("%tF %tT", now, now);
+		
+		//6.
+		//수정할 메모 찾기
+		for (Memo m : MemoDAO.mlist) {
+			
+			if (m.getSeq().equals(seq)) {
+				
+				//수정하려는 메모?
+				if (!name.equals("")) {
+					m.setName(name);
+				}
+				
+				if (!memo.equals("")) {
+					m.setMemo(memo);
+				}
+			}
+		}
+	
+	return null;
 	}
 
 	// 회원이용권정보삭제
