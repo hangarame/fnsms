@@ -51,14 +51,14 @@ public class InstructorView implements ConsoleColor {
 	}
 
 	// 근퇴 관리
-	public static void printInquiryAtendance() {// 결과 출력 수정
+	public static void printInquiryAtendance(String[] commuteResult, String instrutorName, String position ) {// 결과 출력 수정
 
 		now.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
 		Calendar startOfWeek = (Calendar) now.clone();
 		Calendar endOfWeek = (Calendar) now.clone();
 		endOfWeek.add(Calendar.DATE, 6);
 
-		String[] commuteResult = { null, null, null, null, null, null, null };
+//		String[] commuteResult = { null, null, null, null, null, null, null };
 
 		Header logo = new Header();
 		logo.Logo();
@@ -70,8 +70,8 @@ public class InstructorView implements ConsoleColor {
 		System.out.println("=================================================================================");
 		System.out.println();
 		System.out.println("\t[일]\t[월]\t[화]\t[수]\t[목]\t[금]\t[토]");
-		System.out.printf("\t%s\t%s\t%s\t%s\t%s\t%s\t%s\r\n", commuteResult[0], commuteResult[1], commuteResult[2],
-				commuteResult[3], commuteResult[4], commuteResult[5], commuteResult[6]);
+		System.out.printf("\t%s\t%s\t%s\t%s\t%s\t%s\t%s\r\n", commuteResult[0] != null ? commuteResult[0] : "\t", commuteResult[1] != null ? commuteResult[1] : "\t" , commuteResult[2] != null ? commuteResult[2] : "\t",
+				commuteResult[3] != null ? commuteResult[3] : "\t", commuteResult[4] != null ? commuteResult[4] : "\t", commuteResult[5] != null ? commuteResult[5] : "\t" , commuteResult[6] != null ? commuteResult[6] : "\t");
 		System.out.println();
 		System.out.println("=================================================================================");
 		System.out.println();
@@ -85,7 +85,7 @@ public class InstructorView implements ConsoleColor {
 	}
 
 	// 출근 기록하기
-	public static void printAtendancePunchIn() {
+	public static void printAtendancePunchIn(String instrutorName, String position, Calendar checkInTime) {
 
 		Header logo = new Header();
 		logo.Logo();

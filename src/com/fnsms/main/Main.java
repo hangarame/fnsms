@@ -6,6 +6,8 @@ import com.fnsms.dao.MemberDAO;
 import com.fnsms.dao.ReservationDAO;
 import com.fnsms.dao.TicketDAO;
 import com.fnsms.dao.TicketRegistrationDAO;
+import com.fnsms.instructor.Instructor;
+import com.fnsms.instructor.InstructorService;
 import com.fnsms.user.User;
 import com.fnsms.user.UserService;
 
@@ -20,6 +22,8 @@ public class Main {
         ReservationDAO.load();
         TicketDAO.load();
         TicketRegistrationDAO.load();
+//        InstructorService ins = new InstructorService("i00000001");
+//        ins.getThisWeekAttendance(ins.getInstructor());
         
         // 2) 로그인 & 메인 메뉴 반복
         //    (로그인 화면에서 'E'를 누르면 프로그램 종료)

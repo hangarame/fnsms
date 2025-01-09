@@ -31,18 +31,25 @@ public class AttendanceDAO {
 				
 				
 				Calendar startTime = Calendar.getInstance();
-				startTime.set(Integer.parseInt(temp[2].substring(0, 4)), Integer.parseInt(temp[2].substring(4, 6)) - 1, Integer.parseInt(temp[2].substring(6,8)));
-				startTime.set(Calendar.HOUR_OF_DAY, Integer.parseInt(temp[2].substring(8, 10)));
-				startTime.set(Calendar.MINUTE, Integer.parseInt(temp[2].substring(10, 12)));
-				startTime.set(Calendar.SECOND, Integer.parseInt(temp[2].substring(12)));
 				
+				try {
+					startTime.set(Integer.parseInt(temp[2].substring(0, 4)), Integer.parseInt(temp[2].substring(4, 6)) - 1, Integer.parseInt(temp[2].substring(6,8)));
+					startTime.set(Calendar.HOUR_OF_DAY, Integer.parseInt(temp[2].substring(8, 10)));
+					startTime.set(Calendar.MINUTE, Integer.parseInt(temp[2].substring(10, 12)));
+					startTime.set(Calendar.SECOND, Integer.parseInt(temp[2].substring(12)));
+				} catch (Exception e) {
+					startTime = null;
+				}
 				Calendar endTime = Calendar.getInstance();
-				endTime.set(Integer.parseInt(temp[3].substring(0, 4)), Integer.parseInt(temp[3].substring(4, 6)) - 1, Integer.parseInt(temp[3].substring(6,8)));
-				endTime.set(Calendar.HOUR_OF_DAY, Integer.parseInt(temp[3].substring(8, 10)));
-				endTime.set(Calendar.MINUTE, Integer.parseInt(temp[3].substring(10, 12)));
-				endTime.set(Calendar.SECOND, Integer.parseInt(temp[3].substring(12)));
-
 				
+				try {
+					endTime.set(Integer.parseInt(temp[3].substring(0, 4)), Integer.parseInt(temp[3].substring(4, 6)) - 1, Integer.parseInt(temp[3].substring(6,8)));
+					endTime.set(Calendar.HOUR_OF_DAY, Integer.parseInt(temp[3].substring(8, 10)));
+					endTime.set(Calendar.MINUTE, Integer.parseInt(temp[3].substring(10, 12)));
+					endTime.set(Calendar.SECOND, Integer.parseInt(temp[3].substring(12)));
+				} catch (Exception e) {
+					endTime = null;
+				}
 				
 				attendanceList.add(new Attendance(temp[0], temp[1], startTime, endTime,Integer.parseInt(temp[4])));
 
@@ -73,23 +80,51 @@ public class AttendanceDAO {
 //			FileWriter writer = new FileWriter(".\\data\\testsave.txt");
 			
 			for(Attendance att : attendanceList ) {
+				String startYyyy;
+				String startMm;
+				String startDd;
+				String startHh;
+				String startMi;
+				String startSs;
+				String startYYYYMMDDHHMISS;
 				
-				String startYyyy = att.getStartWorkTime().get(Calendar.YEAR) +"";
-				String startMm = String.format("%02d", (att.getStartWorkTime().get(Calendar.MONTH) + 1)) ;
-				String startDd = String.format("%02d", att.getStartWorkTime().get(Calendar.DATE));
-				String startHh = String.format("%02d", att.getStartWorkTime().get(Calendar.HOUR_OF_DAY));
-				String startMi = String.format("%02d", att.getStartWorkTime().get(Calendar.MINUTE));
-				String startSs = String.format("%02d", att.getStartWorkTime().get(Calendar.SECOND));  
+				try {
+					startYyyy = att.getStartWorkTime().get(Calendar.YEAR) +"";
+					startMm = String.format("%02d", (att.getStartWorkTime().get(Calendar.MONTH) + 1)) ;
+					startDd = String.format("%02d", att.getStartWorkTime().get(Calendar.DATE));
+					startHh = String.format("%02d", att.getStartWorkTime().get(Calendar.HOUR_OF_DAY));
+					startMi = String.format("%02d", att.getStartWorkTime().get(Calendar.MINUTE));
+					startSs = String.format("%02d", att.getStartWorkTime().get(Calendar.SECOND));
+					
+					startYYYYMMDDHHMISS = startYyyy + startMm + startDd + startHh + startMi + startSs;
+					
+				} catch (Exception e) {
+					startYYYYMMDDHHMISS = "";
+				}
 				
-				String endYyyy = att.getEndWorkTime().get(Calendar.YEAR) +"";
-				String endMm = String.format("%02d", (att.getEndWorkTime().get(Calendar.MONTH) + 1));
-				String endDd = String.format("%02d", att.getEndWorkTime().get(Calendar.DATE));
-				String endHh = String.format("%02d", att.getEndWorkTime().get(Calendar.HOUR_OF_DAY));
-				String endMi = String.format("%02d", att.getEndWorkTime().get(Calendar.MINUTE));
-				String endSs = String.format("%02d", att.getEndWorkTime().get(Calendar.SECOND));
+				String endYyyy;
+				String endMm;
+				String endDd;
+				String endHh;
+				String endMi;
+				String endSs;
+				String endYYYYMMDDHHMISS;
 				
-				
-				String line = att.getEmpNo() + "◈" + att.getWorkDate() + "◈" + startYyyy + startMm + startDd + startHh + startMi + startSs + "◈" + endYyyy + endMm + endDd + endHh + endMi + endSs + "◈" + att.getPayment() + "\r\n" ;
+				try {
+					endYyyy = att.getEndWorkTime().get(Calendar.YEAR) +"";
+					endMm = String.format("%02d", (att.getEndWorkTime().get(Calendar.MONTH) + 1));
+					endDd = String.format("%02d", att.getEndWorkTime().get(Calendar.DATE));
+					endHh = String.format("%02d", att.getEndWorkTime().get(Calendar.HOUR_OF_DAY));
+					endMi = String.format("%02d", att.getEndWorkTime().get(Calendar.MINUTE));
+					endSs = String.format("%02d", att.getEndWorkTime().get(Calendar.SECOND));
+					
+					endYYYYMMDDHHMISS = endYyyy + endMm + endDd + endHh + endMi + endSs;
+					
+				} catch (Exception e) {
+					endYYYYMMDDHHMISS = "";
+				}
+								
+				String line = att.getEmpNo() + "◈" + att.getWorkDate() + "◈" + startYYYYMMDDHHMISS + "◈" + endYYYYMMDDHHMISS + "◈" + att.getPayment() + "\r\n" ;
 				
 
 				writer.write(line);
