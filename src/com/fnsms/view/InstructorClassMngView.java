@@ -39,7 +39,6 @@ public class InstructorClassMngView implements ConsoleColor {
 		logo.Logo();
 		System.out.println("\t\t\t\t\t\t\t\t날짜별 예약 조회");
 		System.out.println("=================================================================================");
-<<<<<<< HEAD
 		System.out.println();
 		System.out.printf("\t%s %s님의 날짜별 예약현황 조회 페이지입니다.\r\n", InstructorView.instrutorName, InstructorView.position);
 		System.out.println();
@@ -47,11 +46,7 @@ public class InstructorClassMngView implements ConsoleColor {
 		System.out.println();
 		CalendarView calendar = new CalendarView();
 		calendar.start();
-=======
 		System.out.printf("\t%s %s님의 날짜별 예약현황 조회 페이지입니다.\r\n", name, position);
-		CalendarView calendar = new CalendarView();
-		calendar.printCalendar();
->>>>>>> main
 		System.out.println();
 		System.out.println("=================================================================================");
 		System.out.println();
