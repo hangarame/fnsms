@@ -32,8 +32,8 @@ public class CalendarView implements ConsoleColor {
             
             System.out.println("\t다음달 일정을 보려면 \" >\"를,");
             System.out.println("\t이전달 일정을 보려면 \" <\"를,");
-            System.out.println("\t메인으로 돌아가려면 \"#\"을 입력해주세요.");
-            System.out.print("\t입력 : ");
+            System.out.println("\t이전 화면으로 돌아가려면 \"#\"을 입력해주세요.");
+            System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
             input = scanner.nextLine();
             System.out.println();
             System.out.println();
