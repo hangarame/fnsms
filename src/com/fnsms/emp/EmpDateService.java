@@ -12,6 +12,7 @@ import java.util.Scanner;
 import com.fnsms.instructor.InstructorService;
 import com.fnsms.view.CalendarView;
 import com.fnsms.view.Header;
+import com.fnsms.view.InstructorView;
 
 public class EmpDateService {
     private Scanner scanner = new Scanner(System.in);
@@ -61,8 +62,9 @@ public class EmpDateService {
         System.out.println("\t3. 예약 취소하기");
         System.out.println();
         System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
-        
-        String input = scanner.nextLine();
+        Scanner scan = new Scanner(System.in);
+   
+        String input = scan.nextLine();
 
         switch (input) {
             case "1":
@@ -78,12 +80,13 @@ public class EmpDateService {
             	System.out.println();
             	System.out.println("\t엔터를 눌러 이전 화면으로 이동하세요.");
                 scanner.nextLine(); // 엔터 입력 대기
-                InstructorService.classManagement();
-            	return false;
-            default:
-                System.out.println("\t잘못된 입력입니다. 다시 시도해주세요.");
+                InstructorView.printMainMenu("김계란", "PT", "010-1234-1234", "92-02-12", 8, "0");
+                break;
+        default:
+            System.out.println("\t올바른 입력이 아닙니다. 다시 시도해주세요.");
         }
-        return true;
+		return false;
+        
     }
 
     private void addReservation(String date) {
@@ -147,7 +150,7 @@ public class EmpDateService {
              viewReservationDetails(date); 
              
          } catch (NumberFormatException e) {
-             System.out.println("유효한 시간을 입력해주세요. (예: 09)");
+             System.out.println("\t유효한 시간을 입력해주세요. (예: 09)");
          
          }
     }
@@ -211,7 +214,7 @@ public class EmpDateService {
              
             
          } catch (NumberFormatException e) {
-             System.out.println("유효한 시간을 입력해주세요. (예: 09)");
+             System.out.println("\t유효한 시간을 입력해주세요. (예: 09)");
              viewReservationDetails(date); // 이전 메뉴로 돌아가기
          }
          

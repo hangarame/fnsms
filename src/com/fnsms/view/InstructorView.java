@@ -24,7 +24,6 @@ public class InstructorView implements ConsoleColor {
 
 		Header logo = new Header();
 		logo.Logo();
-		System.out.println("\t\t\t\t\t\t\t\t강사 메인페이지");
 		System.out.println("=================================================================================");
 		System.out.printf("\t안녕하세요, %s %s님!\r\n", insName, position);
 		System.out.println();
@@ -65,7 +64,6 @@ public class InstructorView implements ConsoleColor {
 
         Header logo = new Header();
         logo.Logo();
-        System.out.println("\t\t\t\t\t\t\t\t강사 근퇴 관리");
         System.out.println("=================================================================================");
         System.out.println();
         System.out.printf("\t%s %s님의 이번주 근퇴 현황입니다.(%tF~%tF)\r\n", instrutorName, position, startOfWeek, endOfWeek);
@@ -92,7 +90,6 @@ public class InstructorView implements ConsoleColor {
 
 		Header logo = new Header();
 		logo.Logo();
-		System.out.println("\t\t\t\t\t\t\t\t강사 근퇴 : 출근");
 		System.out.println("=================================================================================");
 		System.out.printf("%s %s %tF %tT 출근되었습니다.\r\n", instrutorName, position, checkInTime, checkInTime);
 		System.out.println("=================================================================================");
@@ -107,7 +104,6 @@ public class InstructorView implements ConsoleColor {
 	public static void printAtendancePunchOut() {
 		Header logo = new Header();
 		logo.Logo();
-		System.out.println("\t\t\t\t\t\t\t\t강사 근퇴 : 퇴근");
 		System.out.println("=================================================================================");
 		System.out.printf("%s %s %tF %tT 출근되었습니다.\r\n", instrutorName, position, checkOutTime, checkOutTime);
 		System.out.println("=================================================================================");
@@ -122,7 +118,6 @@ public class InstructorView implements ConsoleColor {
 	public static void printCheckAttendanceRecord() {
 		Header logo = new Header();
 		logo.Logo();
-		System.out.println("\t\t\t\t\t\t\t\t강사 근퇴 기록 조회");
 		System.out.println("=================================================================================");
 		System.out.println();
 		System.out.printf("\t%s %s님의 근퇴기록을 조회할 날짜를 입력해주세요.\r\n", instrutorName, position);
@@ -141,7 +136,6 @@ public class InstructorView implements ConsoleColor {
 
 		Header logo = new Header();
 		logo.Logo();
-		System.out.println("\t\t\t\t\t\t\t강사 근퇴 조회 결과");
 		System.out.println("=================================================================================");
 		System.out.println();
 		System.out.printf("\t조회하신 [%tF] %s님의 근퇴결과는 [%s]입니다.\r\n", commutingCheckDate, instrutorName, commutingResult);

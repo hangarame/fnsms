@@ -13,7 +13,6 @@ public class InstructorMemberView {
 	public static void memberManagement() {
 		Header logo = new Header();
 		logo.Logo();
-		System.out.println("\t\t\t\t\t\t\t   강사 메인페이지/회원 관리");
 		System.out.println("=================================================================================");
 		System.out.printf("\t쌍용 헬스장의 회원수는 %d명입니다.\n",total_mem);
 		System.out.printf("\t%s %s님의 담당 회원수는 %d명입니다.\n",id,position,manage_mem);
@@ -32,7 +31,6 @@ public class InstructorMemberView {
 	public static void newMemRegistration() {
 		Header logo = new Header();
 		logo.Logo();
-		System.out.println("\t\t\t\t\t\t강사 메인페이지/회원 관리/회원 신규 등록");
 		System.out.println("=================================================================================");
 		System.out.println("\t회원 신규 등록을 위한 회원 이름, 전화번호, 생년월일, 성별을 입력해주세요.");
 		System.out.println("=================================================================================");
@@ -50,7 +48,6 @@ public class InstructorMemberView {
 	public static void searchMember() {
 		Header logo = new Header();
 		logo.Logo();
-		System.out.println("\t\t\t\t\t\t\t강사 메인페이지/회원 관리/회원 조회");
 		System.out.println("=================================================================================");
 		System.out.println("\t회원 조회를 위해 회원 이름을 입력해주세요.");
 		System.out.println("=================================================================================");
@@ -64,7 +61,6 @@ public class InstructorMemberView {
 		public static void searchMemberFailed() {
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t\t\t\t강사 메인페이지/회원 관리/회원 조회");
 			System.out.println("=================================================================================");
 			System.out.println("\t※ 입력한 이름은 없는 회원입니다! 회원 이름을 다시 입력해주세요.");
 			System.out.println("=================================================================================");
@@ -80,7 +76,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t\t\t\t강사 메인페이지/회원 관리/회원 조회");
 			System.out.println("=================================================================================");
 			System.out.printf("\t검색한 %s 회원님 명단입니다.\n",member);
 			System.out.printf("\t[번호]\t[이름]\t[담당자]\t[전화번호]\t\t[생년월일]\t\t[성별]\n");
@@ -99,7 +94,6 @@ public class InstructorMemberView {
 				String member = "홍길동"; //홍길동을 입력 받았을때
 				Header logo = new Header();
 				logo.Logo();
-				System.out.println("\t\t\t\t\t\t\t강사 메인페이지/회원 관리/회원 조회");
 				System.out.println("=================================================================================");
 				System.out.printf("\t검색한 %s 회원님 명단입니다.\n",member);
 				System.out.printf("\t[번호]\t[이름]\t[담당자]\t[전화번호]\t\t[생년월일]\t\t[성별]\n");
@@ -118,7 +112,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t\t\t\t강사 메인페이지/회원 관리/회원 조회");
 			System.out.println("=================================================================================");
 			System.out.printf("\t이름 : %s\n",member);
 			System.out.printf("\t연락처 : %s\n","010-3345-8977");
@@ -140,7 +133,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t\t    강사 메인페이지/회원 관리/회원 조회/회원 정보 수정");
 			System.out.println("=================================================================================");
 			System.out.printf("\t이름 : %s\n",member);
 			System.out.printf("\t연락처 : %s\n","010-3345-8977");
@@ -163,7 +155,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t     강사 메인페이지/회원 관리/회원 조회/회원 정보 수정/이름 변경");
 			System.out.println("=================================================================================");
 			System.out.println("\t이름 :");
 			System.out.printf("\t연락처 : %s\n","010-3345-8977");
@@ -182,7 +173,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t   강사 메인페이지/회원 관리/회원 조회/회원 정보 수정/전화번호 변경");
 			System.out.println("=================================================================================");
 			System.out.printf("\t이름 : %s\n",member);
 			System.out.printf("\t연락처 : %s\n","");
@@ -202,7 +192,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t     강사 메인페이지/회원 관리/회원 조회/회원 정보 수정/성별 변경");
 			System.out.println("=================================================================================");
 			System.out.printf("\t이름 : %s\n",member);
 			System.out.printf("\t연락처 : %s\n","010-3345-8977");
@@ -222,7 +211,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t   강사 메인페이지/회원 관리/회원 조회/회원 정보 수정/생년월일 변경");
 			System.out.println("=================================================================================");
 			System.out.printf("\t이름 : %s\n",member);
 			System.out.printf("\t연락처 : %s\n","010-3345-8977");
@@ -243,7 +231,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t     강사 메인페이지/회원 관리/회원 조회/회원 정보 수정/회원 삭제");
 			System.out.println("=================================================================================");
 			System.out.printf("\t이름 : %s\n",member);
 			System.out.printf("\t연락처 : %s\n","010-3345-8977");
@@ -266,7 +253,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t\t   강사 메인페이지/회원 관리/회원 조회/이용권 신규 등록");
 			System.out.println("=================================================================================");
 			System.out.println("\t"+ member + "님의 이용권 신규 등록을 위해 ");
 			System.out.println("\t등록일, 이용권 구분, 담당자, 이용 기간, 시작일, 금액을 입력하세요.");
@@ -289,7 +275,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t\t       강사 메인페이지/회원 관리/회원 조회/이용권 수정");
 			System.out.println("=================================================================================");
 			System.out.println("\t"+ member + "님이 현재 이용중인 이용권 목록입니다.");
 			System.out.println("\t1. 헬스 이용권 수정(시작일-종료일)");
@@ -308,7 +293,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t\t       강사 메인페이지/회원 관리/회원 조회/이용권 수정");
 			System.out.println("=================================================================================");
 			System.out.println("\t"+ member + "님이 현재 이용중인 이용권 목록입니다.");
 			System.out.println("=================================================================================");
@@ -340,7 +324,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t      강사 메인페이지/회원 관리/회원 조회/이용권 수정/등록일 변경");
 			System.out.println("=================================================================================");
 			System.out.println("\t[등록일]\t\t[이름]\t[이용권 구분]\t[담당자]\t\t[기간]");
 			System.out.printf("\t%s\t%s\t%6s\t\t%4s\t\t%3d\n","","홍길동","PT","아무개",30);
@@ -367,7 +350,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t   강사 메인페이지/회원 관리/회원 조회/이용권 수정/이용권 구분 변경");
 			System.out.println("=================================================================================");
 			System.out.println("\t[등록일]\t\t[이름]\t[이용권 구분]\t[담당자]\t\t[기간]");
 			System.out.printf("\t%10s%9s%10s%14s%15d\n","2025-15-23","홍길동","","아무개",30);
@@ -393,7 +375,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t    강사 메인페이지/회원 관리/회원 조회/이용권 수정/이용 기간 변경");
 			System.out.println("=================================================================================");
 			System.out.println("\t[등록일]\t\t[이름]\t[이용권 구분]\t[담당자]\t\t[기간]");
 			System.out.printf("\t%10s%9s%10s%14s%15d\n","2025-15-23","홍길동","PT","아무개",0);
@@ -418,7 +399,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t      강사 메인페이지/회원 관리/회원 조회/이용권 수정/담당자 변경");
 			System.out.println("=================================================================================");
 			System.out.println("\t[등록일]\t\t[이름]\t[이용권 구분]\t[담당자]\t\t[기간]");
 			System.out.printf("\t%10s%9s%10s%14s%15d\n","2025-15-23","","PT","아무개",30);
@@ -446,7 +426,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t      강사 메인페이지/회원 관리/회원 조회/이용권 수정/시작일 변경");
 			System.out.println("=================================================================================");
 			System.out.println("\t[등록일]\t\t[이름]\t[이용권 구분]\t[담당자]\t\t[기간]");
 			System.out.printf("\t%10s%9s%10s%14s%15d\n","2025-15-23","홍길동","PT","아무개",30);
@@ -471,7 +450,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t      강사 메인페이지/회원 관리/회원 조회/이용권 수정/등록일 변경");
 			System.out.println("=================================================================================");
 			System.out.println("\t[등록일]\t\t[이름]\t[이용권 구분]\t[담당자]\t\t[기간]");
 			System.out.printf("\t%10s%9s%10s%14s%15d\n","2025-15-23","홍길동","PT","아무개",30);
@@ -495,7 +473,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t\t강사 메인페이지/회원 관리/회원 조회/이용권 수정/금액 변경");
 			System.out.println("=================================================================================");
 			System.out.println("\t[등록일]\t\t[이름]\t[이용권 구분]\t[담당자]\t\t[기간]");
 			System.out.printf("\t%10s%9s%10s%14s%15d\n","2025-15-23","홍길동","PT","아무개",30);
@@ -519,7 +496,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t\t       강사 메인페이지/회원 관리/회원 조회/이용권 삭제");
 			System.out.println("=================================================================================");
 			System.out.println("\t"+ member + "님이 현재 이용중인 이용권 목록입니다.");
 			System.out.println("=================================================================================");
@@ -565,7 +541,6 @@ public class InstructorMemberView {
 			
 			Header logo = new Header();
 			logo.Logo();
-			System.out.println("\t\t\t\t\t\t\t     강사 메인페이지/수업료 정산");
 			System.out.println("=================================================================================");
 			System.out.printf( "\t%s은 이번달 %d시간 근무했습니다.\n",name,currentMonthHours);
 	        System.out.printf("\t%d년 %d월 수업 횟수는 %d회 입니다.\n",currentYear, currentMonth,currentMonthLessons);

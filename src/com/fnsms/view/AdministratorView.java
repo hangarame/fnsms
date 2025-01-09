@@ -25,7 +25,6 @@ public class AdministratorView implements ConsoleColor{
 
 			Header logo = new Header();
 	        logo.Logo();
-	        System.out.println("\t\t\t\t\t\t\t\t 관리자 메인페이지");
 	        System.out.println("=================================================================================");
 	        System.out.printf("\t안녕하세요 %s 관리자님!\n",mem_name);
 	        System.out.println();
@@ -48,7 +47,6 @@ public class AdministratorView implements ConsoleColor{
 		public static void instructorManagement()	{
 			Header logo = new Header();
 	        logo.Logo();
-	        System.out.println("\t\t\t\t\t\t       관리자 메인페이지/강사 관리");
 	        
 			System.out.println("=================================================================================");
 			System.out.printf("\t쌍용 헬스장에서는 %d명의 강사님이 계십니다!\n",in_mem);
@@ -91,7 +89,6 @@ public class AdministratorView implements ConsoleColor{
 		public static void selectInstructor() {
 			Header logo = new Header();
 	        logo.Logo();
-	        System.out.println("\t\t\t\t\t\t       관리자 메인페이지/강사 관리");
 	        System.out.println("=================================================================================");
 	        System.out.printf("\t%s %s님을 선택하셨습니다.\n",in_name[0],position[0]);
 	        System.out.println("=================================================================================");
@@ -118,7 +115,6 @@ public class AdministratorView implements ConsoleColor{
 
             Header logo = new Header();
 	        logo.Logo();
-	        System.out.println("\t\t\t\t\t관리자 메인페이지/강사 관리/근퇴 기록 관리");
             System.out.println("=================================================================================");
             System.out.printf("\t%s %s님의 이번주 근퇴 현황입니다.(%tF~%tF)\r\n"
                                 ,in_name[0],position[0], startOfWeek, endOfWeek);
@@ -152,7 +148,6 @@ public class AdministratorView implements ConsoleColor{
 			
 			Header logo = new Header();
 	        logo.Logo();
-	        System.out.println("\t\t\t\t\t관리자 메인페이지/강사 관리/근퇴 기록 조회");
 			printCal.printCalendar();
 			System.out.println("=================================================================================");
 			//(지각, 조퇴, 결근인 경우 * 표시를 할 수 있나요)
@@ -165,7 +160,6 @@ public class AdministratorView implements ConsoleColor{
 			
 			Header logo = new Header();
 	        logo.Logo();
-	        System.out.println("\t\t\t\t\t관리자 메인페이지/강사 관리/근퇴 기록 조회");
 			System.out.println("=================================================================================");
 			System.out.printf("%s %s님의 %s 근퇴 기록 조회",in_name[2],position[3],"2025-01-02");
 			System.out.printf("출근 시간 : %s\n","9:00");
@@ -181,7 +175,6 @@ public class AdministratorView implements ConsoleColor{
 			
 			Header logo = new Header();
 	        logo.Logo();
-	        System.out.println("\t\t\t\t\t관리자 메인페이지/강사 관리/근퇴 기록 수정");
 			System.out.println("=================================================================================");
 			System.out.printf("%s %s님의 %s 근퇴 기록 조회",in_name[2],position[3],"2025-01-02");
 			System.out.printf("출근 시간 : %s\n","9:00");
@@ -201,7 +194,6 @@ public class AdministratorView implements ConsoleColor{
 			
 			Header logo = new Header();
 	        logo.Logo();
-	        System.out.println("\t\t\t\t\t\t       관리자 메인페이지/강사 관리/수업 관리");
 			System.out.println("=================================================================================");
 			System.out.printf("%s %s님의 수업관리 상세보기 페이지입니다.",in_name[2],position[3]);
 			System.out.println("=================================================================================");
@@ -218,7 +210,6 @@ public class AdministratorView implements ConsoleColor{
 			
 			Header logo = new Header();
 	        logo.Logo();
-	        System.out.println("\t\t\t\t\t\t       관리자 메인페이지/수업 관리");
 			System.out.println("=================================================================================");
 			System.out.printf("%s %s님의 수업관리 상세보기 페이지입니다.",in_name[2],position[3]);
 			System.out.println("=================================================================================");

@@ -332,7 +332,7 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
         boolean isRunning = true;
 
         while(isRunning) {
-            System.out.println("\t🖙 원하는 작업을 입력하세요: ");
+            System.out.print("\t🖙 원하는 작업을 입력하세요: ");
             String input = scan.nextLine();
 
             switch (input) {
