@@ -32,7 +32,7 @@ public class InstructorMemberView {
 	public static void newMemRegistration() {
 		Header logo = new Header();
 		logo.Logo();
-		System.out.println("\t\t\t\t\t\t    강사 메인페이지/회원 관리/회원 신규 등록");
+		System.out.println("\t\t\t\t\t\t강사 메인페이지/회원 관리/회원 신규 등록");
 		System.out.println("=================================================================================");
 		System.out.println("\t회원 신규 등록을 위한 회원 이름, 전화번호, 생년월일, 성별을 입력해주세요.");
 		System.out.println("=================================================================================");
