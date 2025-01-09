@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.Scanner;
 
 import com.fnsms.emp.EmpDateService;
+import com.fnsms.instructor.InstructorService;
 
 public class CalendarView implements ConsoleColor {
     private Calendar currentCal;  // 실제 현재 날짜
@@ -33,13 +34,11 @@ public class CalendarView implements ConsoleColor {
             System.out.println("\t다음달 일정을 보려면 \" >\"를,");
             System.out.println("\t이전달 일정을 보려면 \" <\"를,");
             System.out.println("\t이전 화면으로 돌아가려면 \"#\"을 입력해주세요.");
+            System.out.println("\t상세 예약을 보려면 날짜를 선택해주세요.");
             System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
             input = scanner.nextLine();
             System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println();
+            
             
             switch (input) {
                 case ">":
@@ -52,6 +51,7 @@ public class CalendarView implements ConsoleColor {
                     break;
  
                 case "#":
+                	InstructorService.classManagement();
                     return;
                 default:
                 	 try {
@@ -62,12 +62,15 @@ public class CalendarView implements ConsoleColor {
                                  month, 
                                  day);
                              EmpDateService empDateService = new EmpDateService();
-							empDateService.viewReservationDetails(date); // 예약 상세 보기
+                             if(!empDateService.viewReservationDetails(date)) {
+                            	 return;
+                             }
+//							empDateService.viewReservationDetails(date); // 예약 상세 보기
                          } else {
-                             System.out.println("유효한 날짜를 입력해주세요.");
+                             System.out.println("\t유효한 날짜를 입력해주세요.");
                          }
                      } catch (NumberFormatException e) {
-                         System.out.println("잘못된 입력입니다. 다시 시도해주세요.");
+                         System.out.println("\t잘못된 입력입니다. 다시 시도해주세요.");
                      }
                      break;
              }

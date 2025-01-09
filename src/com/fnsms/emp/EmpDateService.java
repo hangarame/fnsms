@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import com.fnsms.instructor.InstructorService;
 import com.fnsms.view.CalendarView;
 import com.fnsms.view.Header;
 
@@ -31,14 +32,14 @@ public class EmpDateService {
     	// 해당 날짜의 예약 데이터를 설정
         if (!reservations.containsKey(date)) {
             reservations.put(date, new ArrayList<>(List.of(
-                "홍길동", "", "전선영", "", "", "이수근",
-                "백예안", "서건훈", "고건아", "허아후", "문현우", ""
+                "홍길동", "", "가동석", "", "", "이수근",
+                "마동석", "서건훈", "고건아", "허아후", "문현우", ""
             )));
         }
     }
     
     //3-2-1-1 날짜를 선택할 경우
-    public void viewReservationDetails(String date) {
+    public boolean viewReservationDetails(String date) {
     	// 예약 데이터 초기화 (필요 시)
         initializeSampleReservations(date);
         Header logo = new Header();
@@ -74,10 +75,15 @@ public class EmpDateService {
                 cancelReservation(date);
                 break;
             case "#":
-                return;
+            	System.out.println();
+            	System.out.println("\t엔터를 눌러 이전 화면으로 이동하세요.");
+                scanner.nextLine(); // 엔터 입력 대기
+                InstructorService.classManagement();
+            	return false;
             default:
-                System.out.println("잘못된 입력입니다. 다시 시도해주세요.");
+                System.out.println("\t잘못된 입력입니다. 다시 시도해주세요.");
         }
+        return true;
     }
 
     private void addReservation(String date) {

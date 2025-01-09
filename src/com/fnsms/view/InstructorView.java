@@ -29,16 +29,18 @@ public class InstructorView implements ConsoleColor {
 		System.out.printf("\t안녕하세요, %s %s님!\r\n", insName, position);
 		System.out.println();
 		System.out.printf("\t연락처 : %s\r\n", tel);
-		System.out.printf("\t성별 : %s\r\n", gender);
+//		System.out.println("\t성별 : 남성");
 		System.out.printf("\t생년월일 : %s\r\n", birth);
 		System.out.printf("\t담당 보유 회원 수 : %d명\r\n", numberOfMngedMember);
 		System.out.println("=================================================================================");
-		System.out.printf("\t%tF [%s %s]님의 수업 일정입니다.\r\n",now , insName, position);
-		if(classTime != null) {
-			System.out.printf("\t- %s %s시\r\n", insName, classTime);
-		} else {
-			System.out.printf("\t-오늘은 수업이 없습니다.\r\n");
-		}
+		System.out.println("\t홍길동 : 9시");
+		System.out.println("\t가동석 : 11시");
+		System.out.println("\t이수근 : 14시");
+		System.out.println("\t마동석 : 15시");
+		System.out.println("\t서건훈 : 16시");
+		System.out.println("\t고건아 : 17시");
+		System.out.println("\t허아후 : 18시");
+		System.out.println("\t문현우 : 19시");
 		System.out.println("=================================================================================");
 		System.out.println();
 		System.out.println("\t1. 근퇴기록하기");
@@ -47,42 +49,43 @@ public class InstructorView implements ConsoleColor {
 		System.out.println("\t4. 수업료 정산");
 		System.out.println("\t(로그아웃을 하려면 E를 입력해주세요.)");
 		System.out.println();
-//			System.out.print("\t🖙 원하는 작업을 입력하세요 :");
+//		System.out.print("\t🖙 원하는 작업을 입력하세요 :");
+		
 	}
 
 	// 근퇴 관리
-	public static void printInquiryAtendance() {// 결과 출력 수정
+	public static void printInquiryAtendance(String[] commuteResult, String instrutorName, String position ) {// 결과 출력 수정
 
-		now.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
-		Calendar startOfWeek = (Calendar) now.clone();
-		Calendar endOfWeek = (Calendar) now.clone();
-		endOfWeek.add(Calendar.DATE, 6);
+        now.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+        Calendar startOfWeek = (Calendar) now.clone();
+        Calendar endOfWeek = (Calendar) now.clone();
+        endOfWeek.add(Calendar.DATE, 6);
 
-		String[] commuteResult = { null, null, null, null, null, null, null };
+//        String[] commuteResult = { null, null, null, null, null, null, null };
 
-		Header logo = new Header();
-		logo.Logo();
-		System.out.println("\t\t\t\t\t\t\t\t강사 근퇴 관리");
-		System.out.println("=================================================================================");
-		System.out.println();
-		System.out.printf("\t%s %s님의 이번주 근퇴 현황입니다.(%tF~%tF)\r\n", instrutorName, position, startOfWeek, endOfWeek);
-		System.out.println();
-		System.out.println("=================================================================================");
-		System.out.println();
-		System.out.println("\t[일]\t[월]\t[화]\t[수]\t[목]\t[금]\t[토]");
-		System.out.printf("\t%s\t%s\t%s\t%s\t%s\t%s\t%s\r\n", commuteResult[0], commuteResult[1], commuteResult[2],
-				commuteResult[3], commuteResult[4], commuteResult[5], commuteResult[6]);
-		System.out.println();
-		System.out.println("=================================================================================");
-		System.out.println();
-		System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
-		System.out.println("\t1. 출근 기록하기");
-		System.out.println("\t2. 퇴근 기록하기");
-		System.out.println("\t3. 근퇴 기록 조회하기");
-		System.out.println();
-		// System.out.println("\t🖙 원하는 작업을 입력하세요 : ");
+        Header logo = new Header();
+        logo.Logo();
+        System.out.println("\t\t\t\t\t\t\t\t강사 근퇴 관리");
+        System.out.println("=================================================================================");
+        System.out.println();
+        System.out.printf("\t%s %s님의 이번주 근퇴 현황입니다.(%tF~%tF)\r\n", instrutorName, position, startOfWeek, endOfWeek);
+        System.out.println();
+        System.out.println("=================================================================================");
+        System.out.println();
+        System.out.println("\t[일]\t[월]\t[화]\t[수]\t[목]\t[금]\t[토]");
+        System.out.printf("\t%s\t%s\t%s\t%s\t%s\t%s\t%s\r\n", commuteResult[0] != null ? commuteResult[0] : "\t", commuteResult[1] != null ? commuteResult[1] : "\t" , commuteResult[2] != null ? commuteResult[2] : "\t",
+                commuteResult[3] != null ? commuteResult[3] : "\t", commuteResult[4] != null ? commuteResult[4] : "\t", commuteResult[5] != null ? commuteResult[5] : "\t" , commuteResult[6] != null ? commuteResult[6] : "\t");
+        System.out.println();
+        System.out.println("=================================================================================");
+        System.out.println();
+        System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
+        System.out.println("\t1. 출근 기록하기");
+        System.out.println("\t2. 퇴근 기록하기");
+        System.out.println("\t3. 근퇴 기록 조회하기");
+        System.out.println();
+        // System.out.println("\t🖙 원하는 작업을 입력하세요 : ");
 
-	}
+    }
 
 	// 출근 기록하기
 	public static void printAtendancePunchIn() {

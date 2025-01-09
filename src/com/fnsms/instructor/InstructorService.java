@@ -12,10 +12,13 @@ import com.fnsms.dao.AttendanceDAO;
 import com.fnsms.dao.EmpDAO;
 import com.fnsms.dao.ReservationDAO;
 import com.fnsms.dao.TicketRegistrationDAO;
+import com.fnsms.emp.Emp;
 import com.fnsms.emp.EmpDateService;
+import com.fnsms.emp.EmpMemberService;
 import com.fnsms.emp.EmpService;
 import com.fnsms.reservation.Reservation;
 import com.fnsms.ticketregistration.TicketRegistration;
+import com.fnsms.user.UserService;
 import com.fnsms.view.InstructorClassMngView;
 import com.fnsms.view.InstructorView;
 
@@ -339,15 +342,20 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
             	empDateService.viewByDate();
                 break;
             case "2":
-                System.out.println("담당회원별 예약 조회를 선택하셨습니다.");
-//                viewByMember();지온
+                System.out.println("\t담당회원별 예약 조회를 선택하셨습니다.");
+                EmpMemberService empMemberService = new EmpMemberService();
+                empMemberService.viewByMember();
                 break;
             case "#":
-                System.out.println("메인으로 돌아갑니다.");
+                System.out.println("\t메인으로 돌아갑니다.");
+                InstructorView.printMainMenu("김계란", "PT", "010-1234-1234", "92-02-12", 8, "0");
+                
+                
+                
                 isRunning = false;
                 break;
             default:
-                System.out.println("올바른 입력이 아닙니다. 다시 시도해주세요.");
+                System.out.println("\t올바른 입력이 아닙니다. 다시 시도해주세요.");
         }
 
             }
@@ -426,59 +434,158 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
 
     
     //3. 강사일 경우<메인화면>
-	public void instructorMainMenu() {
+ 	public void instructorMainMenu() {
 
-		Scanner scan = new Scanner(System.in);
-		//printMainMenu(String insName, String position, String tel, String birth, int memberOfIns, String classTime)
-		
-		String insName = this.instructor.getName();
-		String position = this.instructor.getRole();
-		String tel = this.instructor.getTel();
-		String birth = this.instructor.getBirthDate();
-		int numberOfMngedMember = getNumberOfMngedMember(this.instructor);
-		String classTime = getFirstBookDay(this.instructor) != null ? String.format("%02d", getFirstBookDay(this.instructor).get(Calendar.HOUR_OF_DAY)) : null;
-		 
-		InstructorView.printMainMenu(insName, position, tel, birth, numberOfMngedMember, classTime);
-		
-		//pause();
-		System.out.println();
-		scan.nextLine();
-		
-		/*
-		//회원의 이용중인 유효한 이용권
-		ArrayList<TicketRegistration> validRegList = this.getValidRegstration(this.getMember());
-		
-		MemberView.printMainmenu(this.getMember().getName(), this.getMember().getTel(), this.getMember().getBirthDate()
-				, this.haveUseTowelTicketUse()
-				, validRegList.get(0).getTicket()
-				, this.getTicketRemainIning(validRegList.get(0))
-				, validRegList.get(0).getEndDate());
-		
-//		return validRegList.get(0);
-		
-		while(true) {
-//			Scanner scan = new Scanner(System.in);
-			
-			String cmd = scan.nextLine();
-			
-			if(cmd.equals("1")) {
-				inquiryTicketInfo(validRegList.get(0));
-//				scan.close();
-			} else if(cmd.equals("2")) {
+        Scanner scan = new Scanner(System.in);
+        //printMainMenu(String insName, String position, String tel, String birth, int memberOfIns, String classTime)
 
-				// 예약 조회
-//				scan.close();
-			} else if(cmd.equals("E")) {
+        String insName = this.instructor.getName();
+        String position = this.instructor.getRole();
+        String tel = this.instructor.getTel();
+        String birth = this.instructor.getBirthDate();
+        int numberOfMngedMember = getNumberOfMngedMember(this.instructor);
+        String classTime = getFirstBookDay(this.instructor) != null ? String.format("%02d", getFirstBookDay(this.instructor).get(Calendar.HOUR_OF_DAY)) : null;
 
-				//로그아웃 메서드
-//				scan.close();
-			} else {
-				System.out.println("\t정해진 문자를 입력해주세요.");
-//				scan.close();
-			}
-		}
-		*/
-		
-	}
+        InstructorView.printMainMenu(insName, position, tel, birth, numberOfMngedMember, classTime);
+
+        //pause();
+        System.out.println();
+        scan.nextLine();
+
+        while(true) {
+            String cmd = scan.nextLine();
+
+            if(cmd.equals("1")) {
+                //1. 근퇴기록 하기
+                // EmpService.java
+                AttendanceLog(this.instructor);
+
+            } else if(cmd.equals("2")) {
+                //2. 수업 관리
+                classManagement();
+
+            } else if (cmd.equals("3")) {
+                //3. 회원관리
+//                memberManagement();
+
+            }else if (cmd.equals("4")) {
+                //4. 수업료 정산
+//                calculateTuition();
+
+            } else if(cmd.equals("E")) {
+                //로그아웃
+                UserService.logOut();
+
+
+            } else {
+                System.out.println("\t정해진 문자를 입력해주세요.");
+            }
+        }
+
+    }
+ 	
+ 	//3-1 근퇴 기록하기
+ 		public void AttendanceLog(Emp emp) {
+ 			
+ 			Scanner scan = new Scanner(System.in);
+ 			
+ 			//pause();
+ 			System.out.println();
+ 			scan.nextLine();
+ 			
+ 			ArrayList<Attendance> attList = getThisWeekAttendance(this.instructor);
+ 			String[] commuteResult = new String[7];
+ 			String instrutorName = this.instructor.getName();
+ 			String position = this.instructor.getRole();
+ 			System.out.println();
+ 			Collections.sort(attList, (o1, o2) -> o1.getWorkDate().compareTo(o2.getWorkDate()));
+ 			System.out.println(attList);
+ 			int i = 0;
+ 			
+ 			for(Attendance att : attList) {
+ 				if(att.getStartWorkTime() == null && att.getEndWorkTime() == null) {
+ 					commuteResult[i] = "결근";
+ 					i++;
+ 				} else {
+ 					commuteResult[i] = "출근";
+ 					i++;
+ 				}
+ 			}
+ 			for(int a=0 ; a<commuteResult.length; a++) {
+ 				System.out.println(commuteResult[a]);
+ 			}
+ 			
+ 			
+ 			InstructorView.printInquiryAtendance(commuteResult, instrutorName, position);
+ 			
+ 			while(true) {
+ 				String cmd = scan.nextLine();
+ 				
+ 				if(cmd.equals("1")) {
+ 					//1. 출근 기록하기
+ 					AtendancePunchIn(this.instructor);
+ 				} else if(cmd.equals("2")) {
+ 					//2. 퇴근 기록하기
+// 					printAtendancePunchOut();
+ 				} else if(cmd.equals("3")) {
+ 					//3. 근퇴 기록 조회하기
+// 					printCheckAttendanceRecord();
+ 				} else if(cmd.equals("#")) {
+ 					instructorMainMenu();
+ 				} else {
+ 					System.out.println("\t정해진 문자를 입력해주세요.");
+ 				}
+
+ 			}
+
+ 		}
+ 		
+ 		public void AtendancePunchIn(Instructor ins) {
+ 			
+ 			Scanner scan = new Scanner(System.in);
+ 			
+ 			//pause();
+ 			System.out.println();
+ 			scan.nextLine();
+ 			
+ 			InstructorView.printAtendancePunchIn();
+ 			
+ 			
+ 		}
+ 		
+ 		
+ 		
+ 		//직원의 이번주 근퇴 리스트 반환
+ 		public ArrayList<Attendance> getThisWeekAttendance(Emp emp){
+ 			// 전일 기록
+ 			ArrayList<Attendance> allAtdList = AttendanceDAO.getAttendanceList(emp.getEmpNo());
+ 			ArrayList<Calendar> weekList = new ArrayList<Calendar>();
+ 			ArrayList<Attendance> resultList = new ArrayList<Attendance>();
+ 			
+ 			
+ 			for(int i=0; i<6; i++) {
+ 				Calendar c = Calendar.getInstance();
+ 				c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+ 				c.add(Calendar.DATE, i);
+ 				weekList.add(c);
+ 			}
+ 			
+ 			for(Calendar c : weekList) {
+ 				String yyyy = String.format("%d", c.get(Calendar.YEAR));
+ 				String mm = String.format("%02d", c.get(Calendar.MONTH) + 1);
+ 				String dd = String.format("%02d", c.get(Calendar.DATE));
+ 				
+ 				String yyyymmdd = yyyy +  mm + dd;
+// 				System.out.println(yyyymmdd);
+ 				for(Attendance att : allAtdList) {
+ 					if(att.getWorkDate().equals(yyyymmdd)) {
+ 						resultList.add(att);
+ 					}
+ 				}
+ 			}
+// 			System.out.println(resultList);
+ 			return resultList;
+ 			
+ 		}
 	
 }//class
