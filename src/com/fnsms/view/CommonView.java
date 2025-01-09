@@ -10,6 +10,11 @@ public class CommonView implements ConsoleColor {
 	
 	//로그인하기전 회원/강사/관리자 선택
 	public static void printLoginSelct() {
+<<<<<<< HEAD
+=======
+			//입력받을 숫자 문자열로 받음
+			Scanner scan = new Scanner(System.in);
+>>>>>>> jo
 			
 			System.out.println();
 			System.out.println();
@@ -173,4 +178,8 @@ public class CommonView implements ConsoleColor {
 
 
 	
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> jo
