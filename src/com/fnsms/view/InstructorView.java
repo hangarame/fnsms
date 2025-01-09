@@ -162,4 +162,6 @@ public class InstructorView implements ConsoleColor {
 		// System.out.println("\t🖙 원하는 작업을 입력하세요 : ");
 	}
 
+	
+
 }

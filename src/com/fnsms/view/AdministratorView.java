@@ -221,4 +221,55 @@ public class AdministratorView implements ConsoleColor{
 //					System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
 		}
 
+		
+		public static void recordSaleGraph() {
+		    // 월별 매출 데이터 (2024-07 제외)
+		    int[] sales = {120000000, 70000000, 80000000, 74000000, 74000000}; // 월별 매출
+		    String[] months = {"2024-08", "2024-09", "2024-10", "2024-11", "2024-12"};  // 월별 이름
+
+		    // 매출이 표시되는 최대 높이 (가장 큰 매출에 대한 높이)
+		    int maxHeight = 15;
+
+		    // Header 출력
+		    Header logo = new Header();
+		    logo.Logo();
+		    System.out.println("=================================================================================");
+		    System.out.printf("\t전체 이용권의 2025-08부터 2025-12까지의 매출 기록입니다.");
+		    System.out.println("=================================================================================");
+		    // 각 월의 매출을 "■"로 표현하기 위해 비례 계산
+		    int[] heights = new int[sales.length];
+		    for (int i = 0; i < sales.length; i++) {
+		        heights[i] = (int) ((double) sales[i] / 120000000 * maxHeight); // 최대값을 15로 설정
+		    }
+
+		    // 그래프를 위에서 아래로 출력
+		    for (int i = maxHeight; i > 0; i--) {
+		        // 각 월에 대해 현재 높이가 i 이상인 경우 "■"를 출력
+		        for (int j = 0; j < sales.length; j++) {
+		            if (heights[j] >= i) {
+		                System.out.print("\t■■\t"); // 그래프의 막대
+		            } else {
+		                System.out.print("\t\t"); // 비어 있는 부분
+		            }
+		        }
+		        System.out.println(); // 줄 바꿈
+		    }
+
+		    // 년도와 월 출력 (아래에 년도와 월을 출력)
+		    System.out.println("=================================================================================");
+		    for (String month : months) {
+		        System.out.print("    [" + month + "]   "); // 각 월을 출력
+		    }
+		    System.out.println(); // 줄 바꿈
+		    for(int i =0; i<sales.length; i++) {
+		    	System.out.printf("%2s%,d%s","",sales[i],"원   ");
+		    }
+		    System.out.println();
+		    // 마무리
+		    System.out.println("=================================================================================");
+		    
+		    System.out.println();
+		    System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
+		    System.out.println("\t");
+		}
 }

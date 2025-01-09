@@ -10,12 +10,15 @@ import com.fnsms.instructor.Instructor;
 import com.fnsms.instructor.InstructorService;
 import com.fnsms.user.User;
 import com.fnsms.user.UserService;
+import com.fnsms.view.AdministratorView;
+import com.fnsms.view.InstructorView;
 
 public class Main {
 
     public static void main(String[] args) {
         
     	InstructorService.classManagement();
+//    	AdministratorView.recordSaleGraph();
 
     }
 }

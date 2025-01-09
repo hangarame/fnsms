@@ -34,7 +34,7 @@ public class EmpDateService {
         if (!reservations.containsKey(date)) {
             reservations.put(date, new ArrayList<>(List.of(
                 "홍길동", "", "가동석", "", "", "이수근",
-                "마동석", "서건훈", "고건아", "허아후", "문현우", ""
+                "", "서건훈", "고건아", "허아후", "", ""
             )));
         }
     }
@@ -45,7 +45,6 @@ public class EmpDateService {
         initializeSampleReservations(date);
         Header logo = new Header();
         logo.Logo();
-        System.out.println("\t\t\t\t\t\t\t\t강사 메인페이지/수업 조회");
         System.out.println("=================================================================================");
         System.out.printf("\t%s 김계란 PT님의 예약 현황입니다.%n", date);
 
@@ -92,7 +91,6 @@ public class EmpDateService {
     private void addReservation(String date) {
     	Header logo = new Header();
         logo.Logo();
-        System.out.println("\t\t\t\t\t\t\t강사 메인페이지/수업 조회/예약 추가");
         System.out.println("=================================================================================");
          System.out.printf("\t%s 김계란 PT님의 예약 현황입니다.%n", date);
 
@@ -160,7 +158,6 @@ public class EmpDateService {
     private void updateReservation(String date) {
     	Header logo = new Header();
         logo.Logo();
-        System.out.println("\t\t\t\t\t\t\t강사 메인페이지/수업 조회/예약 변경");
         System.out.println("=================================================================================");
          System.out.printf("\t%s 김계란 PT님의 예약 현황입니다.%n", date);
 
