@@ -33,7 +33,7 @@ public class InstructorView implements ConsoleColor {
 		System.out.printf("\t생년월일 : %s\r\n", birth);
 		System.out.printf("\t담당 보유 회원 수 : %d명\r\n", numberOfMngedMember);
 		System.out.println("=================================================================================");
-		System.out.printf("\t%s [%s %s]님의 수업 일정입니다.\r\n",now , insName, position);
+		System.out.printf("\t%tF [%s %s]님의 수업 일정입니다.\r\n",now , insName, position);
 		if(classTime != null) {
 			System.out.printf("\t- %s %s시\r\n", insName, classTime);
 		} else {

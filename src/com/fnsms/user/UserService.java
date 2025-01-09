@@ -5,6 +5,8 @@ import java.util.Scanner;
 import com.fnsms.dao.EmpDAO;
 import com.fnsms.dao.MemberDAO;
 import com.fnsms.emp.Emp;
+import com.fnsms.instructor.Instructor;
+import com.fnsms.instructor.InstructorService;
 import com.fnsms.member.Member;
 import com.fnsms.member.MemberService;
 import com.fnsms.view.CommonView;
@@ -42,6 +44,8 @@ public class UserService {
 	            listRoad(sel);
 	            user = instructorIDFW();
 	            if (user != null) {
+	            	InstructorService instructorService = new InstructorService(((Instructor)user).getEmpNo());
+	            	instructorService.instructorMainMenu();
 	                // 강사 메인 화면 등
 	                // ...
 	                // return user; or loop to re-login

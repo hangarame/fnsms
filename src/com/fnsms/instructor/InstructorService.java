@@ -3,19 +3,19 @@ package com.fnsms.instructor;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.Scanner;
 
 import com.fnsms.attendance.Attendance;
 import com.fnsms.dao.AttendanceDAO;
 import com.fnsms.dao.EmpDAO;
+import com.fnsms.dao.ReservationDAO;
 import com.fnsms.dao.TicketRegistrationDAO;
 import com.fnsms.emp.EmpDateService;
 import com.fnsms.emp.EmpService;
-import com.fnsms.view.InstructorClassMngView;
+import com.fnsms.reservation.Reservation;
+import com.fnsms.ticketregistration.TicketRegistration;
 import com.fnsms.view.InstructorView;
 
 public class InstructorService extends EmpService {
@@ -438,6 +438,10 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
 		String classTime = getFirstBookDay(this.instructor) != null ? String.format("%02d", getFirstBookDay(this.instructor).get(Calendar.HOUR_OF_DAY)) : null;
 		 
 		InstructorView.printMainMenu(insName, position, tel, birth, numberOfMngedMember, classTime);
+		
+		//pause();
+		System.out.println();
+		scan.nextLine();
 		
 		/*
 		//회원의 이용중인 유효한 이용권
