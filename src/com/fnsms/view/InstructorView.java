@@ -20,21 +20,25 @@ public class InstructorView implements ConsoleColor {
 	static String[] commutingResult = {"출근", "지각", "조퇴", "결근"}; // 근퇴결과 > 출근, 지각, 조퇴, 결근
 
 	// 강사메인 화면
-	public static void printMainMenu() {
+	public static void printMainMenu(String insName, String position, String tel, String birth, int numberOfMngedMember, String classTime) {
 
 		Header logo = new Header();
 		logo.Logo();
 		System.out.println("\t\t\t\t\t\t\t\t강사 메인페이지");
 		System.out.println("=================================================================================");
-		System.out.printf("\t안녕하세요, %s %s님!\r\n", instrutorName, position);
+		System.out.printf("\t안녕하세요, %s %s님!\r\n", insName, position);
 		System.out.println();
 		System.out.printf("\t연락처 : %s\r\n", tel);
 		System.out.printf("\t성별 : %s\r\n", gender);
 		System.out.printf("\t생년월일 : %s\r\n", birth);
-		System.out.printf("\t담당 보유 회원 수 : %d명\r\n", memberOfIns);
+		System.out.printf("\t담당 보유 회원 수 : %d명\r\n", numberOfMngedMember);
 		System.out.println("=================================================================================");
-		System.out.printf("\t2025-01-06 [%s %s]님의 수업 일정입니다.\r\n", instrutorName, position);
-		System.out.printf("\t- %s %d시\r\n", memberName, classTime);
+		System.out.printf("\t%s [%s %s]님의 수업 일정입니다.\r\n",now , insName, position);
+		if(classTime != null) {
+			System.out.printf("\t- %s %s시\r\n", insName, classTime);
+		} else {
+			System.out.printf("\t-오늘은 수업이 없습니다.\r\n");
+		}
 		System.out.println("=================================================================================");
 		System.out.println();
 		System.out.println("\t1. 근퇴기록하기");

@@ -5,7 +5,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import com.fnsms.attendance.Attendance;
@@ -330,7 +333,7 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
 
   //3-2 수업 관리 및 예약 출력 메서드
     public static void classManagement() {
-        InstructorClassMngView.printInquiryClass("홍길종","필테");
+//        InstructorClassMngView.printInquiryClass("홍길종","필테");
         Scanner scan = new Scanner(System.in);
         boolean isRunning = true;
 
@@ -358,13 +361,92 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
             }
 
         }
+    
+    //강사의 담당 보유 회원수
+    public int getNumberOfMngedMember(Instructor ins) {
+    	int count = TicketRegistrationDAO.getTicketRegListByManager(ins.getEmpNo()).size();
+    	
+    	return count;
+    }
+    
+    //강사의 가장 빠른 수업 예정일, 시간 (Calendar)
+    public Calendar getFirstBookDay(Instructor ins) {
+    	
+    	Calendar currentDate = Calendar.getInstance();
+    	
+    	//강사의 모든 예약 리스트
+    	ArrayList<Reservation> reservList = ReservationDAO.getReservationListByEmpNo(ins.getEmpNo());
+    	
+    	//유효한 이용권 등록
+    	ArrayList<TicketRegistration> regList = getValidRegstration(ins);
+    	
+    	//강사의 유효한 수업리스트
+    	ArrayList<Reservation> validReservList = new ArrayList<Reservation>(); 
+    	
+    	ArrayList<Calendar> calList = new ArrayList<Calendar>();
+    	
+    	
+    	for(Reservation reserv : reservList) {
+    		for(TicketRegistration reg : regList) {
+    			if(reserv.getTicketRegNo() == reg.getTicketRegNo()) {
+    				calList.add(reserv.getReservDate());
+    			}
+    		}
+    	}
+    	
+    	//오름차 정렬
+    	Collections.sort(calList, (o1, o2) -> o1.compareTo(o2));
+    	
+    	if(calList.isEmpty() ) {
+    		System.out.println("수업이 없습니다.");
+    		return null;
+    	} else {
+    		return calList.get(0);
+    	}
 
+    }
+    
+ // 기간이 유효한 이용권 등록 가져오기(현재일이 시작일과 종료일 기간이 아니면 해당되지 않음)
+ 	public ArrayList<TicketRegistration> getValidRegstration(Instructor instructor){
 
+ 		ArrayList<TicketRegistration> regList = new ArrayList<TicketRegistration>();
+ 		Calendar current = Calendar.getInstance();				
+ 		
+ 		for (TicketRegistration reg : TicketRegistrationDAO.getTicketRegListByManager(instructor.getEmpNo())) {
+ 			if(reg.getStartDate().compareTo(current) <= 0 
+ 					&& reg.getEndDate().compareTo(current) >= 0) {
+ 				regList.add(reg);
+ 			}
+ 			
+ 		}
+ 		
+ 		regList.sort(new Comparator<TicketRegistration>() {
+ 			public int compare(TicketRegistration o1, TicketRegistration o2) {
+ 				long basDt = o1.getEndDate().getTimeInMillis();
+ 				long compareDt = o2.getEndDate().getTimeInMillis();
+ 				
+ 				return (int)(basDt - compareDt);
+ 			};
+ 		});
+ 		
+ 		return regList;
+ 	}
+
+    
+    //3. 강사일 경우<메인화면>
 	public void instructorMainMenu() {
 
 		Scanner scan = new Scanner(System.in);
+		//printMainMenu(String insName, String position, String tel, String birth, int memberOfIns, String classTime)
 		
-		InstructorView.printMainMenu();
+		String insName = this.instructor.getName();
+		String position = this.instructor.getRole();
+		String tel = this.instructor.getTel();
+		String birth = this.instructor.getBirthDate();
+		int numberOfMngedMember = getNumberOfMngedMember(this.instructor);
+		String classTime = getFirstBookDay(this.instructor) != null ? String.format("%02d", getFirstBookDay(this.instructor).get(Calendar.HOUR_OF_DAY)) : null;
+		 
+		InstructorView.printMainMenu(insName, position, tel, birth, numberOfMngedMember, classTime);
 		
 		/*
 		//회원의 이용중인 유효한 이용권
