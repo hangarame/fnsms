@@ -8,6 +8,7 @@ import com.fnsms.emp.Emp;
 import com.fnsms.member.Member;
 import com.fnsms.member.MemberService;
 import com.fnsms.view.CommonView;
+import com.fnsms.view.InstructorView;
 
 public class UserService {
 
@@ -57,7 +58,7 @@ public class UserService {
 				
 				if (user != null) {
 					//강사화면();
-					//InstructorView.
+					InstructorView.printMainMenu();
 					pause();
 					return user;
 				
