@@ -102,9 +102,6 @@ public class CommonView implements ConsoleColor {
 		// 회원 로그인 베너 출력
 		public static void memberPrintBanner() {
 
-<<<<<<< HEAD
-	public static void printLogout1() {
-=======
 			System.out.println();
 			System.out.println();
 			System.out.println();
@@ -124,7 +121,6 @@ public class CommonView implements ConsoleColor {
 			System.out.println("┃"+bWHITE+"\t\t\t\t\t\t\t\t\t\t\t"+ RESET+"┃");//
 			System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛"+RESET);
 		}
->>>>>>> sw
 
 		// 강사 로그인 베너 출력
 			public static void instructorPrintBanner() {

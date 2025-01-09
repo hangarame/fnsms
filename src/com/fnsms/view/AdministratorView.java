@@ -195,5 +195,39 @@ public class AdministratorView implements ConsoleColor{
 //			System.out.println("퇴근 시간 : ");
 //			System.out.println("결과 : ");
 		}
+		
+		//4-1-2 수업관리, 해당 강사의 수업관리와 같다.
+		public static void manageClass() {
+			
+			Header logo = new Header();
+	        logo.Logo();
+	        System.out.println("\t\t\t\t\t\t       관리자 메인페이지/강사 관리/수업 관리");
+			System.out.println("=================================================================================");
+			System.out.printf("%s %s님의 수업관리 상세보기 페이지입니다.",in_name[2],position[3]);
+			System.out.println("=================================================================================");
+			System.out.println();
+			System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
+			System.out.println("\t1. 날짜 검색");
+			System.out.println("\t2. 회원 검색");
+			System.out.println();
+//			System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
+		}
+		
+		//4-2 회원 관리
+		public static void managPpl() {
+			
+			Header logo = new Header();
+	        logo.Logo();
+	        System.out.println("\t\t\t\t\t\t       관리자 메인페이지/수업 관리");
+			System.out.println("=================================================================================");
+			System.out.printf("%s %s님의 수업관리 상세보기 페이지입니다.",in_name[2],position[3]);
+			System.out.println("=================================================================================");
+			System.out.println();
+			System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
+			System.out.println("\t1. 날짜 검색");
+			System.out.println("\t2. 회원 검색");
+			System.out.println();
+//					System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
+		}
 
 }
