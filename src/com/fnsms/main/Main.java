@@ -12,6 +12,9 @@ public class Main {
 		AdministratorView.manageClass();
 
 
+		
+		
+		
 	}
 
 }

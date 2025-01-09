@@ -18,6 +18,8 @@ public class TicketRegistrationDAO {
 		ticketRegList = new ArrayList<TicketRegistration>();
 	}
 	
+	
+//	load
 	public static void load() {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(REGISTTICKET_DATA_PATH));
@@ -52,7 +54,7 @@ public class TicketRegistrationDAO {
 //		}
 
 	}
-	
+//save	
 	public static void save() {
 		
 		try {
@@ -92,4 +94,85 @@ public class TicketRegistrationDAO {
 		return regList;
 	}
 	
-}
+	
+	
+	
+	public static ArrayList<TicketRegistration> 
+	getTicketRegListByManager(String managerEmpNo) {
+        ArrayList<TicketRegistration> regList = new ArrayList<>();
+        for (TicketRegistration reg : ticketRegList) {
+            if (reg.getManager().equals(managerEmpNo)) {
+                regList.add(reg);
+            }
+        }
+        return regList;
+    }
+    public static boolean isOverlappingMonth(TicketRegistration reg, String yyyyMM) {
+        if (yyyyMM.length() != 6) return false;
+        
+        int y = Integer.parseInt(yyyyMM.substring(0,4));
+        int m = Integer.parseInt(yyyyMM.substring(4,6));
+        
+        // monthStart = yyyy-MM-01 00:00:00
+        Calendar monthStart = Calendar.getInstance();
+        monthStart.set(y, m - 1, 1, 0, 0, 0);
+
+        // monthEnd = yyyy-MM-(말일) 23:59:59
+        Calendar monthEnd = (Calendar) monthStart.clone();
+        monthEnd.add(Calendar.MONTH, 1);   // 다음달 1일
+        monthEnd.add(Calendar.DATE, -1);   // 전날 => 이달 마지막 날
+
+        Calendar start = reg.getStartDate();
+        Calendar end = reg.getEndDate();
+
+        // 구간이 아예 안 겹치면 false
+        // ( monthEnd < start ) or ( monthStart > end ) 
+        if (monthEnd.getTimeInMillis() < start.getTimeInMillis()) {
+            return false;
+        }
+        if (monthStart.getTimeInMillis() > end.getTimeInMillis()) {
+            return false;
+        }
+        return true;
+    }
+
+    public static int getMonthlyClassCount(String managerEmpNo, String yyyyMM) {
+        int count = 0;
+        // 1) managerEmpNo인 등록 건
+        ArrayList<TicketRegistration> list = getTicketRegListByManager(managerEmpNo);
+        // 2) startDate~endDate 중 yyyyMM과 겹치면 count++
+        for (TicketRegistration tr : list) {
+            if (isOverlappingMonth(tr, yyyyMM)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private static boolean isOverlappingMonth(Calendar start, Calendar end, String yyyyMM) {
+        if (yyyyMM.length() != 6) return false;
+        
+        int y = Integer.parseInt(yyyyMM.substring(0,4));
+        int m = Integer.parseInt(yyyyMM.substring(4,6));
+        
+        // monthStart = yyyy-MM-01 00:00:00
+        Calendar monthStart = Calendar.getInstance();
+        monthStart.set(y, m - 1, 1, 0, 0, 0);
+
+        // monthEnd = yyyy-MM-(말일) 23:59:59
+        Calendar monthEnd = (Calendar) monthStart.clone();
+        monthEnd.add(Calendar.MONTH, 1);   
+        monthEnd.add(Calendar.DATE, -1);  
+
+        // 구간 비교
+        if (monthEnd.getTimeInMillis() < start.getTimeInMillis()) {
+            return false;
+        }
+        if (monthStart.getTimeInMillis() > end.getTimeInMillis()) {
+            return false;
+        }
+        return true;
+    }
+	
+	
+}//class

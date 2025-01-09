@@ -5,107 +5,43 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Scanner;
 
 import com.fnsms.attendance.Attendance;
 import com.fnsms.dao.AttendanceDAO;
+import com.fnsms.dao.EmpDAO;
 import com.fnsms.dao.MemberDAO;
+import com.fnsms.dao.ReservationDAO;
+import com.fnsms.dao.TicketDAO;
+import com.fnsms.dao.TicketRegistrationDAO;
 import com.fnsms.emp.EmpService;
 import com.fnsms.member.Member;
 import com.fnsms.reservation.Reservation;
 import com.fnsms.ticket.Ticket;
+import com.fnsms.ticketregistration.TicketRegistration;
+import com.fnsms.user.UserService;
+import com.fnsms.view.MemberView;
 
 public class InstructorService extends EmpService {
 
-	
-	
-	
-
-	
-//	특정 회원 조회하기
-	public static void readMember() {
-//	이름을 입력받아서
-//	해당 이름을 가진 회원의 정보를 출력
-//	(1)회원정보 수정 (2)이용권등록 (3)이용권수정 	
-	}//readMember 회원조회
-//	회원정보 수정 기능 추가해야함
-//	이용권 등록, 수정 기능 추가해야함
+//	 # 예약조회 > 추가,수정,삭제
 /*
-	 # 이용권 등록
-	 
-	 1.
-	 DummyTicket.txt
-	 상품번호, 이용권이름, 기간, 등록일, 판매종료일, 수업횟수, 가격
-	 ex) 1◈헬스1개월◈30◈19700101000000◈99991231235900◈0◈150000
-	 
-	 DummyRegistTicket.txt
-	 등록번호, 회원번호, 이용권이름, 구매일(등록일), 등록담당자, 시작일, 종료일, 가격
-	 ex) 959◈m0000000459◈운동복12개월◈2024-08-07◈i000000003◈2024-08-10◈2025-02-06◈132000
-	 
-	 2. 
-	 (등록일, 이용권이름, 이용가능기간, 등록담당자, 시작일, 금액)을 입력받기
-	 > 이용권 정보를 생성
-	 > TicketDAO.java의 ArrayList<Ticket> ticketList 안에 추가
-	 > data폴더의 DummyTicket.txt에 저장
-	 상품번호, 이용권이름, 이용권기간, 등록일, 판매종료일,수업횟수,금액
-	 
-	 2. 
- 	
- 	
-*/
+	  1. 이번달 달력 출력
+	  2. 날짜를 입력받음
+	  > 그 날짜의 예약 목록을 출력
+	  (1)신규 예약 추가
+	  (2)기존 예약 변경
+	  (3)기존 예약 삭제
+	  3. 1에서 날짜가 아니라 회원의 이름을 입력받음
+	  > 해당 회원의 예약정보를 출력
+	  (1)신규 예약 추가
+	  (2)기존 예약 변경
+	  (3)기존 예약 삭제
+*/	  
 	
 	
-
-  
-
-		
-		
-		
-
-		
-
-
-	
-/*
-1. 이번주 근태현황 출력
-2. 아래에 선택메뉴 출력
-	(1) 출근등록
-	(2) 퇴근등록
-	(3) 근태기록조회하기
-	(#) 메인으로 돌아가기
-	
-1. 
-data폴더> DummyAttendance.txt에 정보 있음.
-직원번호, 근무일, 출근시간, 퇴근시간, 급여
-ex) i00000001◈20241201◈20241201090000◈20241201180000◈0
-com.fnsms.dao 패키지 > AttendanceDAO.java > ArrayList<Attendance> attendanceList
-컬렉션으로 데이터를 옮겨서 프로그램에서 사용.
-
-2.
-ArrayList<Attendance> attendanceList에
-내 직원번호로 시작하고, 현재시간이 있는 주간과 같은 주간에 속하는 날짜가
-저장되어 있는 근태기록을
-(일)	(월)	(화)	(수)	(목)	(금)	(토)
-출근	출근	출근	결근	오늘	
-이런 식으로 출력시키기. 
-
-3.
-(1) 출근등록
-현재시간으로 출근등록하기
-
-
-(2) 퇴근등록
-출근등록과 마찬가지
-현재시간으로 퇴근등록하기
-
-(3)
-근태기록조회
-ArrayList<Attendance> attendanceList에서 
-내 사번으로 시작하는 정보만 뽑아와서 목록으로 출력하기
-
-*/
 	public static void startWork(String empNo) {
-		
 		Calendar now = Calendar.getInstance();
 		
 		String workDate = String.format("%04d%02d%02d"
@@ -121,14 +57,10 @@ ArrayList<Attendance> attendanceList에서
         AttendanceDAO.attendanceList.add(att);
         AttendanceDAO.save();
 
-
         System.out.println("출근 등록 완료 - ");
 	}//startWork
 	
-	
 	public static void endWork(String empNo) {
-
-		
 	    Calendar now = Calendar.getInstance();
 	        
 	    String today = String.format("%04d%02d%02d",
@@ -136,9 +68,8 @@ ArrayList<Attendance> attendanceList에서
 	                now.get(Calendar.MONTH) + 1,
 	                now.get(Calendar.DATE));
 
-// 해당 사번 & 오늘 날짜 & 출근, 퇴근이 동일한(즉, 아직 퇴근처리가 안 된) 
-// 출근 기록을 찾는다
-	
+// 해당 사번, 오늘 날짜, 출퇴근이 동일한(아직 퇴근처리가 안 된) 
+// 출근 기록을 찾기
 	    Attendance target = null;
         for (int i = AttendanceDAO.attendanceList.size() - 1; i >= 0; i--) {
             Attendance att = AttendanceDAO.attendanceList.get(i);
@@ -159,10 +90,9 @@ ArrayList<Attendance> attendanceList에서
 	        target.setEndWorkTime(now);
 
 	        
-	        // 출근~퇴근 시간(밀리초 차이)
+	        // 출근~퇴근 시간
 	        long diffMillis = target.getEndWorkTime().getTimeInMillis()
 	                        - target.getStartWorkTime().getTimeInMillis();
-	        // 시간 단위로 변환
 	        long diffHours = diffMillis / (1000L * 60 * 60);
 
 	        
@@ -170,23 +100,20 @@ ArrayList<Attendance> attendanceList에서
 //	        시급 : 10,000원, 회단가 : 25,000원
 //	        3.3  : 월급 – (월급*0.033)
 //	        월급 계산식입니다!
-	        
 	        int payment = (int)(diffHours * 10000);
 	        target.setPayment(payment);
-
 	        AttendanceDAO.save();
 	        System.out.println("퇴근 등록 완료 - ");
 	}//endWork
 	
-	
-	
-	
 	public static void readMyAttendance(String empNo) {
 		// DAO에서 사원번호로 필터된 목록 가져오기
+		// 사번입력 받아야함!!! 
+		
         ArrayList<Attendance> myAttList = AttendanceDAO.getAttendanceList(empNo);
 
         if (myAttList.isEmpty()) {
-            System.out.println("해당 사번[" + empNo + "]에 대한 근태 기록이 없습니다.");
+            System.out.println("("+ empNo +")에 대한 기록이 없습니다.");
             return;
         }
 System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근시간]            [급여] ");
@@ -194,10 +121,10 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
             System.out.println(att.toString());
         }
 		
-	}
+	}//readMyAttendance
 	
 	
-//	테스트용
+//출퇴근등록 테스트용
 	public static void testm() {
 		Scanner scan = new Scanner(System.in);
 
@@ -213,76 +140,163 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
 		} else if(sel.equals("3")) {
 			readMyAttendance("i00000001");
 		}
-			
 		AttendanceDAO.save();
 	}
 	
 	
-	
+//	날짜 확인 보조 메서드> 출퇴근등록에 쓰임
 	private static boolean isSameDateTime(Calendar c1, Calendar c2) {
 		return c1.getTimeInMillis() == c2.getTimeInMillis();
 	}
 	
-
 	
-	// 수업관리
-	public void manageClass() {
-
-	}
 	
-
-//	 # 예약조회 > 추가,수정,삭제
-/*
- 	  1. 이번달 달력 출력
-	  2. 날짜를 입력받음
-	  > 그 날짜의 예약 목록을 출력
-	  (1)신규 예약 추가
-	  (2)기존 예약 변경
-	  (3)기존 예약 삭제
-	  3. 1에서 날짜가 아니라 회원의 이름을 입력받음
-	  > 해당 회원의 예약정보를 출력
-	  (1)신규 예약 추가
-	  (2)기존 예약 변경
-	  (3)기존 예약 삭제
-	  
-	  
-	 
-	 
-	 # 수업료정산
-	 1. 근무현황출력
-	 - 해당 달에 총 몇시간 근무했는지 출력
-	 - 해당 달에 예약되어 있는 수업 횟수 출력
-	 - 지금까지 근무한 시간을 토대로 급여 계산해서 출력
-	 - 지난달 근무시간과 그에 해당하는 급여 출력
-	 - 숫자(year, month값: yyyymm)을 입력받아서 해당 월에 대한 근무시간과 그에 대한 급여 출력
-	 
-	 
-	 
-	 
-	 
 	
-	 
-*/
-//	public ArrayList<Reservation> inquiryReservinfo() {
-		
-		
-		
-//	}
-
 	
-	//수업예약
-//	public Reservation addReserv() {
-//
-//	}
-//	
-//	//수업변경
-//	public Reservation editReserv() {
-//		
-//	}
-//	
-//	//수업삭제
-//	public Reservation deleteReserv() {
-//		
-//	}
-//
-}
+	
+	
+	
+//	# 수업료정산 메서드
+	public static void calcSalary() {
+        Scanner scan = new Scanner(System.in);
+
+        EmpDAO.load();
+        AttendanceDAO.load();
+        TicketRegistrationDAO.load();
+
+        Instructor instructor = null;
+
+        while (true) {
+            System.out.println("\n[수업료 정산]");
+            System.out.println("수업료 정산을 위해 본인확인이 필요합니다.");
+            System.out.println("(0) 뒤로가기");
+            System.out.print("이름> ");
+            String inputName = scan.nextLine().trim();
+            
+            // 0 → 처음 화면 복귀
+            if (inputName.equals("0")) {
+                return; 
+            }
+            
+            System.out.print("생년월일(6자리)> ");
+            String inputBirth6 = scan.nextLine().trim();
+            if (inputBirth6.equals("0")) {
+                return; 
+            }
+
+            // 강사 찾기
+            instructor = findInstructor(inputName, inputBirth6);
+            if (instructor == null) {
+                System.out.println("해당 정보를 가진 강사를 찾을 수 없습니다. 다시 입력하세요.\n");
+                continue;  // 재입력
+            }
+            // 찾으면 break
+            break;
+        }
+
+//      근무현황
+        String empNo = instructor.getEmpNo();
+
+        // 이번 달
+        Calendar now = Calendar.getInstance();
+        int thisYear = now.get(Calendar.YEAR);
+        int thisMonth = now.get(Calendar.MONTH) + 1; // 0~11
+        String thisYYYYMM = String.format("%04d%02d", thisYear, thisMonth);
+
+        // 지난 달
+        Calendar prevCal = (Calendar) now.clone();
+        prevCal.add(Calendar.MONTH, -1);
+        int prevYear = prevCal.get(Calendar.YEAR);
+        int prevMonth = prevCal.get(Calendar.MONTH) + 1;
+        String prevYYYYMM = String.format("%04d%02d", prevYear, prevMonth);
+
+        // 이번 달 근무시간/수업횟수
+        long thisMonthHours = getMonthlyWorkHours(empNo, thisYYYYMM);
+        int thisMonthClasses = getMonthlyClassCount(empNo, thisYYYYMM);
+
+        // 지난 달 근무 + 수업
+        long prevMonthHours = getMonthlyWorkHours(empNo, prevYYYYMM);
+        int prevMonthClasses = getMonthlyClassCount(empNo, prevYYYYMM);
+        int prevMonthSalary = calcSalary(prevMonthHours, prevMonthClasses);
+
+        // 출력
+        System.out.println("-------------------------------------------");
+        System.out.printf("%s 님은 이번달 %d시간 근무했습니다.\n", instructor.getName(), thisMonthHours);
+        System.out.printf("%04d년 %02d월 수업 횟수는 %d회 입니다.\n", thisYear, thisMonth, thisMonthClasses);
+        System.out.printf("%04d년 %02d월은 %d시간 근무했으며, %,d원 정산했습니다.\n",
+                prevYear, prevMonth, prevMonthHours, prevMonthSalary);
+        System.out.println("===========================================");
+
+        // 0 누르면 “처음 화면” 복귀
+        System.out.print("처음 화면으로 돌아가려면 0을 입력, 계속하려면 Enter> ");
+        String choice = scan.nextLine().trim();
+        if (choice.equals("0")) {
+            return;
+        }
+
+        
+        //  (C) 지난 기록 조회
+        while (true) {
+            System.out.print("\n지난 기록을 확인하려면 근무 년,월을 입력하세요.(YYYYMM), (# -> 처음 화면) : ");
+            String inputYYYYMM = scan.nextLine().trim();
+
+            // # → 처음 화면
+            if (inputYYYYMM.equals("#")) {
+                return;
+            }
+
+            // 형식 체크
+            if (inputYYYYMM.length() != 6) {
+                System.out.println("입력 형식이 잘못되었습니다. (예: 202501)");
+                continue;
+            }
+
+            long hours = getMonthlyWorkHours(empNo, inputYYYYMM);
+            int classesCount = getMonthlyClassCount(empNo, inputYYYYMM);
+            int monthlySalary = calcSalary(hours, classesCount);
+
+            System.out.printf("[%s월 근무기록] 근무시간: %d시간, 수업횟수: %d회, 정산금액: %,d원\n",
+                    inputYYYYMM, hours, classesCount, monthlySalary);
+        }
+    }
+    private static Instructor
+    findInstructor(String inputName, String inputBirth6) {
+        for (Instructor ins : EmpDAO.instructorList) {
+            if (ins.getName().equals(inputName)
+            		&& ins.getBirthDate().length() >= 8) {
+                String birth6 = ins.getBirthDate().substring(2, 8);
+                if (birth6.equals(inputBirth6)) {
+                    return ins;
+                }
+            }
+        }
+        return null;
+    }//findInstructor
+
+    private static long getMonthlyWorkHours(String empNo, String yyyyMM) {
+        long totalHours = 0;
+        ArrayList<Attendance> list = AttendanceDAO.getAttendanceList(empNo);
+        for (Attendance att : list) {
+            String workDate = att.getWorkDate(); // yyyymmdd
+            if (workDate.startsWith(yyyyMM)) {
+                long diffMillis = att.getEndWorkTime().getTimeInMillis()
+                                - att.getStartWorkTime().getTimeInMillis();
+                long hours = diffMillis / (1000L * 60 * 60);
+                totalHours += hours;
+            }
+        }
+        return totalHours;
+    }//getMonthlyWorkHours
+
+    private static int getMonthlyClassCount(String empNo, String yyyyMM) {
+        return TicketRegistrationDAO.getMonthlyClassCount(empNo, yyyyMM);
+    }
+
+//  계산
+    private static int calcSalary(long hours, int classCount) {
+        long gross = hours * 10000 + classCount * 25000;
+        long net = (long)(gross - (gross * 0.033));
+        return (int)net;
+    }
+	
+}//class
