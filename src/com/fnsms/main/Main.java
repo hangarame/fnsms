@@ -3,6 +3,7 @@ package com.fnsms.main;
 <<<<<<< HEAD
 
 import com.fnsms.view.AdministratorView;
+<<<<<<< HEAD
 =======
 >>>>>>> jo
 import com.fnsms.view.CalendarView;
@@ -49,6 +50,14 @@ public class Main {
 		InstructorClassMngView.printDeleteReservation_Member();// 담당회원별 예약 삭제
 
 >>>>>>> jo
+=======
+
+
+public class Main {
+	public static void main(String[] args) {
+
+		AdministratorView.recordSaleGraph();
+>>>>>>> sw
 	}
 
 }

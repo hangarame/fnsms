@@ -201,9 +201,9 @@ public class AdministratorView implements ConsoleColor{
 			
 			Header logo = new Header();
 	        logo.Logo();
-	        System.out.println("\t\t\t\t\t\t       관리자 메인페이지/강사 관리/수업 관리");
+	        System.out.println("\t\t\t\t\t     관리자 메인페이지/강사 관리/수업 관리");
 			System.out.println("=================================================================================");
-			System.out.printf("%s %s님의 수업관리 상세보기 페이지입니다.",in_name[2],position[3]);
+			System.out.printf("\t%s %s님의 수업관리 상세보기 페이지입니다.\n",in_name[2],position[3]);
 			System.out.println("=================================================================================");
 			System.out.println();
 			System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
@@ -214,20 +214,131 @@ public class AdministratorView implements ConsoleColor{
 		}
 		
 		//4-2 회원 관리
-		public static void managPpl() {
+		public static void managePpl() {
 			
 			Header logo = new Header();
 	        logo.Logo();
-	        System.out.println("\t\t\t\t\t\t       관리자 메인페이지/수업 관리");
+	        System.out.println("\t\t\t\t\t\t       관리자 메인페이지/회원 관리");
 			System.out.println("=================================================================================");
-			System.out.printf("%s %s님의 수업관리 상세보기 페이지입니다.",in_name[2],position[3]);
+			System.out.println("\t쌍용 헬스장의 회원수는 110명입니다.");
+			System.out.println("\t각 강사님이 맡고 있는 회원 수 입니다.");
+			System.out.println("=================================================================================");
+			System.out.println();
+			System.out.println("\t[번호]\t[이름]\t[직책]\t[사번]\t[회원수]");
+			System.out.printf("\t%5d\t%s\t%s\t%5d\t%6d\n", 1, "김민수", "PT", 1234, 8);
+			System.out.printf("\t%5d\t%s\t%s\t%5d\t%6d\n", 2, "이영희", "필테", 2345, 9);
+			System.out.printf("\t%5d\t%s\t%s\t%5d\t%6d\n", 3, "박철수", "헬스", 3456, 7);
+			System.out.printf("\t%5d\t%s\t%s\t%5d\t%6d\n", 4, "최지은", "PT", 4567, 10);
+			System.out.printf("\t%5d\t%s\t%s\t%5d\t%6d\n", 5, "정하늘", "헬스", 5678, 11);
+			System.out.printf("\t%5d\t%s\t%s\t%5d\t%6d\n", 6, "강다솔", "필테", 6789, 6);
+			System.out.printf("\t%5d\t%s\t%s\t%5d\t%6d\n", 7, "오승현", "PT", 7890, 12);
+			System.out.printf("\t%5d\t%s\t%s\t%5d\t%6d\n", 8, "윤가영", "헬스", 8901, 8);
+			System.out.printf("\t%5d\t%s\t%s\t%5d\t%6d\n", 9, "한민정", "필테", 9012, 7);
+			System.out.printf("\t%5d\t%s\t%s\t%5d\t%6d\n", 10, "조성민", "헬스", 1123, 10);
+			System.out.printf("\t%5d\t%s\t%s\t%5d\t%6d\n", 11, "서유리", "PT", 2234, 9);
+			System.out.printf("\t%5d\t%s\t%s\t%5d\t%6d\n", 12, "이준혁", "헬스", 3345, 5);
+			System.out.printf("\t%5d\t%s\t%s\t%5d\t%6d\n", 13, "송하늘", "필테", 4456, 9);
 			System.out.println("=================================================================================");
 			System.out.println();
 			System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
-			System.out.println("\t1. 날짜 검색");
-			System.out.println("\t2. 회원 검색");
+			System.out.println("\t1. 회원 등록");
+			System.out.println("\t2. 회원 조회");
 			System.out.println();
-//					System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
+//			System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
+			//회원 등록과 회원 조회는 강사의 회원 등록, 회원 조회와 같다.
+			//회원 등록 :InstructorMemberView.newMemRegistration()
+			//회원 조회 :InstructorMemberView.searchMember()
+			
+		}
+		//4-3 매출 관리
+		public static void recordSale() {
+			
+			Header logo = new Header();
+	        logo.Logo();
+	        System.out.println("\t\t\t\t\t\t       관리자 메인페이지/매출 관리");
+			System.out.println("=================================================================================");
+			System.out.println("\t조회하고 싶은 이용권을 선택해주세요");
+			System.out.println("\t1. 전체 이용권");
+			System.out.println("\t2. 헬스 이용권");
+			System.out.println("\t3. PT 이용권");
+			System.out.println("\t4. 필라테스 이용권");
+			System.out.println("=================================================================================");
+			System.out.println();
+			System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
+			System.out.println("\t");
+//			System.out.println("🖙 이용권 종류의 숫자를 입력해주세요 : ");
+
+			
+		}
+		
+		//4-3 매출 관리 범위 선택
+		public static void recordSaleDate() {
+			
+			Header logo = new Header();
+	        logo.Logo();
+	        System.out.println("\t\t\t\t\t     관리자 메인페이지/매출 관리/매출 조회");
+			System.out.println("=================================================================================");
+			System.out.printf("\t%s을 선택했습니다.\n","전체 이용권");
+			System.out.println("\t조회하고 싶은 범위를 입력해주세요.");
+			System.out.println("\t기간은 최대 5개월까지 가능합니다.");
+			System.out.println("=================================================================================");
+			System.out.println();
+			System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
+			System.out.println("\t");
+
+		}
+		
+		//4-3 매출 관리 범위 그래프 출력
+		public static void recordSaleGraph() {
+			
+			// 월별 매출 데이터
+		    int[] sales = { 120000000, 70000000, 80000000, 74000000, 74000000}; // 월별 매출
+		    String[] months = { "2024-08", "2024-09", "2024-10", "2024-11", "2024-12"};  // 월별 이름
+
+		    // 매출이 표시되는 최대 높이 (가장 큰 매출에 대한 높이)
+		    int maxHeight = 15;
+
+		    // Header 출력
+		    Header logo = new Header();
+		    logo.Logo();
+		    System.out.println("\t\t\t\t\t     관리자 메인페이지/매출 관리/매출 조회");
+		    System.out.println("=================================================================================");
+
+		    // 각 월의 매출을 "■"로 표현하기 위해 비례 계산
+		    int[] heights = new int[sales.length];
+		    for (int i = 0; i < sales.length; i++) {
+		        heights[i] = (int) ((double) sales[i] / 120000000 * maxHeight); // 최대값을 15로 설정
+		    }
+
+		    // 그래프를 위에서 아래로 출력
+		    for (int i = maxHeight; i > 0; i--) {
+		        // 각 월에 대해 현재 높이가 i 이상인 경우 "■"를 출력
+		        for (int j = 0; j < sales.length; j++) {
+		            if (heights[j] >= i) {
+		                System.out.print("\t■■"); // 그래프의 막대
+		            } else {
+		                System.out.print("\t"); // 비어 있는 부분
+		            }
+		            // Add extra space to align with date format
+	                System.out.print("\t");
+		        }
+		        System.out.println(); // 줄 바꿈
+		    }
+
+		    // 년도와 월 출력 (아래에 년도와 월을 출력)
+		    System.out.println("=================================================================================");
+		    for (String month : months) {
+		        System.out.print("    [" + month + "]   "); // 각 월을 출력
+		    }
+		    System.out.println(); // 줄 바꿈
+
+		    for(int i=0; i<sales.length; i++) {
+		    	System.out.printf("%4s%,d원","",sales[i]);
+		    }
+		    System.out.println();
+		    System.out.println("=================================================================================");
+		    System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
+		    System.out.println("\t");
 		}
 
 }
