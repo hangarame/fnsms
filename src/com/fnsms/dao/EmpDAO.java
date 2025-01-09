@@ -117,6 +117,17 @@ public class EmpDAO {
         // 3) 둘 다 없으면 null
         return null;
     }
+	
+	public static Instructor getInstructor(String empNo){
+		for(Instructor ins : instructorList) {
+			if(ins.getEmpNo().equals(empNo)) {
+				return ins;
+			}
+		}
+			
+		return null;
+	}
+	
 		
 }//class
 
