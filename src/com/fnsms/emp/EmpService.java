@@ -296,7 +296,8 @@ public class EmpService {
 
 	    return newReg;
 	}
-
+ 
+	
 
 
 	// 회원이용권정보수정
