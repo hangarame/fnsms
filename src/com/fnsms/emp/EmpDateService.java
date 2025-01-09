@@ -212,13 +212,49 @@ public class EmpDateService {
     }
 
     private void cancelReservation(String date) {
-        System.out.println("취소할 시간을 입력해주세요 (예: 09): ");
-        int time = Integer.parseInt(scanner.nextLine());
+    	Header logo = new Header();
+        logo.Logo();
+        System.out.println("\t\t\t\t\t\t\t강사 메인페이지/수업 조회/예약 취소");
+        System.out.println("=================================================================================");
+         System.out.printf("\t%s 김계란 PT님의 예약 현황입니다.%n", date);
 
-        List<String> times = reservations.getOrDefault(date, new ArrayList<>(Collections.nCopies(12, "")));
-        times.set(time - 9, ""); // 시간대 취소
-        reservations.put(date, times);
+         // 예약 현황 표시
+         List<String> times = reservations.getOrDefault(date, new ArrayList<>(Collections.nCopies(12, "")));
+         for (int i = 0; i < times.size(); i++) {
+             System.out.printf("\t- %02d시 %s%n", 9 + i, times.get(i).isEmpty() ? "" : times.get(i));
+         }
 
-        System.out.println("예약이 취소되었습니다!");
+         System.out.println("=================================================================================");
+         System.out.print("\t취소할 시간을 입력해주세요. : ");
+         int time = Integer.parseInt(scanner.nextLine());
+         
+         // 유효한 시간인지 확인
+         if (time < 9 || time > 20) {
+        	 System.out.println();
+             System.out.println("\t※시간은 09시부터 20시 사이로 입력해주세요!");
+             System.out.println("\t엔터를 눌러 이전 화면으로 이동하세요.");
+             scanner.nextLine(); // 엔터 입력 대기
+             viewReservationDetails(date); 
+             return;
+         }
+
+         // 해당 시간대의 예약자가 있으면 취소
+         if (!times.get(time - 9).isEmpty()) {
+             times.set(time - 9, "");  // 예약 취소 (빈 문자열로 변경)
+             System.out.println();
+             System.out.println("\t예약이 취소되었습니다.");
+             System.out.println("\t엔터를 눌러 이전 화면으로 이동하세요.");
+             scanner.nextLine(); // 엔터 입력 대기
+             viewReservationDetails(date); 
+         } else {
+             System.out.println("\t해당 시간에는 취소할 예약이 없습니다.");
+             System.out.println("\t엔터를 눌러 이전 화면으로 이동하세요.");
+             scanner.nextLine(); // 엔터 입력 대기
+             viewReservationDetails(date);
+         }
+
+         reservations.put(date, times);  // 변경된 예약 현황 저장
+         
+         
     }
 }
