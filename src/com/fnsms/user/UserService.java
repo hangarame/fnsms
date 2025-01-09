@@ -5,6 +5,8 @@ import java.util.Scanner;
 import com.fnsms.dao.EmpDAO;
 import com.fnsms.dao.MemberDAO;
 import com.fnsms.emp.Emp;
+import com.fnsms.instructor.Instructor;
+import com.fnsms.instructor.InstructorService;
 import com.fnsms.member.Member;
 import com.fnsms.member.MemberService;
 import com.fnsms.view.CommonView;
@@ -57,7 +59,9 @@ public class UserService {
 				
 				if (user != null) {
 					//강사화면();
-					//InstructorView.
+					
+					InstructorService instructorService = new InstructorService(((Instructor)user).getEmpNo());
+					instructorService.instructorMainMenu();
 					pause();
 					return user;
 				

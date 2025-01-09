@@ -21,6 +21,8 @@ import com.fnsms.reservation.Reservation;
 import com.fnsms.ticket.Ticket;
 import com.fnsms.ticketregistration.TicketRegistration;
 import com.fnsms.user.UserService;
+import com.fnsms.view.InstructorClassMngView;
+import com.fnsms.view.InstructorView;
 import com.fnsms.view.MemberView;
 
 public class InstructorService extends EmpService {
@@ -41,6 +43,33 @@ public class InstructorService extends EmpService {
 */	  
 	
 	
+	Instructor instructor;
+	
+	
+	
+	public InstructorService(String empNo) {
+		this.instructor = EmpDAO.getInstructor(empNo);
+		
+		
+	}
+	
+	
+	
+
+	public Instructor getInstructor() {
+		return instructor;
+	}
+
+
+
+
+	public void setInstructor(Instructor instructor) {
+		this.instructor = instructor;
+	}
+
+
+
+
 	public static void startWork(String empNo) {
 		Calendar now = Calendar.getInstance();
 		
@@ -298,5 +327,80 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
         long net = (long)(gross - (gross * 0.033));
         return (int)net;
     }
+
+  //3-2 수업 관리 및 예약 출력 메서드
+    public static void classManagement() {
+        InstructorClassMngView.printInquiryClass("홍길종","필테");
+        Scanner scan = new Scanner(System.in);
+        boolean isRunning = true;
+
+        while(isRunning) {
+            System.out.println("\t🖙 원하는 작업을 입력하세요: ");
+            String input = scan.nextLine();
+
+            switch (input) {
+            case "1":
+                System.out.println("날짜별 예약 조회를 선택하셨습니다.");
+//                viewByDate();세원
+                break;
+            case "2":
+                System.out.println("담당회원별 예약 조회를 선택하셨습니다.");
+//                viewByMember();지온
+                break;
+            case "#":
+                System.out.println("메인으로 돌아갑니다.");
+                isRunning = false;
+                break;
+            default:
+                System.out.println("올바른 입력이 아닙니다. 다시 시도해주세요.");
+        }
+
+            }
+
+        }
+
+
+	public void instructorMainMenu() {
+
+		Scanner scan = new Scanner(System.in);
+		
+		InstructorView.printMainMenu();
+		
+		/*
+		//회원의 이용중인 유효한 이용권
+		ArrayList<TicketRegistration> validRegList = this.getValidRegstration(this.getMember());
+		
+		MemberView.printMainmenu(this.getMember().getName(), this.getMember().getTel(), this.getMember().getBirthDate()
+				, this.haveUseTowelTicketUse()
+				, validRegList.get(0).getTicket()
+				, this.getTicketRemainIning(validRegList.get(0))
+				, validRegList.get(0).getEndDate());
+		
+//		return validRegList.get(0);
+		
+		while(true) {
+//			Scanner scan = new Scanner(System.in);
+			
+			String cmd = scan.nextLine();
+			
+			if(cmd.equals("1")) {
+				inquiryTicketInfo(validRegList.get(0));
+//				scan.close();
+			} else if(cmd.equals("2")) {
+
+				// 예약 조회
+//				scan.close();
+			} else if(cmd.equals("E")) {
+
+				//로그아웃 메서드
+//				scan.close();
+			} else {
+				System.out.println("\t정해진 문자를 입력해주세요.");
+//				scan.close();
+			}
+		}
+		*/
+		
+	}
 	
 }//class
