@@ -47,11 +47,23 @@ public class InstructorService extends EmpService {
 	public InstructorService(String empNo) {
 		this.instructor = EmpDAO.getInstructor(empNo);
 		
+		if (this.instructor == null) {
+            throw new IllegalArgumentException("해당 사번으로 강사를 찾을 수 없습니다: " + empNo);
+        }
+		
 		
 	}
 	
 	
 	
+	
+
+	public InstructorService() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 
 	public Instructor getInstructor() {
 		return instructor;
@@ -326,7 +338,7 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
     }
 
   //3-2 수업 관리 및 예약 출력 메서드
-    public static void classManagement() {
+    public static void classManagement(String instructorName) {
         InstructorClassMngView.printInquiryClass("김계란","PT");
         Scanner scan = new Scanner(System.in);
         boolean isRunning = true;
@@ -339,28 +351,28 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
             case "1":
 //              System.out.println("날짜별 예약 조회를 선택하셨습니다.");
             	EmpDateService empDateService = new EmpDateService();
-            	empDateService.viewByDate();
+            	empDateService.viewByDate(instructorName);
                 break;
             case "2":
-                System.out.println("\t담당회원별 예약 조회를 선택하셨습니다.");
+//                System.out.println("\t담당회원별 예약 조회를 선택하셨습니다.");
                 EmpMemberService empMemberService = new EmpMemberService();
                 empMemberService.viewByMember();
                 break;
             case "#":
-                System.out.println("\t메인으로 돌아갑니다.");
-                InstructorView.printMainMenu("김계란", "PT", "010-1234-1234", "92-02-12", 8, "0");
-                
-                
-                
+            	System.out.println();
+            	System.out.println("\t엔터를 눌러 메인 화면으로 이동하세요.");
+                scan.nextLine(); // 엔터 입력 대기
                 isRunning = false;
-                break;
+        		InstructorService ins = new InstructorService(instructorName);
+        		ins.instructorMainMenu();
+                return;
             default:
                 System.out.println("\t올바른 입력이 아닙니다. 다시 시도해주세요.");
-        }
-
             }
 
-        }
+         }
+
+    }
     
     //강사의 담당 보유 회원수
     public int getNumberOfMngedMember(Instructor ins) {
@@ -443,17 +455,24 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
         String position = this.instructor.getRole();
         String tel = this.instructor.getTel();
         String birth = this.instructor.getBirthDate();
-        int numberOfMngedMember = getNumberOfMngedMember(this.instructor);
+        int numberOfMngedMember = 8;
         String classTime = getFirstBookDay(this.instructor) != null ? String.format("%02d", getFirstBookDay(this.instructor).get(Calendar.HOUR_OF_DAY)) : null;
+
+        //넣어봤어요...
+        if (this.instructor == null) {
+            System.out.println("강사 정보가 없습니다.");
+            return;
+        }
 
         InstructorView.printMainMenu(insName, position, tel, birth, numberOfMngedMember, classTime);
 
         //pause();
         System.out.println();
-        scan.nextLine();
+        System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
+        String cmd = scan.nextLine();
 
         while(true) {
-            String cmd = scan.nextLine();
+            
 
             if(cmd.equals("1")) {
                 //1. 근퇴기록 하기
@@ -462,7 +481,7 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
 
             } else if(cmd.equals("2")) {
                 //2. 수업 관리
-                classManagement();
+                classManagement(this.instructor.getEmpNo());
 
             } else if (cmd.equals("3")) {
                 //3. 회원관리
@@ -491,7 +510,7 @@ System.out.println(" [사번]    [근무일]   [출근시간]            [퇴근
  			
  			//pause();
  			System.out.println();
- 			scan.nextLine();
+// 			scan.nextLine();
  			
  			ArrayList<Attendance> attList = getThisWeekAttendance(this.instructor);
  			String[] commuteResult = new String[7];

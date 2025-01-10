@@ -12,6 +12,9 @@ public class Emp extends User{
 		this.role = role;
 	}
 
+	public Emp() {
+		
+	}
 	public String getEmpNo() {
 		return empNo;
 	}

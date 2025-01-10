@@ -12,6 +12,9 @@ public class User {
 		this.birthDate = birthDate;
 	}
 
+	public User() {
+		
+	}
 	public String getName() {
 		return name;
 	}

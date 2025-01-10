@@ -15,7 +15,7 @@ public class CalendarView implements ConsoleColor {
         displayCal = (Calendar) currentCal.clone();
     }
     
-    public void start() {
+    public void start(String instructorName) {
         Scanner scanner = new Scanner(System.in);
         String input;
         
@@ -51,7 +51,7 @@ public class CalendarView implements ConsoleColor {
                     break;
  
                 case "#":
-                	InstructorService.classManagement();
+                	InstructorService.classManagement(instructorName);
                     return;
                 default:
                 	 try {
@@ -62,10 +62,10 @@ public class CalendarView implements ConsoleColor {
                                  month, 
                                  day);
                              EmpDateService empDateService = new EmpDateService();
-                             if(!empDateService.viewReservationDetails(date)) {
-                            	 return;
-                             }
-//							empDateService.viewReservationDetails(date); // 예약 상세 보기
+//                             if(!empDateService.viewReservationDetails(date)) {
+//                            	 return;
+//                             }
+							empDateService.viewReservationDetails(date); // 예약 상세 보기
                          } else {
                              System.out.println("\t유효한 날짜를 입력해주세요.");
                          }

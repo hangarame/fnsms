@@ -14,6 +14,33 @@ import com.fnsms.ticketregistration.TicketRegistration;
 
 
 public class EmpService {
+	
+	public static void memberManagement() {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.println("\n[회원관리 메뉴]");
+            System.out.println("1. 회원등록");
+            System.out.println("2. 회원조회");
+            System.out.println("0. 뒤로가기");
+            System.out.print("선택> ");
+
+            String sel = sc.nextLine();
+            switch (sel) {
+                case "1":
+                    addMember();
+                    break;
+                case "2":
+                    searchMember();
+                    break;
+                case "0":
+                    System.out.println("회원관리 메뉴 종료");
+                    return;
+                default:
+                    System.out.println("잘못된 입력입니다.");
+            }
+        }
+    }
+	
 
 	// 회원등록
 	public static void addMember() {

@@ -11,10 +11,15 @@ public class Instructor extends Emp {
 	
 	private int iningCost;
 
+	public Instructor() {
+        // 초기화 코드 (필요한 경우)
+    }
+	
 	public Instructor(String name, String tel, String birthDate, String empNo, String role, int iningCost) {
 		super(name, tel, birthDate, empNo, role);
 		this.iningCost = iningCost;
 	}
+
 
 	public int getIningCost() {
 		return iningCost;
