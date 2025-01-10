@@ -11,6 +11,7 @@ import com.fnsms.member.Member;
 import com.fnsms.member.MemberService;
 import com.fnsms.user.User;
 import com.fnsms.user.UserService;
+import com.fnsms.view.AdministratorView;
 
 public class Main {
 
@@ -23,22 +24,24 @@ public class Main {
         ReservationDAO.load();
         TicketDAO.load();
         TicketRegistrationDAO.load();
-
-        // 2) 로그인 & 메인 메뉴 반복
-
-        while (true) {
-            User user = UserService.logIn(); 
-
-            if (user == null) { 
-                System.out.println("프로그램을 종료합니다.");
-                return; 
-        }//종료
-        // 이 이후는 UserService 내부에서 이미 회원/강사/관리자 각자 메인 화면을 띄우고
-        // 로그아웃시 다시 logIn() 반복
-        }
+        
+        AdministratorView.printMainmenu();
+//        
+//        // 2) 로그인 & 메인 메뉴 반복
+//
+//        while (true) {
+//            User user = UserService.logIn(); 
+//
+//            if (user == null) { 
+//                System.out.println("프로그램을 종료합니다.");
+//                return; 
+//        }//종료
+//        // 이 이후는 UserService 내부에서 이미 회원/강사/관리자 각자 메인 화면을 띄우고
+//        // 로그아웃시 다시 logIn() 반복
+//        }
 
 //            InstructorService.classManagement();
 
-
+        
     }//main
 }//class
