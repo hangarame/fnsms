@@ -21,6 +21,7 @@ public class EmpDAO {
 		adminList = new ArrayList<Administrator>();
 	}
 	
+	
 	public static void load() {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(EMP_DATA_PATH));
@@ -99,6 +100,34 @@ public class EmpDAO {
 			
 		return insList;
 	}
+
+	public static Object getEmpByNo(String empNo) {
+        // 1) 강사 리스트에서 검색
+        for (Instructor ins : instructorList) {
+            if (ins.getEmpNo().equals(empNo)) {
+                return ins; // 찾으면 바로 반환
+            }
+        }
+        // 2) 관리자 리스트에서 검색
+        for (Administrator adm : adminList) {
+            if (adm.getEmpNo().equals(empNo)) {
+                return adm; // 찾으면 바로 반환
+            }
+        }
+        // 3) 둘 다 없으면 null
+        return null;
+    }
+	
+	public static Instructor getInstructor(String empNo){
+		for(Instructor ins : instructorList) {
+			if(ins.getEmpNo().equals(empNo)) {
+				return ins;
+			}
+		}
+			
+		return null;
+	}
 	
 		
-}
+}//class
+

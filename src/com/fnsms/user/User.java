@@ -7,7 +7,6 @@ public class User {
 	protected String birthDate;
 	
 	public User(String name, String tel, String birthDate) {
-		super();
 		this.name = name;
 		this.tel = tel;
 		this.birthDate = birthDate;

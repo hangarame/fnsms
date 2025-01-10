@@ -3,43 +3,41 @@ package com.fnsms.reservation;
 import java.util.Calendar;
 
 public class Reservation {
-
+	
+	
+	private String classType; 
+	private String instructorName;
 	int ticketRegNo;
 	Calendar reservDate;
 	String classDiary;
 	
-	public Reservation(int ticketRegNo, Calendar reservDate, String classDiary) {
+	
+	
+	public Reservation( int ticketRegNo, Calendar reservDate, String classDiary) {
 		super();
-		this.ticketRegNo = ticketRegNo;
-		this.reservDate = reservDate;
-		this.classDiary = classDiary;
+		this.ticketRegNo = ticketRegNo; //등록된 티켓 번호
+		this.reservDate = reservDate;	//예약일
+		this.classDiary = classDiary;	//수업일지
 	}
 
-	public int getTicketRegNo() {
-		return ticketRegNo;
-	}
+	public int getTicketRegNo() {return ticketRegNo;}
+	public void setTicketRegNo(int ticketRegNo) {this.ticketRegNo = ticketRegNo;}
 
-	public void setTicketRegNo(int ticketRegNo) {
-		this.ticketRegNo = ticketRegNo;
-	}
+	public Calendar getReservDate() {return reservDate;}
+	public void setReservDate(Calendar reservDate) {this.reservDate = reservDate;}
 
-	public Calendar getReservDate() {
-		return reservDate;
-	}
+	public String getClassDiary() {return classDiary;}
+	public void setClassDiary(String classDiary) {this.classDiary = classDiary;}
 
-	public void setReservDate(Calendar reservDate) {
-		this.reservDate = reservDate;
-	}
+	public String getInstructorName() {
+        return instructorName;
+    }
 
-	public String getClassDiary() {
-		return classDiary;
-	}
-
-	public void setClassDiary(String classDiary) {
-		this.classDiary = classDiary;
-	}
-
-	@Override
+    public String getClassType() {
+        return classType;
+    }
+    
+    @Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Reservation [ticketRegNo=");

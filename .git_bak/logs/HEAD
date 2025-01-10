@@ -1,0 +1,63 @@
+0000000000000000000000000000000000000000 2af7e22a9d11ecea43c51658444bba39d7372b8a HanbKim <leilot@me.com> 1736292607 +0900	clone: from https://github.com/hangarame/fnsms.git
+2af7e22a9d11ecea43c51658444bba39d7372b8a 2af7e22a9d11ecea43c51658444bba39d7372b8a HanbKim <leilot@me.com> 1736292663 +0900	checkout: moving from main to hb
+2af7e22a9d11ecea43c51658444bba39d7372b8a 2af7e22a9d11ecea43c51658444bba39d7372b8a HanbKim <leilot@me.com> 1736292713 +0900	checkout: moving from hb to main
+2af7e22a9d11ecea43c51658444bba39d7372b8a 2af7e22a9d11ecea43c51658444bba39d7372b8a HanbKim <leilot@me.com> 1736292720 +0900	checkout: moving from main to hb
+2af7e22a9d11ecea43c51658444bba39d7372b8a 6d49d4e4945c3c4035564ade3e1b6b85a14da669 HanbKim <leilot@me.com> 1736292755 +0900	checkout: moving from hb to gr
+6d49d4e4945c3c4035564ade3e1b6b85a14da669 2af7e22a9d11ecea43c51658444bba39d7372b8a HanbKim <leilot@me.com> 1736292758 +0900	checkout: moving from gr to hb
+2af7e22a9d11ecea43c51658444bba39d7372b8a 6a5281ff25553f7946f5bdf5680aad5db4923e79 HanbKim <leilot@me.com> 1736295912 +0900	merge main: Fast-forward
+6a5281ff25553f7946f5bdf5680aad5db4923e79 6a5281ff25553f7946f5bdf5680aad5db4923e79 HanbKim <leilot@me.com> 1736313042 +0900	reset: moving to HEAD
+6a5281ff25553f7946f5bdf5680aad5db4923e79 79fada6ceecbe77faa58bc750a91ecbd77850fef HanbKim <leilot@me.com> 1736313042 +0900	merge main: Fast-forward
+79fada6ceecbe77faa58bc750a91ecbd77850fef 87444db2b7d4e2d3e27be0a41ad377cc06b7c26d HanbKim <leilot@me.com> 1736313463 +0900	commit: InstructorService>회원등록,조회
+87444db2b7d4e2d3e27be0a41ad377cc06b7c26d b58e49c0127b4d28142d550f08ef3fe0dc6e41ef HanbKim <leilot@me.com> 1736313571 +0900	commit: InstructorService>회원등록,조회
+b58e49c0127b4d28142d550f08ef3fe0dc6e41ef 697a9f13e38e0f9d767e84200c3cf6826af12203 HanbKim <leilot@me.com> 1736319379 +0900	commit: InstructorService>출퇴근등록,조회
+697a9f13e38e0f9d767e84200c3cf6826af12203 e648f34a91c61b8ce353d292dcb0570d702d2255 HanbKim <leilot@me.com> 1736325823 +0900	commit: EmpService>회원등록,조회 일부
+e648f34a91c61b8ce353d292dcb0570d702d2255 81cbbe5b1d3a5a4c9e6569db3d8e065b38428b34 HanbKim <leilot@me.com> 1736325909 +0900	checkout: moving from hb to main
+81cbbe5b1d3a5a4c9e6569db3d8e065b38428b34 e648f34a91c61b8ce353d292dcb0570d702d2255 HanbKim <leilot@me.com> 1736325913 +0900	checkout: moving from main to hb
+e648f34a91c61b8ce353d292dcb0570d702d2255 81cbbe5b1d3a5a4c9e6569db3d8e065b38428b34 HanbKim <leilot@me.com> 1736325965 +0900	checkout: moving from hb to main
+81cbbe5b1d3a5a4c9e6569db3d8e065b38428b34 0fe99ecc4cefb360ce8f33aabc5b3309da1e28a6 HanbKim <leilot@me.com> 1736326099 +0900	commit (merge): Merge branch 'hb'
+0fe99ecc4cefb360ce8f33aabc5b3309da1e28a6 e648f34a91c61b8ce353d292dcb0570d702d2255 HanbKim <leilot@me.com> 1736326103 +0900	checkout: moving from main to hb
+e648f34a91c61b8ce353d292dcb0570d702d2255 3df9e07847ea38fd62c132c35802adac209c4b85 HanbKim <leilot@me.com> 1736384819 +0900	commit: EmpService, InstructorService
+3df9e07847ea38fd62c132c35802adac209c4b85 0fe99ecc4cefb360ce8f33aabc5b3309da1e28a6 HanbKim <leilot@me.com> 1736384846 +0900	checkout: moving from hb to main
+0fe99ecc4cefb360ce8f33aabc5b3309da1e28a6 3df9e07847ea38fd62c132c35802adac209c4b85 HanbKim <leilot@me.com> 1736384851 +0900	checkout: moving from main to hb
+3df9e07847ea38fd62c132c35802adac209c4b85 b2fa529bea554f59452e74076e5a61fb16eec32a HanbKim <leilot@me.com> 1736384857 +0900	merge main: Merge made by the 'ort' strategy.
+b2fa529bea554f59452e74076e5a61fb16eec32a 0fe99ecc4cefb360ce8f33aabc5b3309da1e28a6 HanbKim <leilot@me.com> 1736385506 +0900	checkout: moving from hb to main
+0fe99ecc4cefb360ce8f33aabc5b3309da1e28a6 073ef6e9db45363762dc599a960605a25edcd2fd HanbKim <leilot@me.com> 1736385530 +0900	commit (merge): Merge branch 'main' of https://github.com/hangarame/fnsms
+073ef6e9db45363762dc599a960605a25edcd2fd b2fa529bea554f59452e74076e5a61fb16eec32a HanbKim <leilot@me.com> 1736385538 +0900	checkout: moving from main to hb
+b2fa529bea554f59452e74076e5a61fb16eec32a 50f9b5901bca6484001b16cf9d5a8c17698996f9 HanbKim <leilot@me.com> 1736385546 +0900	merge main: Merge made by the 'ort' strategy.
+50f9b5901bca6484001b16cf9d5a8c17698996f9 ae741b63fedba474e180a2bf6b4e0a1809d894f5 HanbKim <leilot@me.com> 1736391273 +0900	commit: .
+ae741b63fedba474e180a2bf6b4e0a1809d894f5 619202532b26ed73d806f68d99f6d3f893302dda HanbKim <leilot@me.com> 1736391316 +0900	commit (merge): Merge branch 'main' into hb
+619202532b26ed73d806f68d99f6d3f893302dda d9ca0a5327858d269ba15147910601074d930c50 HanbKim <leilot@me.com> 1736391760 +0900	commit: ddd
+d9ca0a5327858d269ba15147910601074d930c50 c6303a98db7691dd17913db146c7eb8552c3dea3 HanbKim <leilot@me.com> 1736391785 +0900	checkout: moving from hb to main
+c6303a98db7691dd17913db146c7eb8552c3dea3 728eb61db47e9fd4753ca4f0577a603786abf83c HanbKim <leilot@me.com> 1736391796 +0900	merge hb: Merge made by the 'ort' strategy.
+728eb61db47e9fd4753ca4f0577a603786abf83c d9ca0a5327858d269ba15147910601074d930c50 HanbKim <leilot@me.com> 1736391809 +0900	checkout: moving from main to hb
+d9ca0a5327858d269ba15147910601074d930c50 728eb61db47e9fd4753ca4f0577a603786abf83c HanbKim <leilot@me.com> 1736391828 +0900	checkout: moving from hb to main
+728eb61db47e9fd4753ca4f0577a603786abf83c d9ca0a5327858d269ba15147910601074d930c50 HanbKim <leilot@me.com> 1736391831 +0900	checkout: moving from main to hb
+d9ca0a5327858d269ba15147910601074d930c50 728eb61db47e9fd4753ca4f0577a603786abf83c HanbKim <leilot@me.com> 1736391832 +0900	checkout: moving from hb to main
+728eb61db47e9fd4753ca4f0577a603786abf83c d9ca0a5327858d269ba15147910601074d930c50 HanbKim <leilot@me.com> 1736391836 +0900	checkout: moving from main to hb
+d9ca0a5327858d269ba15147910601074d930c50 d6a3c95f237ed68c985bc3563cbfe10be6b131ca HanbKim <leilot@me.com> 1736392108 +0900	commit: z
+d6a3c95f237ed68c985bc3563cbfe10be6b131ca 20f9243f88f5ece238b3f65becde3f559c7b8a4f HanbKim <leilot@me.com> 1736392133 +0900	commit (merge): Merge branch 'main' into hb
+20f9243f88f5ece238b3f65becde3f559c7b8a4f 5e200427ac0fc542deb04c335059c2d3cded3250 HanbKim <leilot@me.com> 1736392144 +0900	checkout: moving from hb to main
+5e200427ac0fc542deb04c335059c2d3cded3250 20f9243f88f5ece238b3f65becde3f559c7b8a4f HanbKim <leilot@me.com> 1736392155 +0900	merge hb: Fast-forward
+20f9243f88f5ece238b3f65becde3f559c7b8a4f 20f9243f88f5ece238b3f65becde3f559c7b8a4f HanbKim <leilot@me.com> 1736392200 +0900	checkout: moving from main to hb
+20f9243f88f5ece238b3f65becde3f559c7b8a4f 20f9243f88f5ece238b3f65becde3f559c7b8a4f HanbKim <leilot@me.com> 1736392207 +0900	checkout: moving from hb to main
+20f9243f88f5ece238b3f65becde3f559c7b8a4f 20f9243f88f5ece238b3f65becde3f559c7b8a4f HanbKim <leilot@me.com> 1736392309 +0900	checkout: moving from main to hb
+20f9243f88f5ece238b3f65becde3f559c7b8a4f 20f9243f88f5ece238b3f65becde3f559c7b8a4f HanbKim <leilot@me.com> 1736392428 +0900	checkout: moving from hb to main
+20f9243f88f5ece238b3f65becde3f559c7b8a4f 9c6d634ada15c4239b79990a19141187daef9198 HanbKim <leilot@me.com> 1736392451 +0900	pull --ff --recurse-submodules --progress origin: Fast-forward
+9c6d634ada15c4239b79990a19141187daef9198 20f9243f88f5ece238b3f65becde3f559c7b8a4f HanbKim <leilot@me.com> 1736392467 +0900	checkout: moving from main to hb
+20f9243f88f5ece238b3f65becde3f559c7b8a4f 9c6d634ada15c4239b79990a19141187daef9198 HanbKim <leilot@me.com> 1736392482 +0900	merge main: Fast-forward
+9c6d634ada15c4239b79990a19141187daef9198 d2d45ad56bb632589f9b1b584a25534012fc813e HanbKim <leilot@me.com> 1736404860 +0900	commit: EmpService 작업 거의 다 됨
+d2d45ad56bb632589f9b1b584a25534012fc813e 6f24ed3d0aaaefb78d98d76b35287343d3d23c4b HanbKim <leilot@me.com> 1736405065 +0900	commit (merge): Merge branch 'main' into hb
+6f24ed3d0aaaefb78d98d76b35287343d3d23c4b 1b47a14d23b756a0574b3a6c5e99d5c899c3e282 HanbKim <leilot@me.com> 1736405077 +0900	checkout: moving from hb to main
+1b47a14d23b756a0574b3a6c5e99d5c899c3e282 6f24ed3d0aaaefb78d98d76b35287343d3d23c4b HanbKim <leilot@me.com> 1736405108 +0900	merge hb: Fast-forward
+6f24ed3d0aaaefb78d98d76b35287343d3d23c4b 6f24ed3d0aaaefb78d98d76b35287343d3d23c4b HanbKim <leilot@me.com> 1736405123 +0900	checkout: moving from main to hb
+6f24ed3d0aaaefb78d98d76b35287343d3d23c4b 15dac193a607ab84a6f8a3177ae8b8a07a55c94f HanbKim <leilot@me.com> 1736413610 +0900	commit: .
+15dac193a607ab84a6f8a3177ae8b8a07a55c94f da0bea1d31da153e6f2c91b2925fa3192d6009b7 HanbKim <leilot@me.com> 1736413670 +0900	checkout: moving from hb to main
+da0bea1d31da153e6f2c91b2925fa3192d6009b7 15dac193a607ab84a6f8a3177ae8b8a07a55c94f HanbKim <leilot@me.com> 1736413680 +0900	checkout: moving from main to hb
+15dac193a607ab84a6f8a3177ae8b8a07a55c94f b950511c0bf408b61ba2b19ce9da8f524ec7f187 HanbKim <leilot@me.com> 1736413741 +0900	commit (merge): Merge branch 'main' into hb
+b950511c0bf408b61ba2b19ce9da8f524ec7f187 da0bea1d31da153e6f2c91b2925fa3192d6009b7 HanbKim <leilot@me.com> 1736414161 +0900	checkout: moving from hb to main
+da0bea1d31da153e6f2c91b2925fa3192d6009b7 b950511c0bf408b61ba2b19ce9da8f524ec7f187 HanbKim <leilot@me.com> 1736414172 +0900	merge hb: Fast-forward
+b950511c0bf408b61ba2b19ce9da8f524ec7f187 b950511c0bf408b61ba2b19ce9da8f524ec7f187 HanbKim <leilot@me.com> 1736414183 +0900	checkout: moving from main to hb
+b950511c0bf408b61ba2b19ce9da8f524ec7f187 b950511c0bf408b61ba2b19ce9da8f524ec7f187 HanbKim <leilot@me.com> 1736415014 +0900	checkout: moving from hb to main
+b950511c0bf408b61ba2b19ce9da8f524ec7f187 29f5f0d1a91203f3c1dc63750f1963560b742902 HanbKim <leilot@me.com> 1736415018 +0900	pull --ff --recurse-submodules --progress origin: Fast-forward
+29f5f0d1a91203f3c1dc63750f1963560b742902 b950511c0bf408b61ba2b19ce9da8f524ec7f187 HanbKim <leilot@me.com> 1736415035 +0900	checkout: moving from main to hb
+b950511c0bf408b61ba2b19ce9da8f524ec7f187 29f5f0d1a91203f3c1dc63750f1963560b742902 HanbKim <leilot@me.com> 1736415041 +0900	merge main: Fast-forward

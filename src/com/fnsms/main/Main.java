@@ -1,74 +1,44 @@
 package com.fnsms.main;
 
-import com.fnsms.view.AdministratorView;
-import com.fnsms.view.CalendarView;
-import com.fnsms.view.CommonView;
-import com.fnsms.view.InstructorView;
-
-import com.fnsms.view.MemberView;
-
+import com.fnsms.dao.AttendanceDAO;
+import com.fnsms.dao.EmpDAO;
+import com.fnsms.dao.MemberDAO;
+import com.fnsms.dao.ReservationDAO;
+import com.fnsms.dao.TicketDAO;
+import com.fnsms.dao.TicketRegistrationDAO;
+import com.fnsms.instructor.InstructorService;
+import com.fnsms.member.Member;
+import com.fnsms.member.MemberService;
+import com.fnsms.user.User;
+import com.fnsms.user.UserService;
 
 public class Main {
-	public static void main(String[] args) {
-<<<<<<< HEAD
-=======
 
-//		CommonView.printLoginSelct();
-//		MemberView.PrintBanner();
-//		CommonView.printLoginFailed();
-//		CommonView.printLogout();
-//
-//		new CalendarView().start();
-		
-//		MemberView.printMainmenu();
-//		MemberView.printUsingTicket();
-//		MemberView.printDate();
-//		MemberView.ticketBreak();
-//		MemberView.ticketBreakSuccess();
-//		MemberView.ticketBreakFailed();
-//		
-//		AdministratorView.adminPrintBanner();
-
-		
-		AdministratorView.PrintBanner();
-		AdministratorView.instructorManagement();
-		AdministratorView.instructorManagementFailed();
-		AdministratorView.selectInstructor();
-		AdministratorView.attendanceManagement();
->>>>>>> 7635bfae0c2b4440782c0c82fff76295f1591572
-
-
-		
-<<<<<<< HEAD
-//		System.out.println("PrintBanner");
-//		new MemberView().PrintBanner();
-//		System.out.println("printDate");
-//		new MemberView().printDate();
-//		System.out.println("printMainmenu");
-//		new MemberView().printMainmenu();
-//		System.out.println("printUsingTicket");
-//		new MemberView().printUsingTicket();
-//		System.out.println("ticketBreak");
-//		new MemberView().ticketBreak();
-//		System.out.println("ticketBreakFailed");
-//		new MemberView().ticketBreakFailed();
-//		System.out.println("ticketBreakSuccess");
-//		new MemberView().ticketBreakSuccess();
-
-	}
-=======
-//		AttendanceDAO.load();
-//		AttendanceDAO.save();
-//		
-////		for(Attendance a : AttendanceDAO.getAttendanceList("i00000001")) {
-////			System.out.println(a);
-////		}
-////		
-//		for(Attendance a : AttendanceDAO.getAttendanceByDateList("20241201")) {
-//			System.out.println(a);
-		}
-
-
-
->>>>>>> 7635bfae0c2b4440782c0c82fff76295f1591572
-}
+    public static void main(String[] args) {
+        
+        // 1) 모든 DAO 로드
+        AttendanceDAO.load();
+        EmpDAO.load();
+        MemberDAO.load();
+        ReservationDAO.load();
+        TicketDAO.load();
+        TicketRegistrationDAO.load();
+        
+        // 2) 로그인 & 메인 메뉴 반복
+        
+        while (true) {
+            User user = UserService.logIn(); 
+            
+            if (user == null) { 
+            	System.out.println("프로그램을 종료합니다.");
+                return; 
+        }//종료
+        // 이 이후는 UserService 내부에서 이미 회원/강사/관리자 각자 메인 화면을 띄우고
+        // 로그아웃시 다시 logIn() 반복
+        }
+        
+//    		InstructorService.classManagement();
+    		
+    		
+    }//main
+}//class
