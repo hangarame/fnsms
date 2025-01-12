@@ -38,31 +38,56 @@ public class MemberService extends UserService {
 		ArrayList<TicketRegistration> validRegList =
 				this.getValidRegstration(this.getMember());
 		
-		MemberView.printMainmenu(this.getMember().getName(), this.getMember().getTel(), this.getMember().getBirthDate()
-				, this.haveUseTowelTicketUse()
-				, validRegList.get(0).getTicket()
-				, this.getTicketRemainIning(validRegList.get(0))
-				, validRegList.get(0).getEndDate());
 		
-//		return validRegList.get(0);
+		//센터 이용권
+		TicketRegistration centerPass = null; 
+		//System.out.println(validRegList);
 		
-		while(true) {
-			System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
-			String cmd = scan.nextLine();
-			if(cmd.equals("1")) {
-//				이용권 정보 조회
-				inquiryTicketInfo(validRegList.get(0));
-//				scan.close();
-			} else if(cmd.equals("2")) {
-				// 예약 조회
-			} else if(cmd.equals("E")) {
-				//로그아웃 메서드
-				UserService.logOut();
-			} else {
-				System.out.println("\t정해진 문자를 입력해주세요.");
-//				scan.close();
+		for(TicketRegistration item : validRegList) {
+			String ticketName = TicketDAO.getTicketList(item.getTicket()).get(0).getTicketClassify();
+			if(ticketName.startsWith("헬스")
+				|| ticketName.startsWith("PT")
+				|| ticketName.startsWith("필라테스")) {
+				centerPass = item;
+				break;
 			}
+			
+			//System.out.println("센터 이용권: " + centerPass);
 		}
+		
+		
+		
+		if(centerPass != null) {
+			MemberView.printMainmenu(this.getMember().getName(), this.getMember().getTel(), this.getMember().getBirthDate()
+					, this.haveUseTowelTicketUse()
+					, centerPass.getTicket()
+					, this.getTicketRemainIning(centerPass)
+					, centerPass.getEndDate());
+			
+//			return validRegList.get(0);
+			
+			while(true) {
+				System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
+				String cmd = scan.nextLine();
+				if(cmd.equals("1")) {
+//					이용권 정보 조회
+					inquiryTicketInfo(centerPass);
+//					scan.close();
+				} else if(cmd.equals("2")) {
+					// 예약 조회
+				} else if(cmd.equals("E")) {
+					//로그아웃 메서드
+					UserService.logOut();
+				} else {
+					System.out.println("\t정해진 문자를 입력해주세요.");
+//					scan.close();
+				}
+			}
+		} else {
+			System.out.println("\t등록하신 이용권이 없습니다.");
+		}
+		
+		
 		
 	}//멤버메인	
 	
@@ -96,11 +121,11 @@ public class MemberService extends UserService {
 	
 	//운동복/수건 이용권이 있는지
 	public boolean haveUseTowelTicketUse() {
-		 for(TicketRegistration reg : TicketRegistrationDAO.getTicketRegList(this.getMember().getMemberNo()) ) {
+		 for(TicketRegistration reg : this.getValidRegstration(this.getMember()) ) {
 			 if(reg.getTicket().startsWith("운동복")) {
 				return true; 
 			 }
-
+			 
 		 }
 		 return false;
 	}
