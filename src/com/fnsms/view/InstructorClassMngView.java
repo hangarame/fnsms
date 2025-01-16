@@ -1,3 +1,4 @@
+
 package com.fnsms.view;
 
 import java.sql.Date;
@@ -5,6 +6,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
 
+import com.fnsms.dao.ReservationDAO;
+import com.fnsms.reservation.Reservation;
+/**
+ * 강사의 수업관리에 관한 출력화면을 모은 클래스입니다.
+ * @author 1조
+ */
 public class InstructorClassMngView implements ConsoleColor {
 
 	private int reservationTime = -1;
@@ -31,7 +38,7 @@ public class InstructorClassMngView implements ConsoleColor {
 	}
 
 	// 수업 예약 날짜 선택 >> 미완
-	public static void printSelectReservationDate() {
+	public static void printSelectReservationDate(String instructorName, String classType) {
 
 		int ResvationDate = 0;
 
@@ -39,8 +46,14 @@ public class InstructorClassMngView implements ConsoleColor {
 		logo.Logo();
 		System.out.println("\t\t\t\t\t\t\t\t날짜별 예약 조회");
 		System.out.println("=================================================================================");
+		
+		ArrayList<Reservation> reservations =
+				ReservationDAO.getReservationsByInstructor(instructorName, classType);
+		
+//		CalendarView calendar = new CalendarView(reservations, true);
 		CalendarView calendar = new CalendarView();
-		calendar.printCalendar();
+		calendar.start(instructorName);
+		
 		System.out.println();
 		System.out.println("=================================================================================");
 		System.out.println();
@@ -51,7 +64,7 @@ public class InstructorClassMngView implements ConsoleColor {
 		// System.out.println("\t🖙 원하는 작업을 입력하세요 : ");
 
 	}
-
+	
 	// 수업 예약일 >> 미완
 	public static void printReservationDate() {
 

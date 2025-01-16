@@ -8,6 +8,10 @@ import java.util.Calendar;
 
 import com.fnsms.ticketregistration.TicketRegistration;
 
+/**
+ * 회원에게 등록된 이용권 정보를 관리하는 클래스입니다.
+ * @author 1조
+ */
 public class TicketRegistrationDAO {
 	//파일 경로
 	private final static String REGISTTICKET_DATA_PATH;

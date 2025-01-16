@@ -1,7 +1,10 @@
 package com.fnsms.emp;
 
 import com.fnsms.user.User;
-
+/**
+ * 강사 및 관리자의 기본 데이터 클래스 입니다.
+ * @author 1조
+ */
 public class Emp extends User{
 	protected String empNo;
 	protected String role;

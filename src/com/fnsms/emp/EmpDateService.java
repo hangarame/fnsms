@@ -1,30 +1,37 @@
 package com.fnsms.emp;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import com.fnsms.dao.EmpDAO;
 import com.fnsms.instructor.InstructorService;
 import com.fnsms.view.CalendarView;
 import com.fnsms.view.Header;
-import com.fnsms.view.InstructorView;
 
+/**
+ * 강사, 관리자의 일정관리에 관한 클래스 입니다.
+ * @author 1조
+ */
 public class EmpDateService {
     private Scanner scanner = new Scanner(System.in);
     private Map<String, List<String>> reservations = new HashMap<>();
+    private Emp emp;
+    
+    public EmpDateService(String empNo) {
+		this.emp = EmpDAO.getInstructor(empNo);
+	}
     
     
    
     //3-2-1 날짜 검색, 달력을 출력해서 날짜를 받는다.
     public void viewByDate() {
-		
+		String empNo = this.emp.getEmpNo();
     	CalendarView calendarView = new CalendarView();
-		calendarView.start();
+		calendarView.start(empNo);
 	    
     }
 
@@ -40,7 +47,7 @@ public class EmpDateService {
     }
     
     //3-2-1-1 날짜를 선택할 경우
-    public boolean viewReservationDetails(String date) {
+    public void viewReservationDetails(String date) {
     	// 예약 데이터 초기화 (필요 시)
         initializeSampleReservations(date);
         Header logo = new Header();
@@ -60,31 +67,56 @@ public class EmpDateService {
         System.out.println("\t2. 예약 변경하기");
         System.out.println("\t3. 예약 취소하기");
         System.out.println();
-        System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
+        
         Scanner scan = new Scanner(System.in);
+        boolean isRunning = true;
+        
+        while(isRunning) {
+        	System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
    
-        String input = scan.nextLine();
+        	String input = scan.nextLine();
 
-        switch (input) {
-            case "1":
-                addReservation(date);
-                break;
-            case "2":
-                updateReservation(date);
-                break;
-            case "3":
-                cancelReservation(date);
-                break;
-            case "#":
-            	System.out.println();
-            	System.out.println("\t엔터를 눌러 이전 화면으로 이동하세요.");
-                scanner.nextLine(); // 엔터 입력 대기
-                InstructorView.printMainMenu("김계란", "PT", "010-1234-1234", "92-02-12", 8, "0");
-                break;
-        default:
-            System.out.println("\t올바른 입력이 아닙니다. 다시 시도해주세요.");
+//	        switch (input) {
+//	            case "1":
+//	                addReservation(date);
+//	                break;
+//	            case "2":
+//	                updateReservation(date);
+//	                break;
+//	            case "3":
+//	                cancelReservation(date);
+//	                break;
+//	            case "#":
+//	            	System.out.println();
+//	            	System.out.println("\t엔터를 눌러 이전 화면으로 이동하세요.");
+//	                scan.nextLine(); // 엔터 입력 대기
+//	                isRunning  = false;
+//	                InstructorService.classManagement();
+//	                break;
+//	        default:
+//	            System.out.println("\t올바른 입력이 아닙니다. 다시 시도해주세요.");
+//	        }
+        	
+        	if(input.equals("1")) {
+        		addReservation(date);
+        	}else
+        	if(input.equals("1")) {
+            		addReservation(date);
+            }else if(input.equals("2")) {
+            	updateReservation(date);
+            }else if(input.equals("3")) {
+            	cancelReservation(date);
+        	}else if(input.equals("#")) {
+        		System.out.println("\t엔터를 눌러 이전 화면으로 이동하세요.");
+                scan.nextLine(); // 엔터 입력 대기
+                isRunning = false;
+        		InstructorService ins = new InstructorService();
+        		ins.instructorMainMenu();
+        	}else {
+        		System.out.println("\t올바른 입력이 아닙니다. 다시 시도해주세요.");
+//    	        
+        	}
         }
-		return false;
         
     }
 

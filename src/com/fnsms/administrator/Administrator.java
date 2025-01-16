@@ -2,6 +2,10 @@ package com.fnsms.administrator;
 
 import com.fnsms.emp.Emp;
 
+/**
+ * 관리자에 기본정보를 담은 클래스 입니다.
+ * @author 1조
+ */
 public class Administrator extends Emp {
 
 	public Administrator(String name, String tel, String birthDate, String empNo, String role) {

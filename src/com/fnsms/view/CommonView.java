@@ -1,7 +1,11 @@
+
 package com.fnsms.view;
 
 import java.util.Calendar;
-
+/**
+ * 공통된 정보를 출력하는 클래스입니다. 
+ *@author 1조
+ */
 public class CommonView implements ConsoleColor {
 
 	

@@ -1,5 +1,9 @@
-package com.fnsms.view;
 
+package com.fnsms.view;
+/**
+ * 콘솔 출력을 위한 변수 클래스입니다.
+ * @author 1조
+ */
 public interface ConsoleColor {
 	
 	// 글자 색상

@@ -1,3 +1,4 @@
+
 package com.fnsms.view;
 
 import java.util.Calendar;
@@ -5,7 +6,10 @@ import java.util.Scanner;
 
 import com.fnsms.emp.EmpDateService;
 import com.fnsms.instructor.InstructorService;
-
+/**
+ * 달력에 관한 출력화면이 담긴 클래스입니다.
+ * @author 1조
+ */
 public class CalendarView implements ConsoleColor {
     private Calendar currentCal;  // 실제 현재 날짜
     private Calendar displayCal;  // 화면에 표시할 날짜
@@ -15,7 +19,7 @@ public class CalendarView implements ConsoleColor {
         displayCal = (Calendar) currentCal.clone();
     }
     
-    public void start() {
+    public void start(String empNo) {
         Scanner scanner = new Scanner(System.in);
         String input;
         
@@ -51,7 +55,7 @@ public class CalendarView implements ConsoleColor {
                     break;
  
                 case "#":
-                	InstructorService.classManagement();
+                	InstructorService.classManagement(empNo);
                     return;
                 default:
                 	 try {
@@ -61,11 +65,11 @@ public class CalendarView implements ConsoleColor {
                                  year, 
                                  month, 
                                  day);
-                             EmpDateService empDateService = new EmpDateService();
-                             if(!empDateService.viewReservationDetails(date)) {
-                            	 return;
-                             }
-//							empDateService.viewReservationDetails(date); // 예약 상세 보기
+                             EmpDateService empDateService = new EmpDateService(empNo);
+//                             if(!empDateService.viewReservationDetails(date)) {
+//                            	 return;
+//                             }
+							empDateService.viewReservationDetails(date); // 예약 상세 보기
                          } else {
                              System.out.println("\t유효한 날짜를 입력해주세요.");
                          }

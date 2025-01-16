@@ -9,6 +9,10 @@ import java.util.Calendar;
 import com.fnsms.reservation.Reservation;
 import com.fnsms.ticketregistration.TicketRegistration;
 
+/**
+ * @author 1조
+ * 수업 예약을 관리하기 위한 클래스 입니다.
+ */
 public class ReservationDAO {
 	//파일 경로
 	private final static String RESERVATION_DATA_PATH;
@@ -20,6 +24,24 @@ public class ReservationDAO {
 		
 	}
 	
+	 // 모든 예약 목록 반환
+    public static ArrayList<Reservation> getAllReservations() {
+        return new ArrayList<>(reservationList); // 불변성을 위해 복사본 반환
+    }
+	
+ // 강사 이름과 수업 타입으로 예약 목록 필터링
+    public static ArrayList<Reservation> getReservationsByInstructor(String instructorName, String classType) {
+        ArrayList<Reservation> filteredReservations = new ArrayList<>();
+        
+        for (Reservation r : reservationList) {
+            if (r.getInstructorName().equals(instructorName) && r.getClassType().equals(classType)) {
+                filteredReservations.add(r);
+            }
+        }
+        
+        return filteredReservations;
+    }
+
 	public static void load() {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(RESERVATION_DATA_PATH));

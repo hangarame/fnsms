@@ -3,7 +3,9 @@ package com.fnsms.member;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 import com.fnsms.dao.MemberDAO;
 import com.fnsms.dao.ReservationDAO;
@@ -13,8 +15,13 @@ import com.fnsms.reservation.Reservation;
 import com.fnsms.ticket.Ticket;
 import com.fnsms.ticketregistration.TicketRegistration;
 import com.fnsms.user.UserService;
+import com.fnsms.view.CalendarView;
 import com.fnsms.view.MemberView;
 
+/**
+ * 회원의 메뉴기능을 구현하는 클래스입니다.
+ * @author 1조
+ */
 public class MemberService extends UserService {
 	
 	Member member;
@@ -34,41 +41,169 @@ public class MemberService extends UserService {
 	public void memberMainMenu() {
 		Scanner scan = new Scanner(System.in);
 		
-		//회원의 이용중인 유효한 이용권
-		ArrayList<TicketRegistration> validRegList =
-				this.getValidRegstration(this.getMember());
-		
-		MemberView.printMainmenu(this.getMember().getName(), this.getMember().getTel(), this.getMember().getBirthDate()
-				, this.haveUseTowelTicketUse()
-				, validRegList.get(0).getTicket()
-				, this.getTicketRemainIning(validRegList.get(0))
-				, validRegList.get(0).getEndDate());
-		
-//		return validRegList.get(0);
-		
+				
 		while(true) {
+			
+			//회원의 이용중인 유효한 이용권
+			ArrayList<TicketRegistration> validRegList =
+					this.getValidRegstration(this.getMember());
+			
+			if(validRegList.isEmpty()) {
+				System.out.println("유효한 이용권이 없습니다.");
+				return;
+			}
+			
+			MemberView.printMainmenu(this.getMember().getName()
+					, this.getMember().getTel(), this.getMember().getBirthDate()
+					, this.haveUseTowelTicketUse()
+					, validRegList.get(0).getTicket()
+					, this.getTicketRemainIning(validRegList.get(0))
+					, validRegList.get(0).getEndDate());
+			
+			
+			
 			System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
 			String cmd = scan.nextLine();
+			
+			
 			if(cmd.equals("1")) {
 //				이용권 정보 조회
 				inquiryTicketInfo(validRegList.get(0));
-//				scan.close();
 			} else if(cmd.equals("2")) {
 				// 예약 조회
+
+				Calendar currentDisplayCal = Calendar.getInstance();
+				ArrayList<Reservation> myReservations =
+						getReservationsOfMonth(currentDisplayCal.get(Calendar.YEAR),
+                                currentDisplayCal.get(Calendar.MONTH)+1);
+//				System.out.println("달력을 출력합니다.");
+//				CalendarView cView = new CalendarView();
+//	            cView.start(); 
 			} else if(cmd.equals("E")) {
 				//로그아웃 메서드
 				UserService.logOut();
+				return;
 			} else {
 				System.out.println("\t정해진 문자를 입력해주세요.");
-//				scan.close();
 			}
 		}
-		
 	}//멤버메인	
 	
+	private ArrayList<Reservation> getReservationsOfMonth(int year, int month) {
+        ArrayList<Reservation> reservList = new ArrayList<>();
+        
+        // 이 회원이 가진 TicketRegistration 목록
+        ArrayList<TicketRegistration> myRegList = TicketRegistrationDAO.getTicketRegList(this.member.getMemberNo());
+        
+        for(TicketRegistration tr : myRegList) {
+            ArrayList<Reservation> rList = ReservationDAO.getReservationList(tr.getTicketRegNo());
+            for(Reservation r : rList) {
+                Calendar rc = r.getReservDate();
+                if(rc.get(Calendar.YEAR) == year && (rc.get(Calendar.MONTH)+1) == month) {
+                    reservList.add(r);
+                }
+            }
+        }
+        return reservList;
+    }
 	
 	
+	private void viewMySchedule() {
+	    Scanner scan = new Scanner(System.in);
+	    
+	    // 1) 초기: 현재 달부터 시작
+	    Calendar displayCal = Calendar.getInstance(); // 현재 달
+	    
+//	    현재 달 출력
+	    printCalendarWithReservations(displayCal);
+	    
+	    while(true) {
+	        
+	        System.out.println("  (1)다음달 일정보기, (2)지난달 일정보기, (#)메인으로 돌아가기");
+	        System.out.print("선택> ");
+	        String sel = scan.nextLine().trim();
+	        
+	        if(sel.equals("1")) {
+	            // 다음달
+	            displayCal.add(Calendar.MONTH, 1);
+                printCalendarWithReservations(displayCal);
+	        } else if(sel.equals("2")) {
+	            // 지난달
+	            displayCal.add(Calendar.MONTH, -1);
+                printCalendarWithReservations(displayCal);
+	        } else if(sel.equals("#")) {
+	            // 메인메뉴로
+	            return;
+	        } else {
+	            System.out.println("올바른 값을 입력해주세요.");
+	        }
+	    }
+	}
 	
+	 private void printCalendarWithReservations(Calendar cal) {
+	        int year = cal.get(Calendar.YEAR);
+	        int month = cal.get(Calendar.MONTH) + 1; // 0~11
+	        
+	        // 1) 이 달에 예약(수업) 있는 날짜( dayOfMonth )를 구한다.
+	        Set<Integer> reservedDays = getReservedDaysOfMonth(member, year, month);
+	        
+	        // 2) 달력 헤더
+	        System.out.println("\n=======================================================");
+	        System.out.printf("            %04d년 %02d월 \n", year, month);
+	        System.out.println("=======================================================");
+	        System.out.println("   일\t  월\t  화\t  수\t  목\t  금\t  토\n");
+	        
+	        // 3) 1일의 요일
+	        Calendar tempCal = (Calendar) cal.clone();
+	        tempCal.set(Calendar.DAY_OF_MONTH, 1);
+	        int dayOfWeek = tempCal.get(Calendar.DAY_OF_WEEK); 
+	        
+	        // 4) 이 달의 마지막 날짜
+	        int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+	        
+	        // 5) 1일 전까지 공백
+	        for (int i=1; i<dayOfWeek; i++) {
+	            System.out.print("\t");
+	        }
+	        
+	        // 6) 날짜 출력
+	        for(int day=1; day<=lastDay; day++) {
+	            // 예약 있는 날이면 -> 날짜 뒤에 '*' 붙임
+	            if (reservedDays.contains(day)) {
+	                System.out.printf("%4d*\t", day);
+	            } else {
+	                System.out.printf("%4d\t", day);
+	            }
+	            
+	            // 줄바꿈 처리 (일~토: 7칸 주기)
+	            if ((dayOfWeek + day - 1) % 7 == 0) {
+	                System.out.println("\n");
+	            }
+	        }
+	        System.out.println("\n");
+	    }
+	 
+	 private Set<Integer> getReservedDaysOfMonth(Member member, int year, int month) {
+	        Set<Integer> daySet = new HashSet<>();
+	        
+	        // 1) 이 회원의 이용권 등록 목록
+	        ArrayList<TicketRegistration> regList = TicketRegistrationDAO.getTicketRegList(member.getMemberNo());
+	        // 2) 각 이용권 등록번호에 대한 예약을 검사
+	        for(TicketRegistration tr : regList) {
+	            ArrayList<Reservation> rList = ReservationDAO.getReservationList(tr.getTicketRegNo());
+	            for(Reservation r : rList) {
+	                Calendar c = r.getReservDate();
+	                int cYear = c.get(Calendar.YEAR);
+	                int cMonth = c.get(Calendar.MONTH) + 1;
+	                if(cYear == year && cMonth == month) {
+	                    // 예약 날짜
+	                    int cDay = c.get(Calendar.DATE);
+	                    daySet.add(cDay);
+	                }
+	            }
+	        }
+	        return daySet; 
+	 }
 	
 	// 예약 조회
 	public ArrayList<Reservation> inquiryReservInfo(Member member) {
@@ -267,7 +402,8 @@ public class MemberService extends UserService {
 		boolean towel = haveUseTowelTicketUse();
 		String ticket = ticketReg.getTicket();
 		int count = getTicketRemainIning(ticketReg);
-		
+		boolean possible_break = canticketBreak(ticketReg);
+        int possibleBreakDays = getticketBreakTotalIning(ticketReg);
 //		boolean loop = true;
 		
 		MemberView.printDate(registerDate, startDate, endDate, totalDays, remainingDays, name, towel, ticket, count);
@@ -288,6 +424,7 @@ public class MemberService extends UserService {
 		            return; 
 		        } else if(cmd.equals("#")) {
 		            // 메인 메뉴로 즉시 복귀
+		        	System.out.println("메인 화면으로 돌아갑니다.");
 		            memberMainMenu();
 		            return;
 		        } else {
@@ -325,26 +462,26 @@ public class MemberService extends UserService {
 	            System.out.println("메인화면으로 돌아갑니다.");
 	            memberMainMenu();
 	            return;
+	            
 	        } else if (cmd.equalsIgnoreCase("n")) {
 	            // 휴회 안 함 -> 메인
 	            System.out.println("휴회하지 않고 메인으로 돌아갑니다.");
 	            memberMainMenu();
 	            return;
 	        } 
-	        // 만약 "y"는...? 여기서는 의미 없으니 pass or?
-	        // "y" 자체가 일수가 아니므로, 
-	        // 아무 로직 안 하고 "정해진 문자를 입력해주세요" or 무시.
+	        
 	        
 	        // (2) 숫자인지 확인
 	        try {
 	            int days = Integer.parseInt(cmd);
+	            
 	            // 휴회일수가 days로 들어옴
 	            // 이 days가 remaining 횟수보다 큰지 검사 -> 가능하면 ticketBreak(ticketReg, days)
-	            if (days <= getTicketRemainIning(ticketReg) && days > 0) {
+	            if (days <= possibleBreakDays && days > 0) {
 	                ticketBreak(ticketReg, days);
 	                return;
 	            } else {
-	                System.out.println("\t휴회일을 정확하게 입력해주세요. 가능일수: " + getTicketRemainIning(ticketReg) );
+	                System.out.println("\t휴회일을 정확하게 입력해주세요. 가능일수: " + possibleBreakDays );
 	            }
 	        } catch (NumberFormatException e) {
 	            System.out.println("\t정해진 문자를 입력해주세요. (#:메인, n:취소, or 휴회일(숫자))");
@@ -357,14 +494,19 @@ public class MemberService extends UserService {
 		Calendar udtEndDate = ticketReg.getEndDate();
 		String name = this.member.getName();
 		
+//		휴회반영
 		udtStartDate.add(Calendar.DATE, days);
 		udtEndDate.add(Calendar.DATE, days);
+//		저장
 		TicketRegistrationDAO.save();
 
 		MemberView.ticketBreakSuccess(days, udtStartDate, udtEndDate, name);
 		
-		
-		
+//		메인으로 복귀
+		System.out.println("(엔터를 누르면 메인으로 돌아갑니다.)");
+	    new Scanner(System.in).nextLine(); 
+
+	    memberMainMenu();
 	}
 
 	

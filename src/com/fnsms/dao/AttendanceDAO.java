@@ -8,7 +8,10 @@ import java.util.Calendar;
 
 import com.fnsms.attendance.Attendance;
 
-
+/**
+ * 근퇴 정보를 담고 있는 파일에서 데이터를 읽어오거나 쓰는 기능을 담은 클래스입니다.
+ * @author 1조
+ */
 public class AttendanceDAO {
 	//파일 경로
 	private final static String ATTENDANCE_DATA_PATH;
@@ -19,7 +22,9 @@ public class AttendanceDAO {
 		attendanceList = new ArrayList<Attendance>();
 		
 	}
-	
+	/**
+	 * 지정된 데이터 파일에서 근퇴정보를 읽어와 객체를 생성합니다.
+	 */
 	public static void load() {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(ATTENDANCE_DATA_PATH));
@@ -31,18 +36,25 @@ public class AttendanceDAO {
 				
 				
 				Calendar startTime = Calendar.getInstance();
-				startTime.set(Integer.parseInt(temp[2].substring(0, 4)), Integer.parseInt(temp[2].substring(4, 6)) - 1, Integer.parseInt(temp[2].substring(6,8)));
-				startTime.set(Calendar.HOUR_OF_DAY, Integer.parseInt(temp[2].substring(8, 10)));
-				startTime.set(Calendar.MINUTE, Integer.parseInt(temp[2].substring(10, 12)));
-				startTime.set(Calendar.SECOND, Integer.parseInt(temp[2].substring(12)));
 				
+				try {
+					startTime.set(Integer.parseInt(temp[2].substring(0, 4)), Integer.parseInt(temp[2].substring(4, 6)) - 1, Integer.parseInt(temp[2].substring(6,8)));
+					startTime.set(Calendar.HOUR_OF_DAY, Integer.parseInt(temp[2].substring(8, 10)));
+					startTime.set(Calendar.MINUTE, Integer.parseInt(temp[2].substring(10, 12)));
+					startTime.set(Calendar.SECOND, Integer.parseInt(temp[2].substring(12)));
+				} catch (Exception e) {
+					startTime = null;
+				}
 				Calendar endTime = Calendar.getInstance();
-				endTime.set(Integer.parseInt(temp[3].substring(0, 4)), Integer.parseInt(temp[3].substring(4, 6)) - 1, Integer.parseInt(temp[3].substring(6,8)));
-				endTime.set(Calendar.HOUR_OF_DAY, Integer.parseInt(temp[3].substring(8, 10)));
-				endTime.set(Calendar.MINUTE, Integer.parseInt(temp[3].substring(10, 12)));
-				endTime.set(Calendar.SECOND, Integer.parseInt(temp[3].substring(12)));
-
 				
+				try {
+					endTime.set(Integer.parseInt(temp[3].substring(0, 4)), Integer.parseInt(temp[3].substring(4, 6)) - 1, Integer.parseInt(temp[3].substring(6,8)));
+					endTime.set(Calendar.HOUR_OF_DAY, Integer.parseInt(temp[3].substring(8, 10)));
+					endTime.set(Calendar.MINUTE, Integer.parseInt(temp[3].substring(10, 12)));
+					endTime.set(Calendar.SECOND, Integer.parseInt(temp[3].substring(12)));
+				} catch (Exception e) {
+					endTime = null;
+				}
 				
 				attendanceList.add(new Attendance(temp[0], temp[1], startTime, endTime,Integer.parseInt(temp[4])));
 
@@ -63,7 +75,9 @@ public class AttendanceDAO {
 
 		
 	}
-	
+	/**
+	 * 생성된 객체 리스트를 파일에 기록합니다.
+	 */
 	public static void save() {
 		
 		try {
@@ -73,23 +87,51 @@ public class AttendanceDAO {
 //			FileWriter writer = new FileWriter(".\\data\\testsave.txt");
 			
 			for(Attendance att : attendanceList ) {
+				String startYyyy;
+				String startMm;
+				String startDd;
+				String startHh;
+				String startMi;
+				String startSs;
+				String startYYYYMMDDHHMISS;
 				
-				String startYyyy = att.getStartWorkTime().get(Calendar.YEAR) +"";
-				String startMm = String.format("%02d", (att.getStartWorkTime().get(Calendar.MONTH) + 1)) ;
-				String startDd = String.format("%02d", att.getStartWorkTime().get(Calendar.DATE));
-				String startHh = String.format("%02d", att.getStartWorkTime().get(Calendar.HOUR_OF_DAY));
-				String startMi = String.format("%02d", att.getStartWorkTime().get(Calendar.MINUTE));
-				String startSs = String.format("%02d", att.getStartWorkTime().get(Calendar.SECOND));  
+				try {
+					startYyyy = att.getStartWorkTime().get(Calendar.YEAR) +"";
+					startMm = String.format("%02d", (att.getStartWorkTime().get(Calendar.MONTH) + 1)) ;
+					startDd = String.format("%02d", att.getStartWorkTime().get(Calendar.DATE));
+					startHh = String.format("%02d", att.getStartWorkTime().get(Calendar.HOUR_OF_DAY));
+					startMi = String.format("%02d", att.getStartWorkTime().get(Calendar.MINUTE));
+					startSs = String.format("%02d", att.getStartWorkTime().get(Calendar.SECOND));
+					
+					startYYYYMMDDHHMISS = startYyyy + startMm + startDd + startHh + startMi + startSs;
+					
+				} catch (Exception e) {
+					startYYYYMMDDHHMISS = "";
+				}
 				
-				String endYyyy = att.getEndWorkTime().get(Calendar.YEAR) +"";
-				String endMm = String.format("%02d", (att.getEndWorkTime().get(Calendar.MONTH) + 1));
-				String endDd = String.format("%02d", att.getEndWorkTime().get(Calendar.DATE));
-				String endHh = String.format("%02d", att.getEndWorkTime().get(Calendar.HOUR_OF_DAY));
-				String endMi = String.format("%02d", att.getEndWorkTime().get(Calendar.MINUTE));
-				String endSs = String.format("%02d", att.getEndWorkTime().get(Calendar.SECOND));
+				String endYyyy;
+				String endMm;
+				String endDd;
+				String endHh;
+				String endMi;
+				String endSs;
+				String endYYYYMMDDHHMISS;
 				
-				
-				String line = att.getEmpNo() + "◈" + att.getWorkDate() + "◈" + startYyyy + startMm + startDd + startHh + startMi + startSs + "◈" + endYyyy + endMm + endDd + endHh + endMi + endSs + "◈" + att.getPayment() + "\r\n" ;
+				try {
+					endYyyy = att.getEndWorkTime().get(Calendar.YEAR) +"";
+					endMm = String.format("%02d", (att.getEndWorkTime().get(Calendar.MONTH) + 1));
+					endDd = String.format("%02d", att.getEndWorkTime().get(Calendar.DATE));
+					endHh = String.format("%02d", att.getEndWorkTime().get(Calendar.HOUR_OF_DAY));
+					endMi = String.format("%02d", att.getEndWorkTime().get(Calendar.MINUTE));
+					endSs = String.format("%02d", att.getEndWorkTime().get(Calendar.SECOND));
+					
+					endYYYYMMDDHHMISS = endYyyy + endMm + endDd + endHh + endMi + endSs;
+					
+				} catch (Exception e) {
+					endYYYYMMDDHHMISS = "";
+				}
+								
+				String line = att.getEmpNo() + "◈" + att.getWorkDate() + "◈" + startYYYYMMDDHHMISS + "◈" + endYYYYMMDDHHMISS + "◈" + att.getPayment() + "\r\n" ;
 				
 
 				writer.write(line);
@@ -114,6 +156,11 @@ public class AttendanceDAO {
 	
 	
 	//사원번호(Emp.empNo) 파라미터 조회
+	/**
+	 * 사원번호가 empNo인 사원의 근퇴정보를 ArrayList로 얻습니다. 
+	 * @param empNo 사원번호
+	 * @return 근퇴정보 ArrayList
+	 */
 	public static ArrayList<Attendance> getAttendanceList(String empNo){
 		ArrayList<Attendance> attList = new ArrayList<Attendance>();
 		
@@ -127,6 +174,11 @@ public class AttendanceDAO {
 	}
 	
 	//파라미터(YYYYMMDD) == workdate 파라미터 조회
+	/**
+	 * 근무일자가 yyyymmdd인 근퇴정보를 ArrayList로 얻습니다.
+	 * @param yyyymmdd 조회일자
+	 * @return 근퇴정보 ArrayList
+	 */
 	public static ArrayList<Attendance> getAttendanceByDateList(String yyyymmdd){
 		ArrayList<Attendance> attList = new ArrayList<Attendance>();
 	

@@ -8,7 +8,10 @@ import java.util.ArrayList;
 import com.fnsms.member.Member;
 
 
-
+/**
+ * 회원의 기본데이터를 관리하는 클래스입니다.
+ * @author 1조
+ */
 public class MemberDAO {
 	//파일 경로
 	private final static String MEMBER_DATA_PATH;

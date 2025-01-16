@@ -11,6 +11,10 @@ import java.util.Comparator;
 import com.fnsms.ticket.Ticket;
 import com.fnsms.ticketregistration.TicketRegistration;
 
+/**
+ * 이용권의 정보를 관리하는 클래스 입니다.
+ * @author 1조
+ */
 public class TicketDAO {
 	//파일 경로
 	private final static String TICKET_DATA_PATH;

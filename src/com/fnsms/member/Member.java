@@ -3,6 +3,10 @@ package com.fnsms.member;
 import com.fnsms.ticketregistration.TicketRegistration;
 import com.fnsms.user.User;
 
+/**
+ * 회원의 기본 정보가 담긴 클래스입니다.
+ * @author 1조
+ */
 public class Member extends User{
 	
 	

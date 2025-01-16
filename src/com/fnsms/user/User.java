@@ -1,5 +1,9 @@
 package com.fnsms.user;
 
+/**
+ * 모든 사용자의 공통된 정보가 담긴 클래스입니다.
+ * @author 1조
+ */
 public class User {
 	
 	protected String name;

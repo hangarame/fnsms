@@ -2,6 +2,10 @@ package com.fnsms.ticket;
 
 import java.util.Calendar;
 
+/**
+ * 이용권의 기본정보가 담긴 클래스 입니다.
+ * @author 1조
+ */
 public class Ticket {
 	
 	private int ticketNo;

@@ -12,9 +12,37 @@ import com.fnsms.member.Member;
 import com.fnsms.ticket.Ticket;
 import com.fnsms.ticketregistration.TicketRegistration;
 
-
+/**
+ * @author 1조
+ * 강사, 관리자의 메뉴 기능을 구현하는 클래스 입니다.
+ */
 public class EmpService {
 
+    public static void memberManagement(String empNo) {
+        Scanner sc = new Scanner(System.in);
+        while (true) {
+            System.out.println("\n[회원관리 메뉴]");
+            System.out.println("1. 회원등록");
+            System.out.println("2. 회원조회");
+            System.out.println("0. 뒤로가기");
+            System.out.print("선택> ");
+
+            String sel = sc.nextLine();
+            switch (sel) {
+                case "1":
+                    addMember();
+                    break;
+                case "2":
+                    searchMember();
+                    break;
+                case "0":
+                    System.out.println("회원관리 메뉴 종료");
+                    return;
+                default:
+                    System.out.println("잘못된 입력입니다.");
+            }
+        }
+    }
 	// 회원등록
 	public static void addMember() {
 		Scanner scan = new Scanner(System.in);

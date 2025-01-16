@@ -1,10 +1,14 @@
+
 package com.fnsms.view;
 
 import java.util.Calendar;
 
 import com.fnsms.ticket.Ticket;
 import com.fnsms.ticketregistration.TicketRegistration;
-
+/**
+ * 회원에 관한 출력화면 클래스입니다.
+ * @author 1조
+ */
 public class MemberView implements ConsoleColor {
 	
 	
@@ -42,6 +46,7 @@ public class MemberView implements ConsoleColor {
 
 		Header logo = new Header();
         logo.Logo();
+        System.out.println("\t\t\t\t\t\t\t\t회원 메인페이지");
         System.out.println("=================================================================================");
         System.out.printf("\t안녕하세요 %s님!\n",name);
         System.out.println("");
@@ -83,6 +88,7 @@ public class MemberView implements ConsoleColor {
        
        Header logo = new Header();
        logo.Logo();
+       System.out.println("\t\t\t\t\t\t\t회원 메인페이지/이용권 정보 조회");
        System.out.println("=================================================================================");
        System.out.printf("\t%s님은 '%s%s'을 이용중입니다.\n",name,towel ? "(운)":"", ticket);
        System.out.printf("\t남은 횟수는 %d회 입니다.\n",count);
@@ -121,6 +127,7 @@ public class MemberView implements ConsoleColor {
        
        Header logo = new Header();
        logo.Logo();
+       System.out.println("\t\t\t\t\t\t회원 메인페이지/이용권 정보 조회/이용권 휴회");
        System.out.println("=================================================================================");
        System.out.printf("\t%s님은 '%s%s'을 이용중입니다.\n",name,towel ? "(운)":"", ticket);
        System.out.printf("\t남은 횟수는 %d회 입니다.\n",count);
@@ -139,6 +146,7 @@ public class MemberView implements ConsoleColor {
 	public static void ticketBreakSuccess(int breaktime, Calendar startDate, Calendar endDate, String name) {
 		Header logo = new Header();
         logo.Logo();
+        System.out.println("\t\t\t\t\t\t회원 메인페이지/이용권 정보 조회/이용권 휴회");
         System.out.println("=================================================================================");
         System.out.println();
         System.out.println("\t(메인으로 돌아가려면 '#'을 입력해주세요.)");
@@ -156,6 +164,7 @@ public class MemberView implements ConsoleColor {
 
 		Header logo = new Header();
         logo.Logo();
+        System.out.println("\t\t\t\t\t\t회원 메인페이지/이용권 정보 조회/이용권 휴회");
         System.out.println("=================================================================================");
         System.out.println();
 		System.out.println("\t(메인으로 돌아가려면 '#'을 입력해주세요.)");

@@ -1,7 +1,11 @@
+
 package com.fnsms.view;
 
 import java.util.Calendar;
-
+/**
+ * 로고를 출력하는 클래스입니다.
+ * @author 1조
+ */
 public class Header implements ConsoleColor {
 	
 	
