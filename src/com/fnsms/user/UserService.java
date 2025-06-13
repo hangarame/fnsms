@@ -7,6 +7,7 @@ import com.fnsms.dao.MemberDAO;
 import com.fnsms.emp.Emp;
 import com.fnsms.instructor.Instructor;
 import com.fnsms.instructor.InstructorService;
+import com.fnsms.main.Main;
 import com.fnsms.member.Member;
 import com.fnsms.member.MemberService;
 import com.fnsms.view.CommonView;
@@ -17,12 +18,12 @@ public class UserService {
 	
 	// 로그인
 	public static User logIn() {
-	    Scanner scan = new Scanner(System.in);
+	    
 	    while (true) {
 	    	
 	        CommonView.printLoginSelct();
 
-	        String sel = scan.nextLine().trim();
+	        String sel = Main.scan.nextLine().trim();
 	        User user = null;
 	        
 	        if (sel.equals("1")) { 
@@ -68,11 +69,10 @@ public class UserService {
 	}//로그인
 	
 	protected static void pause() {
-		Scanner scan = new Scanner(System.in);
 		System.out.println();
 		
 		//System.out.println("계속하려면 엔터를 입력하세요.");
-		scan.nextLine();
+		Main.scan.nextLine();
 		
 	}	//일시정지
 	
@@ -100,15 +100,14 @@ public class UserService {
 
 
 	private static User memberIDFW() {
-		Scanner scan = new Scanner(System.in);
 		
 		while (true) {
 			
 			System.out.print("ID: ");
-			String ID = scan.nextLine();
+			String ID = Main.scan.nextLine();
 			
 			System.out.print("PW: ");
-			String PW = scan.nextLine();
+			String PW = Main.scan.nextLine();
 			
 			for (Member m : MemberDAO.memberList) {
 				if (ID.equals(m.getName()) && PW.equals(m.getMemberNo())) {				
@@ -124,7 +123,7 @@ public class UserService {
 			//CommonView.printLoginFailed();
 			//***
 			 //System.out.print("다시 시도하시겠습니까? (Y/N): ");
-	        String retry = scan.nextLine();
+	        String retry = Main.scan.nextLine();
 	        if (retry.equalsIgnoreCase("N")) {
 	            return null; // 초기 화면으로 돌아가게 하기 위해 null 반환
 	        }
@@ -134,15 +133,14 @@ public class UserService {
 	
 
 	private static User instructorIDFW() {
-		Scanner scan = new Scanner(System.in);
 		
 		
 		while (true) {
 			System.out.print("ID: ");
-			String ID = scan.nextLine();
+			String ID = Main.scan.nextLine();
 			
 			System.out.print("PW: ");
-			String PW = scan.nextLine();
+			String PW = Main.scan.nextLine();
 			
 			for (Emp i : EmpDAO.instructorList) {
 				if (ID.equals(i.getName()) && PW.equals(i.getEmpNo())) {				
@@ -154,7 +152,7 @@ public class UserService {
 			
 			CommonView.printLoginFailed();
 			//***
-	        String retry = scan.nextLine();
+	        String retry = Main.scan.nextLine();
 	        if (retry.equalsIgnoreCase("N")) {
 	            return null; // 초기 화면으로 돌아가게 하기 위해 null 반환
 	        
@@ -164,14 +162,13 @@ public class UserService {
 
 	
 	private static User administratorIDFW() {
-		Scanner scan = new Scanner(System.in);
 		
 		while (true) {
 			System.out.print("ID: ");
-			String ID = scan.nextLine();
+			String ID = Main.scan.nextLine();
 			
 			System.out.print("PW: ");
-			String PW = scan.nextLine();
+			String PW = Main.scan.nextLine();
 			
 			for (Emp a : EmpDAO.adminList) {
 				if (ID.equals(a.getName()) && PW.equals(a.getEmpNo())) {				
@@ -182,7 +179,7 @@ public class UserService {
 
 			CommonView.printLoginFailed();
 			//***
-	        String retry = scan.nextLine();
+	        String retry = Main.scan.nextLine();
 	        if (retry.equalsIgnoreCase("N")) {
 	            return null; // 초기 화면으로 돌아가게 하기 위해 null 반환
 	        

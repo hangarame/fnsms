@@ -1,5 +1,7 @@
 package com.fnsms.main;
 
+import java.util.Scanner;
+
 import com.fnsms.dao.AttendanceDAO;
 import com.fnsms.dao.EmpDAO;
 import com.fnsms.dao.MemberDAO;
@@ -12,7 +14,9 @@ import com.fnsms.user.User;
 import com.fnsms.user.UserService;
 
 public class Main {
-
+	
+	public static Scanner scan = new Scanner(System.in);
+	
     public static void main(String[] args) {
         
         // 1) 먼저 모든 DAO의 load()를 호출해, data 폴더의 정보를 불러옵니다.

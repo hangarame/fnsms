@@ -9,6 +9,7 @@ import com.fnsms.dao.MemberDAO;
 import com.fnsms.dao.ReservationDAO;
 import com.fnsms.dao.TicketDAO;
 import com.fnsms.dao.TicketRegistrationDAO;
+import com.fnsms.main.Main;
 import com.fnsms.reservation.Reservation;
 import com.fnsms.ticket.Ticket;
 import com.fnsms.ticketregistration.TicketRegistration;
@@ -32,7 +33,7 @@ public class MemberService extends UserService {
 	
 //  로그인 후 회원 메인화면
 	public void memberMainMenu() {
-		Scanner scan = new Scanner(System.in);
+		
 		
 		//회원의 이용중인 유효한 이용권
 		ArrayList<TicketRegistration> validRegList =
@@ -58,23 +59,28 @@ public class MemberService extends UserService {
 		
 		
 		if(centerPass != null) {
-			MemberView.printMainmenu(this.getMember().getName(), this.getMember().getTel(), this.getMember().getBirthDate()
-					, this.haveUseTowelTicketUse()
-					, centerPass.getTicket()
-					, this.getTicketRemainIning(centerPass)
-					, centerPass.getEndDate());
+			
 			
 //			return validRegList.get(0);
 			
 			while(true) {
+				
+				MemberView.printMainmenu(this.getMember().getName(), this.getMember().getTel(), this.getMember().getBirthDate()
+						, this.haveUseTowelTicketUse()
+						, centerPass.getTicket()
+						, this.getTicketRemainIning(centerPass)
+						, centerPass.getEndDate());
+				
 				System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
-				String cmd = scan.nextLine();
+				String cmd = Main.scan.nextLine();
 				if(cmd.equals("1")) {
 //					이용권 정보 조회
 					inquiryTicketInfo(centerPass);
 //					scan.close();
 				} else if(cmd.equals("2")) {
 					// 예약 조회
+					MemberView.printSelectReservationDate(this.inquiryReservInfo(this.getMember()));
+					
 				} else if(cmd.equals("E")) {
 					//로그아웃 메서드
 					UserService.logOut();
@@ -281,7 +287,7 @@ public class MemberService extends UserService {
 	
 	//2-1. 이용권 정보 조회
 	public void inquiryTicketInfo(TicketRegistration ticketReg) {
-		Scanner scan = new Scanner(System.in);
+		
 		
 		Calendar registerDate = ticketReg.getPurchaseDate();
 		Calendar startDate = ticketReg.getStartDate();
@@ -298,7 +304,7 @@ public class MemberService extends UserService {
 		MemberView.printDate(registerDate, startDate, endDate, totalDays, remainingDays, name, towel, ticket, count);
 		
 		 while(true) {
-		        String cmd = scan.nextLine().trim();
+		        String cmd = Main.scan.nextLine().trim();
 		        
 		        if(cmd.equalsIgnoreCase("y")) {
 		            // 휴회 신청
@@ -324,7 +330,7 @@ public class MemberService extends UserService {
 
 	// 2-1-1. 휴회신청
 	public void requestRecess(TicketRegistration ticketReg) {
-		Scanner scan = new Scanner(System.in);
+		
 		
 		Calendar registerDate = ticketReg.getPurchaseDate();
 		Calendar startDate = ticketReg.getStartDate();
@@ -342,7 +348,7 @@ public class MemberService extends UserService {
 
 
 		while(true) {
-	        String cmd = scan.nextLine().trim();
+	        String cmd = Main.scan.nextLine().trim();
 	        
 	        // (1) 먼저 문자인지 확인
 	        if (cmd.equalsIgnoreCase("#")) {

@@ -1,7 +1,13 @@
 package com.fnsms.view;
 
 import java.util.Calendar;
+import java.util.List;
+import java.util.Scanner;
 
+import com.fnsms.dao.TicketRegistrationDAO;
+import com.fnsms.main.Main;
+import com.fnsms.member.Member;
+import com.fnsms.reservation.Reservation;
 import com.fnsms.ticket.Ticket;
 import com.fnsms.ticketregistration.TicketRegistration;
 
@@ -171,6 +177,69 @@ public class MemberView implements ConsoleColor {
 //		System.out.print("\t🖙 원하는 작업을 입력해주세요 : ");
 		
 		
+	}
+	
+	
+
+	public static void printSelectReservationDate(List<Reservation> reservList) {
+
+		int ResvationDate = 0;
+		
+		
+		CalendarView calendar = new CalendarView();
+		Header logo = new Header();
+		
+		while(true) {
+			logo.Logo();
+			System.out.println("\t\t\t\t\t\t\t\t날짜별 예약 조회");
+			System.out.println("=================================================================================");
+			
+			calendar.printCalendar(reservList);
+			System.out.println();
+			System.out.println("=================================================================================");
+			System.out.println();
+			System.out.println("\t(메인으로 돌아가려면 #을 입력해주세요.)");
+			System.out.println("\t이전 달을 보고싶을 경우 \"<\"을, 다음달을 보고싶을 경우 \">\"을 입력해주세요.");
+			System.out.println("\t예약을 조회하고 싶을 경우 날짜를 입력하세요.");
+			System.out.println();
+			
+			System.out.print("\t🖙 원하는 작업을 입력하세요 : ");
+			String input = Main.scan.nextLine();
+			if(input.equals("<")) {
+				calendar.getDisplayCal().add(Calendar.MONTH, -1);
+				
+			} else if(input.equals(">")) {
+				calendar.getDisplayCal().add(Calendar.MONTH, 1);
+				
+			} else if(input.matches("[0-9]{1,2}")) {
+				int inputNum = Integer.parseInt(input);
+									
+				if(inputNum > 0 && inputNum <= calendar.getDisplayCal().getActualMaximum(Calendar.DAY_OF_MONTH)) {
+					
+					for(Reservation reserv : reservList) {
+						if(reserv.getReservDate().get(Calendar.YEAR) == calendar.getDisplayCal().get(Calendar.YEAR)
+							&& reserv.getReservDate().get(Calendar.MONTH) == calendar.getDisplayCal().get(Calendar.MONTH)
+							&& reserv.getReservDate().get(Calendar.DATE) == inputNum) {
+							System.out.println("=================================================================================");
+							System.out.printf("- %d시 : %s", reserv.getReservDate().get(Calendar.HOUR_OF_DAY), TicketRegistrationDAO.getTicketRegistration(reserv.getTicketRegNo()).getTicket());
+							System.out.println();
+							
+							System.out.println("계속하려면 엔터를 입력하세요.");
+							Main.scan.nextLine();
+						}
+					}
+				}
+			} else if(input.equals("#")) {
+				//System.out.println("###########");
+				break;
+				
+			} else {
+                System.out.println("\\t정해진 문자 또는 유효한 날짜를 입력해주세요.");
+            }
+		}
+		
+		// System.out.println("\t🖙 원하는 작업을 입력하세요 : ");
+
 	}
 
 

@@ -173,6 +173,18 @@ public class TicketRegistrationDAO {
         }
         return true;
     }
+    
+  //티켓등록번호로 데이터 불러오기
+  	public static TicketRegistration getTicketRegistration(int ticketRegNo){
+  		
+  		for(TicketRegistration reg : ticketRegList) {
+  			if(reg.getTicketRegNo() == ticketRegNo) {
+  				return reg;
+  			}
+  		}
+  			
+  		return null;
+  	}
 	
 	
 }//class

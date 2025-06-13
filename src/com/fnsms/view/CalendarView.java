@@ -1,9 +1,15 @@
 package com.fnsms.view;
 
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 import com.fnsms.emp.EmpDateService;
+import com.fnsms.reservation.Reservation;
+
 
 public class CalendarView implements ConsoleColor {
     private Calendar currentCal;  // 실제 현재 날짜
@@ -110,6 +116,83 @@ public class CalendarView implements ConsoleColor {
         System.out.println("\n");
         System.out.println("=================================================================================");
     }
+    
+    
+    public void printCalendar(List<Reservation> reservList) {
+    	
+    	Set<Integer> dateSet = new HashSet<Integer>();
+    	
+    	
+    	for(Reservation reserv : reservList) {
+			int year = reserv.getReservDate().get(Calendar.YEAR);
+			int month = reserv.getReservDate().get(Calendar.MONTH);
+			int date = reserv.getReservDate().get(Calendar.DATE);
+			
+			if(year == this.getDisplayCal().get(Calendar.YEAR)
+				&& month == this.getDisplayCal().get(Calendar.MONTH)) {
+				dateSet.add(date);
+			}
+			
+			
+		}
+    	
+    	
+    	System.out.println("=================================================================================");
+    	
+        System.out.println("---------------------- " + displayCal.get(Calendar.YEAR) + "년 " + 
+                          (displayCal.get(Calendar.MONTH) + 1) + "월 -----------------------------------------------");
+        System.out.println("=================================================================================");
+        System.out.println("\t일\t월\t화\t수\t목\t금\t토");
+        System.out.println();
+        System.out.println();
+        // 1일의 요일을 구함
+        Calendar firstDay = (Calendar) displayCal.clone();
+        firstDay.set(Calendar.DAY_OF_MONTH, 1);
+        int dayOfWeek = firstDay.get(Calendar.DAY_OF_WEEK);
+        
+        // 해당 월의 마지막 날짜를 구함
+        int lastDay = displayCal.getActualMaximum(Calendar.DAY_OF_MONTH);
+        
+        // 1일이 시작하기 전까지 탭으로 공백을 채움
+        for (int i = 1; i < dayOfWeek; i++) {
+            System.out.print("\t");
+        }
+        
+        // 날짜 출력
+        for (int i = 1; i <= lastDay; i++) {
+        	if(dateSet.contains(i)) {
+        		System.out.printf("\t%2d*",i);
+        	} else {
+        		System.out.printf("\t%2d",i);
+        	}
+            
+            
+            // 토요일이면 줄바꿈
+            if ((dayOfWeek + i - 1) % 7 == 0) {
+                System.out.println();
+                System.out.println("\t\t");
+            }
+        }
+        System.out.println("\n");
+        System.out.println("=================================================================================");
+        
+    }
+
+	public Calendar getCurrentCal() {
+		return currentCal;
+	}
+
+	public void setCurrentCal(Calendar currentCal) {
+		this.currentCal = currentCal;
+	}
+
+	public Calendar getDisplayCal() {
+		return displayCal;
+	}
+
+	public void setDisplayCal(Calendar displayCal) {
+		this.displayCal = displayCal;
+	}
     
     
 }
